@@ -18,6 +18,11 @@ import os
 import sys
 import zipfile
 
+# Windows 콘솔/파이프에서도 한국어 메시지가 깨지지 않도록 UTF-8로 강제한다.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 VALID_SLUGS = ("channeltalk", "musinsa", "kakaopay-securities")
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
