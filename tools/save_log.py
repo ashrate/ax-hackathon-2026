@@ -5,6 +5,15 @@ import os
 import shutil
 import sys
 
+# Windows consoles default to a legacy code page (cp949 on Korean systems),
+# which mangles non-ASCII paths in the hook payload; force UTF-8 on stdio.
+for _stream in (sys.stdin, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
