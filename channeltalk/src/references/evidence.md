@@ -59,7 +59,7 @@
 | --- | --- | --- | --- |
 | 채널톡은 URL 기반 AI 상담 시뮬레이션을 이미 제공한다. | 4 | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | 본 플러그인은 시뮬레이션을 대체하지 않고, 로그인 전/외부 감사 단계에서 공개 문서를 지식 폴더, 규칙, 이관 기준, 테스트 케이스, 누락 질문으로 정리하는 준비 산출물을 만든다. |
 | ALF 테스트는 제품 안에서 공식 제공된다. | 4 | https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d | 본 플러그인은 ALF 테스트에 넣기 전 고객 시나리오와 평가 기준 초안을 생성한다. 실제 제품 테스트 실행을 대신한다고 주장하지 않는다. |
-| CoS는 상담 데이터 분석, ALF 개선 제안, 태스크 설계까지 도울 예정이라고 공개되어 있다. | 4 | https://docs.channel.io/help/ko/articles/CoS-a8e86305 | CoS는 채널 안의 데이터와 설정을 다루는 제품 기능이다. 제출 플러그인은 공개 URL/붙여넣은 정책만으로 심사자가 재현 가능한 Codex 워크플로우를 제공한다. |
+| CoS는 상담·비즈니스 데이터를 분석해 인사이트, 전략 설계, 리포트 생성을 돕는 채널톡 AI 비서 기능으로 공개되어 있다. | 4 | https://docs.channel.io/help/ko/articles/CoS-a8e86305 | CoS는 채널 안의 데이터와 설정을 다루는 제품 기능이다. 제출 플러그인은 공개 URL/붙여넣은 정책만으로 심사자가 재현 가능한 Codex 워크플로우를 제공한다. |
 
 ## Plugin Scope
 
