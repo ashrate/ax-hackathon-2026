@@ -1,7 +1,7 @@
 {
   "name": "kakaopay-securities-plugin",
   "version": "0.1.0",
-  "description": "카카오페이증권 또는 투자자가 겪는 실제 문제를 공개 자료로 입증하고 Codex 플러그인 제출물로 구조화하는 대회용 스킬 패키지입니다.",
+  "description": "카카오페이증권 상담/VOC 문의를 공식 근거 기반 답변 초안, 확인 체크리스트, 컴플라이언스 점검, 이관 판단, 케이스 원장으로 출력하는 대회용 스킬 패키지입니다.",
   "author": {
     "name": "AX Talent War Participant"
   },
@@ -14,9 +14,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "KakaoPay Securities AX Problem Solver",
-    "shortDescription": "카카오페이증권 공개 근거 기반 문제정의와 제출물 작성을 돕습니다.",
-    "longDescription": "카카오페이증권 또는 투자자의 실제 문제를 공개 자료로 입증하고, Codex 플러그인의 문제정의, 작동 방식, 검증 기준, 5문항 답변을 일관되게 작성하도록 돕습니다.",
+    "displayName": "KakaoPay Securities Response Copilot",
+    "shortDescription": "고객 문의를 공식 근거 기반 상담 산출물로 만듭니다.",
+    "longDescription": "카카오페이증권 상담사와 VOC 담당자가 고객 문의를 붙여넣으면 response-draft.md, checklist.md, compliance-report.md, escalation.md, case-log.csv를 생성하도록 돕습니다.",
     "developerName": "AX Talent War Participant",
     "category": "Productivity",
     "capabilities": [
@@ -25,9 +25,9 @@
       "Analysis"
     ],
     "defaultPrompt": [
-      "카카오페이증권 공개 자료로 문제 후보를 찾아줘.",
-      "이 투자자 문제를 Codex 플러그인으로 구체화해줘.",
-      "카카오페이증권 트랙 5문항 답변을 검토해줘."
+      "고객 문의를 output/case-1 산출물로 만들어줘.",
+      "이 상담 답변 초안의 추천성·보상 단정 표현을 점검해줘.",
+      "소수점 주문 문의에 대한 고객 답변 초안과 이관 판단을 만들어줘."
     ],
     "brandColor": "#FACC15"
   }

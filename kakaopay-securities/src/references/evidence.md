@@ -6,7 +6,7 @@
 
 ## 선정 문제
 
-**초보 투자자의 매수·매도 불안을 투자 추천 없이 분해하고, 상담사와 고객이 공식 근거로 다음 확인 행동을 정리하도록 돕는 안심 안내 코파일럿.**
+**고객 문의의 매수·매도 불안, 소수점 주문 오해, 앱 장애·보상 기대를 투자 추천 없이 분해하고, 상담사/VOC 담당자가 바로 쓸 수 있는 고객 답변·확인 질문·컴플라이언스·이관·원장 산출물을 생성하는 코파일럿.**
 
 ## 핵심 주장 감사표
 
@@ -22,9 +22,13 @@
 | 소수점매매는 실시간 거래가 어렵고 10분 단위 주문·재배분 등 초보자에게 설명이 필요한 구조를 가진다. | 4 | https://support.kakaopay.com/web/faq-list/CUSTOMER_CENTER_FAQ_STOCK?device=m&qna=CUSTOMER_CENTER_FAQ_DECIMAL_POINT_TRADING | 2026-07-08 | 일반 web fetch는 빈 본문, `curl`로 Next.js HTML의 `qnaList` 원문 확인. | 하위 모듈 근거 유지 |
 | 해외 소수점 거래 설명서는 주문 방법·최적가 문구·유의사항이 개정될 수 있으므로 최신 공지 확인이 필요하다. | 4 | https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=6807 | 2026-07-08 | 웹 fetch로 공지 본문 확인. | 최신성 가드레일 유지 |
 | 주문장애는 회사 주문 시스템 장애로 어떤 방법으로도 주문이 불가능한 경우로 제한되고, 비상주문·증빙·신청기한 조건이 있다. | 4 | https://www.kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do | 2026-07-08 | 웹 fetch로 보상기준 본문 확인. | 보상 단정 금지 근거 유지 |
+| 앱 접속 및 서비스 지연 공지는 실제 고객 불편 상황에서 공지 확인과 장애 기준 분기가 필요함을 보여준다. | 4 | https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=7011 | 2026-07-08 | 웹 fetch로 공지 본문 확인. | case-2 근거 추가 |
 | 카카오페이증권 문의 채널은 평일 08:00-18:00로 안내되어 있어, 상담 시간 밖에는 공식 FAQ/ARS/비상주문 안내 분기가 필요하다. | 4 | https://support.kakaopay.com/web/phone-cs-notice | 2026-07-08 | 웹 fetch로 고객센터 안내 확인. | 운영 맥락 근거 유지 |
-| 금융투자협회 표준투자권유준칙은 투자자가 투자권유를 원하지 않으면 투자권유 행위를 하지 않고 객관적 정보만 제공해야 한다고 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149 | 2026-07-08 | 웹 검색 후 HTML 본문 확인. | 비추천형 설계 보강 |
+| 금융투자협회 표준투자권유준칙은 투자자가 투자권유를 원하지 않으면 투자권유 행위를 하지 않고 객관적 정보만 제공해야 한다고 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149 | 2026-07-08 | 웹 검색 후 HTML 본문 확인. | 비추천형 설계 보강 |
+| 금융투자협회 표준내부통제기준은 불확실한 사항을 확실하다고 오인하게 하는 내용을 금지하고 설명·위험고지 기준을 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=437&seq=150 | 2026-07-08 | 웹 검색 후 HTML 본문 확인. | 컴플라이언스 검사 근거 |
 | 금융위는 1:1 개별투자자문은 정식 등록 투자자문업자만 가능하고, 원금·수익 보장 및 손실보전 약정은 불법이라고 안내한다. | 4 | https://www.fsc.go.kr/no010101/81575 | 2026-07-08 | 웹 검색 후 금융위 보도참고 HTML 확인. | 추천·보상 단정 금지 보강 |
+| 금융위의 투자자 유의사항은 등록 투자자문업자 확인, 원금·고수익 보장 주의, 금융감독원 유사투자자문 피해 신고 경로를 안내한다. | 4 | https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText= | 2026-07-08 | 웹 검색 후 금융위원회 HTML 확인. | case-3 이관 근거 |
+| 금융감독원 홈페이지는 민원·신고, 제도권 금융회사 조회, 불법금융신고센터 경로를 제공한다. | 4 | https://www.fss.or.kr/ | 2026-07-08 | 웹 검색 후 금융감독원 HTML 확인. | 등록·신고 확인 보조 근거 |
 | 카카오페이증권에는 시세 감지 주문, 주식 모으기, 종목추천서비스 설명서 등 일부 투자 보조 기능이 이미 존재한다. | 4 | https://kakaopaysec.com/ / https://kakaopaysec.com/downloadFile.do?id=8276 | 2026-07-08 | 홈페이지 HTML 및 공식 PDF 검색·다운로드 가능 여부 확인. PDF 본문은 generic fetch 실패로 최종 URL 후보 제외. | 반증 검토에만 사용 |
 | 예탁자산 20조 원, 채널 친구 100만 명, 앱 리뷰 불만, 외부 보도 기반 장애 불만은 사용자 규모·보조 정황이다. | 3 | 기존 `docs/research.md`의 기사·리뷰 URL | 2026-07-08 | 기존 URL 재분류. | 핵심 근거에서 강등 |
 
@@ -37,12 +41,11 @@
 
 출력:
 
-- 투자 추천 요청 여부 분류
-- 목적·기간·손실 감내도·보유 여부·확인한 근거를 묻는 명확화 질문
-- 공식 출처 체크리스트
-- 고객용 비추천형 답변 초안
-- 금지 표현 QA
-- 공식 근거 부족 또는 최신성 의심 시 이관 기준
+- `response-draft.md`: 고객에게 그대로 보낼 수 있는 쉬운 답변 문안, 공식 URL 각주, 필수 유의 문구
+- `checklist.md`: 목적·기간·손실 감내도·주문 방식 이해·장애 증빙 여부를 묻는 확인 질문과 다음 행동
+- `compliance-report.md`: 종목·가격·타이밍 추천성, 보상 단정, 원금·수익 보장, 불확실한 단정 표현 검사
+- `escalation.md`: 주문장애·보상, 투자자문 요구, 공식 근거 부족 상황의 이관 판단
+- `case-log.csv`: 날짜, 문의유형, 위험플래그, 사용근거URL, 처리결과 원장
 
 ## 판단 규칙
 
