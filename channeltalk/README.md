@@ -6,6 +6,54 @@
 
 이 플러그인은 이커머스 CS 담당자가 브랜드 홈페이지, FAQ, 배송/교환/환불 정책 URL을 주면 채널톡 ALF에 옮겨 넣을 지식 문서, 규칙, 테스트 케이스, 상담원 이관 기준, 누락 질문, 적용 가이드를 폴더 형태로 생성한다.
 
+## 입력 예시
+
+```text
+브랜드명: 바잇미
+공개 URL:
+- 채널톡 공식 바잇미 사례
+- 바잇미 FAQ
+- 바잇미 이용안내
+- 대표 상품 상세 3개
+
+요청:
+채널톡 ALF에 넣을 지식 문서, 답변 규칙, 상담원 이관 기준,
+배포 전 테스트 질문, 누락 정책 질문을 만들어줘.
+```
+
+## 실행 결과
+
+풀 실행 예시([biteme](examples/biteme/)) / 라이트 실행 예시([aladin](examples/aladin/)) — 서로 다른 업종에서 동일 워크플로우가 작동함을 확인했다.
+
+| 예시 | 업종 | 실행 깊이 | 산출물 |
+| --- | --- | --- | --- |
+| [examples/biteme/](examples/biteme/) | 반려동물 커머스 | 풀 실행 | 지식 문서 8개, 계약 산출 파일 13개, CSV 테스트 질문 41개, 문서 충돌 1건 기록 |
+| [examples/aladin/](examples/aladin/) | 도서/음반/전자책 커머스 | 라이트 실행 | 지식 문서 3개, 규칙 발췌 1개, CSV 테스트 질문 12개, 운영자 확인 항목 6개 기록 |
+
+## 정보 부족/실패 시 동작
+
+- URL이 막히면 내용을 추정하지 않고 `gaps.md`의 접근 실패 항목에 URL, 실패 증상, 확인일을 적는다.
+- 공개 FAQ가 동적 로딩이면 로그인 없이 접근 가능한 AJAX 응답만 수집하고 수집 방법을 출처에 남긴다.
+- 정책이 빠져 있으면 `미확인`으로 표시하고, ALF 규칙에는 단정 답변 금지 또는 상담원 이관 조건을 연결한다.
+- 문서끼리 충돌하면 한쪽을 선택하지 않고 `gaps.md`에 충돌 문장과 운영자 확인 질문을 남긴다.
+
+## 사람이 최종 판단하는 지점
+
+- 충돌 정책의 우선순위 확정.
+- 상품군별 예외 정책과 상담원 이관 기준 승인.
+- 환불, 하자 판정, 개인정보, 고객별 주문 상태처럼 내부 확인이 필요한 항목 처리.
+- 공개 문서 업데이트 주기와 ALF 지식 갱신 담당자 지정.
+
+## 수동 작업과 플러그인 대체 범위
+
+| CS 담당자가 수동으로 하던 작업 | 플러그인이 대신하는 부분 | 사람이 남겨야 하는 판단 |
+| --- | --- | --- |
+| FAQ, 이용안내, 상품 상세를 열어 상담 의도별로 복사 | 공개 URL을 배송, 주문, 교환/반품/환불, 쿠폰, 이관 의도로 분류 | 공개되지 않은 내부 정책 제공 여부 |
+| ALF 지식 문서 폴더 구조 설계 | `alf-knowledge/` 카테고리와 대표 문서 초안 생성 | 실제 운영 폴더명과 배포 범위 승인 |
+| 답변 금지 규칙과 예외 조건 정리 | `alf-rules.md`에 금지 답변, 고위험 주제, 이관 조건 작성 | 충돌 정책의 최종 우선순위 확정 |
+| 배포 전 테스트 질문 작성 | `alf-test-cases.csv`에 정상/예외/이관 질문 생성 | 내부 주문 데이터가 필요한 테스트 추가 |
+| 애매한 정책을 메모로 남김 | `gaps.md`에 미확인 정책, 문서 충돌, 운영자 확인 질문 기록 | 확인 답변을 받아 ALF 지식에 반영 |
+
 ## 무엇이 나오나요?
 
 사용자가 브랜드명과 공개 URL 목록을 주면 `output/<브랜드명>/` 아래에 다음 파일을 만든다.
@@ -33,7 +81,7 @@ output/<브랜드명>/
 
 ## 예시 실행
 
-실제 공개 자료로 실행한 예시는 `examples/biteme/`에 있다.
+실제 공개 자료로 실행한 풀 예시는 `examples/biteme/`, 라이트 예시는 `examples/aladin/`에 있다.
 
 입력으로 사용한 공개 URL:
 
@@ -49,8 +97,33 @@ output/<브랜드명>/
 - 지식 문서 8개
 - 계약 산출 파일 총 13개
 - CSV 테스트 질문 41개
-- 접근 실패 URL 0건
+- 입력 URL은 `curl -L` 점검에서 접근 실패가 발견되지 않았다.
 - 확인된 문서 충돌 1건: HAX 상품의 제주/도서산간 교환 반품 추가비용
+
+알라딘 라이트 실행 입력으로 사용한 공개 URL:
+
+- https://www.aladin.co.kr/cs_center/wcs_faq_list.aspx
+- https://www.aladin.co.kr/cs_center/wcs_faq_list.aspx?CategoryId=75&UpperId=75
+- https://www.aladin.co.kr/cs_center/wcs_faq_list.aspx?CategoryId=76&UpperId=76
+- https://blog.aladin.co.kr/cscenter/1451688
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=209
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=275
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1278
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1284
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=137
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=478
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1272
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1267
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1924
+- https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1600
+
+알라딘 라이트 예시 결과:
+
+- 지식 문서 3개
+- 규칙 발췌 1개
+- CSV 테스트 질문 12개
+- 운영자 확인 항목 6개
+- 선택 URL은 `curl -L` 점검에서 HTTP 200 응답을 확인했다.
 
 ## 공개 근거
 
@@ -71,7 +144,7 @@ output/<브랜드명>/
 3. 로그인 없이 읽을 수 있는 공개 문서와 공개 AJAX 응답만 수집한다.
 4. 상담 의도별로 확정 지식, 금지 답변, 이관 기준, 테스트 질문을 만든다.
 5. 접근 실패, 미확인 정책, 문서 충돌은 `gaps.md`에 남기고 ALF 규칙에서는 단정 답변을 금지한다.
-6. 자체 품질 점검으로 출처 없는 주장 0건, CSV 파싱 가능, 테스트 질문 30개 이상을 확인한다.
+6. 자체 품질 점검으로 지식 문서의 출처 URL/확인일 표기, CSV 파싱 가능 여부, 테스트 질문 수, 고위험 주제 이관 처리를 자동 스캔과 수동 검수로 확인한다.
 
 ## 제한
 

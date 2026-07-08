@@ -78,6 +78,13 @@ Outputs:
 - `output/<브랜드명>/APPLY-GUIDE.md`: 채널톡 관리자 화면 적용 순서
 - 요청 시 5문항 제출 답변 초안
 
+## Example Runs
+
+| 예시 | 업종 | 실행 깊이 | 공개 근거 | 확인일 | 사용 |
+| --- | --- | --- | --- | --- | --- |
+| `examples/biteme/` | 반려동물 커머스 | 풀 실행 | https://channel.io/kr/blog/articles/ai-case-biteme-d3e09ab9, https://m.biteme.co.kr/shop/community/faq_lists, https://m.biteme.co.kr/shop/service/service_guide | 2026-07-08 | 공식 바잇미 사례와 공개 FAQ/정책으로 전체 출력 계약을 검증한 예시 |
+| `examples/aladin/` | 도서/음반/전자책 커머스 | 라이트 실행 | https://www.aladin.co.kr/cs_center/wcs_faq_list.aspx, https://www.aladin.co.kr/cs_center/wcs_faq_list.aspx?CategoryId=75&UpperId=75, https://www.aladin.co.kr/cs_center/wcs_faq_list.aspx?CategoryId=76&UpperId=76 | 2026-07-08 | 다른 업종의 공개 FAQ와 공개 AJAX 응답에서도 같은 지식·규칙·테스트·gaps 워크플로우가 작동함을 확인한 축약 예시 |
+
 ## Judgment Rules
 
 - 영상 자막(5)과 채널톡 공식 자료(4)를 우선한다.

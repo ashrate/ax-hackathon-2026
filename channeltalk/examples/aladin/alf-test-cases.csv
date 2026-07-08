@@ -1,0 +1,13 @@
+질문,의도분류,기대답변요지,근거URL,오답위험도
+"책 반품할 수 있나요?","반품","일반 온라인 구매 상품은 수령일로부터 20일 이내 반품 가능하나 반품 불가 표시 상품과 전자책 등은 제외된다고 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=209","중간"
+"반품 신청은 어디서 하나요?","반품","나의 계정 > 주문조회 > 해당 주문에서 반품/교환신청 버튼으로 신청서를 작성한다고 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=275","낮음"
+"지정택배사 반품 신청했는데 언제 방문하나요?","반품","반품 신청 후 1~3일 이내 지정택배사 방문 수거 안내와 지연 시 회수지연신고를 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1278","중간"
+"반품 신청 후 환불은 언제 되나요?","환불","지정택배사 반품과 직접 발송의 처리 흐름을 안내하되 주문별 환불 완료 여부는 상담원 확인으로 넘긴다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1284","높음"
+"마음에 안 드는 책을 다른 책으로 교환할 수 있나요?","교환","다른 상품으로의 교환은 어렵고 반품 후 원하는 상품을 별도로 주문해야 한다고 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=856","중간"
+"불량 상품이면 교환 가능한가요?","교환","상품 하자가 있는 경우 동일 상품으로만 교환 가능하다는 일반 기준을 안내하고 하자 판단은 상담원 확인으로 넘긴다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=137","높음"
+"전자책 다운로드 전인데 취소나 반품 되나요?","전자책","전자책은 디지털 파일 특성상 주문 후 반품/교환이 불가하나 다운로드 전 취소 가능 여부는 주문조회 기준으로 확인하게 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=856","높음"
+"어떤 경우에는 반품이 안 되나요?","반품불가","기간 경과, 상품 상태 훼손, 구성품/증정품 미반송, 일부 음반/DVD/전자제품 조건 등 반품 불가 조건을 요약한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=478","중간"
+"편의점 픽업 상품은 언제 찾으러 가면 되나요?","배송","출고 후 편의점 도착 시 문자 안내를 받고, 도착 후 1주일 이내 미수령 시 자동 반송 및 비용 부담 가능성을 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1272","중간"
+"당일배송 상품이랑 예약상품을 같이 주문하면 일부만 당일배송 되나요?","배송","예약상품과 일반상품을 함께 주문하면 출고 다음 날 배송 안내가 있으며 당일배송을 원하면 예약상품 별도 주문을 권한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1267","낮음"
+"원하는 날짜로 배송일 지정할 수 있나요?","배송","주문 시점으로부터 최대 7일 이내 수령일 지정 가능하나 접수 후 변경은 어렵고 취소 후 재주문이 필요하다고 안내한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1924","중간"
+"출고예정일이 지났는데 왜 아직 출고가 안 됐나요?","배송지연","입고 지연, 배본 오류, 재고 손상 등이 있을 수 있으며 품절 시 안내 후 주문취소/환불 처리될 수 있다고 말하고 개별 주문은 이관한다","https://www.aladin.co.kr/ucl/cs_center/ajax/wfaq_ajax.aspx?faqid=1600","높음"
