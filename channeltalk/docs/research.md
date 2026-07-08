@@ -4,7 +4,7 @@
 > README.md 작성의 원천 자료다. **항목마다 날짜를 남겨라.**
 
 - 조사 날짜: 2026-07-08
-- 조사 범위: `docs/source-video.ko.vtt`, 채널톡 공식 홈페이지/블로그/문서, 공개 기사, 앱스토어/Shopify 리뷰, 개발자·웹빌더 연동 글
+- 조사 범위: `docs/source-video.ko.vtt`, 채널톡 공식 홈페이지/블로그/뉴스룸, 공식 도움말/FAQ, 공식 개발자 문서, 공개 기사, 앱스토어/Shopify 리뷰, 개발자·웹빌더 연동 글
 - 원칙: 공개 URL로 확인 가능한 내용만 기록. 비공개 고객사 정보, 추측성 내부 사정, 출처 없는 숫자는 사용하지 않음.
 
 ## 0. 대회 영상 자막 요약
@@ -23,9 +23,9 @@
 | --- | --- | --- | --- |
 | 설립/제품 전환 | 채널코퍼레이션의 전신은 2014년 설립된 조이코퍼레이션이며, 오프라인 매장 분석 서비스 `워크인사이트` 이후 2017년 `채널톡`이 탄생했다. 2020년 채널코퍼레이션으로 사명을 변경하며 채널톡에 집중한다고 밝혔다. | https://channel.io/kr/blog/articles/renew-channelcorp-ac6d3388 | 2026-07-08 |
 | 회사 미션 | AWS 기술 블로그의 채널코퍼레이션 사례는 회사 비전을 "고객과 기업 사이의 모든 문제를 해결하는 것"으로 소개하고, 채널톡을 고객-기업 커뮤니케이션 문제 해결 제품으로 설명한다. | https://aws.amazon.com/ko/blogs/tech/architecture-modernization-journey-of-channel-corporation-with-amazon-dynamodb-part1/ | 2026-07-08 |
-| 현재 제품 포지션 | 공식 홈페이지는 채널톡을 상담, AI 상담사, CRM/마케팅, 전화, 팀 메신저 등을 묶은 AI 비즈니스 OS/메신저로 제시한다. AI 상담사가 제대로 답하려면 `규칙`, `구조화된 지식`, `실행 가능한 태스크(액션)`가 필요하다고 설명한다. | https://channel.io/kr | 2026-07-08 |
+| 현재 제품 포지션 | 공식 제품 페이지는 채널톡 AI 상담사가 제대로 답하려면 `규칙`, `구조화된 지식`, `실행 가능한 태스크(액션)`가 필요하다고 설명한다. | https://channel.io/kr/talk | 2026-07-08 |
 | 글로벌/일본 현황 | 공식 뉴스룸은 채널톡이 22개국 20만여 기업에서 고객 상담 채널로 사용되고, 일본 매출이 전체의 약 20%라고 밝혔다. 일본 채널콘 2026에서는 CoS와 AI 마케팅 방향도 공개했다. | https://channel.io/kr/blog/articles/channelcon2026-press-21de9c04 | 2026-07-08 |
-| AI 상담 집중 | ZDNet 인터뷰는 알프(ALF)가 RAG와 팩트체크 프로토콜로 기업 정보 기반 응답을 하고, 이커머스에서 배송지 변경, 주문 취소, 사이즈 문의 같은 반복 문의 자동화를 겨냥한다고 설명한다. | https://zdnet.co.kr/view/?no=20241217160629 | 2026-07-08 |
+| AI 상담 집중 | 공식 ALF 제품/도움말은 ALF가 지식, 규칙, 태스크를 바탕으로 상담 자동화와 실제 업무 처리를 지원한다고 설명한다. ZDNet 인터뷰는 배송지 변경, 주문 취소, 사이즈 문의 예시를 보조한다. | https://channel.io/kr/talk, https://docs.channel.io/help/ko/articles/ALF%EB%9E%80-d791e043 | 2026-07-08 |
 | 도입 전 체험 흐름 | 채널톡 공식 뉴스룸은 URL 입력만으로 홈페이지 자료를 수집해 AI 상담 환경을 사전 테스트하는 `AI 상담 시뮬레이션` 출시를 알렸다. 대부분의 문의가 홈페이지 정보를 정확히 파악해 안내하는 것만으로 상당 부분 해결된다는 CPO 발언도 있다. | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | 2026-07-08 |
 | 채용/조직 방향 | 채널톡 채용 페이지에는 AI 에이전트, B2B SaaS 고객 니즈, CX 전략, 고객 인사이트를 제품에 반영하는 역할들이 다수 올라와 있다. 대회 영상의 "AX 컨설턴트" 맥락과 맞물린다. | https://channel.io/kr/careers | 2026-07-08 |
 
@@ -34,7 +34,7 @@
 | 단서 | 공개 자료에서 확인한 내용 | 해석 | 출처 URL | 확인 날짜 |
 | --- | --- | --- | --- | --- |
 | 반복 문의 때문에 중요한 상담을 놓침 | 채널톡의 2026 AI 고객 상담 사례 리포트 소개 페이지는 "단순 반복 문의 때문에 중요한 상담이나 영업 기회를 놓치고 있는 CS팀", "프로모션 시 폭발하는 상담량"을 주요 독자로 제시한다. | 채널톡이 직접 정의한 고객사 pain point. ALF 도입 전 반복 문의를 식별하고 지식/규칙으로 구조화하는 워크플로우가 필요하다. | https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d | 2026-07-08 |
-| ALF는 구조화된 지식·규칙이 없으면 리스크 | 공식 ALF 페이지는 "More data doesn't mean better answers"라며, 규칙 없는 AI가 일관성·정확성·정책 준수 리스크를 만든다고 설명한다. | 단순 크롤링이 아니라 정책별 폴더, 금지 답변, 이관 기준, 테스트 질문을 설계하는 플러그인이 적합하다. | https://channel.io/us/talk | 2026-07-08 |
+| ALF는 구조화된 지식·규칙이 없으면 리스크 | 공식 제품/도움말은 ALF가 제대로 답하려면 구조화된 지식과 상황별 규칙이 필요하고, 답변 품질을 배포 전에 테스트해야 한다고 설명한다. | 단순 크롤링이 아니라 정책별 폴더, 금지 답변, 이관 기준, 테스트 질문을 설계하는 플러그인이 적합하다. | https://channel.io/kr/talk, https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9, https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1, https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d | 2026-07-08 |
 | 설치/회원정보 연동은 쉬워 보여도 빠뜨리기 쉬운 조건이 있음 | 공식 설치 문서는 자체 제작 사이트, 웹빌더, 모바일 앱, 망분리 환경별 설치 문서를 나누고, 회원정보 연동 스크립트와 개발자 문서 확인을 요구한다. | 개발자나 운영자가 "버튼은 떴는데 CRM/마케팅 데이터가 안 쌓이는" 상태를 만들 수 있다. 설치 진단 플러그인 후보가 된다. | https://docs.channel.io/help/ko/articles/%EC%B1%84%EB%84%90%ED%86%A1-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-1bfa136b | 2026-07-08 |
 | 모든 페이지 Boot, 타입 변환, 커머스 프로필 키가 중요 | 자체 제작 사이트 가이드는 모든 페이지에서 `Boot`가 실행되어야 하며 로그인/주문서 페이지 누락에 주의하라고 한다. 커머스 프로필 키와 타입 변환도 강조한다. | Codex가 코드/URL을 점검해 누락 페이지, memberHash, profile type, 이벤트 키를 체크하는 워크플로우가 가능하다. | https://channel.io/kr/blog/articles/guide-self-install-42adf567 | 2026-07-08 |
 | SPA에서는 별도 페이지/이벤트 처리가 필요 | JavaScript SDK 문서는 SPA에서 URL 변경을 자동 인지하지 못하며 `setPage`, `track`이 필요하다고 설명한다. memberHash도 보안상 권장한다. | React/Next.js 프로젝트에서 마케팅·워크플로우가 안 잡히는 원인을 Codex가 정적 점검할 수 있다. | https://developers.channel.io/ko/articles/d27c51d1 | 2026-07-08 |
@@ -50,7 +50,7 @@
 
 | 문제 | 근거 출처 URL | 확인 날짜 | 누가·어디서 막히나 | 메모 |
 | --- | --- | --- | --- | --- |
-| ALF 도입 전, 브랜드의 공개 FAQ/배송·교환·환불 정책/상품 안내를 `구조화된 지식`, `AI 응답 규칙`, `테스트 질문`, `상담원 이관 기준`으로 바꾸는 일이 수작업이다. | https://channel.io/us/talk, https://channel.io/kr/blog/articles/crawling-press-9b611f25, https://zdnet.co.kr/view/?no=20241217160629, https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d | 2026-07-08 | 이커머스 CS/CX 담당자, AX 컨설턴트, 소상공인 운영자가 ALF를 도입하려 할 때. 홈페이지에 정보는 있지만 AI가 안전하게 답할 지식 체계와 규칙으로 정리하지 못한다. | 최종 추천. Codex 스킬이 공개 URL을 읽고 ALF 설정 초안·검증 질문을 만들 수 있어 2일 내 제출 가능성이 높다. |
+| ALF 도입 전, 브랜드의 공개 FAQ/배송·교환·환불 정책/상품 안내를 `구조화된 지식`, `AI 응답 규칙`, `테스트 질문`, `상담원 이관 기준`으로 바꾸는 일이 수작업이다. | https://channel.io/kr/talk, https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9, https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1, https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d, https://channel.io/kr/blog/articles/crawling-press-9b611f25 | 2026-07-08 | 이커머스 CS/CX 담당자, AX 컨설턴트, 소상공인 운영자가 ALF를 도입하려 할 때. 홈페이지에 정보는 있지만 AI가 안전하게 답할 지식 체계와 규칙으로 정리하지 못한다. | 최종 추천. Codex 스킬이 공개 URL을 읽고 ALF 설정 초안·검증 질문을 만들 수 있어 2일 내 제출 가능성이 높다. ZDNet 기사는 반복 문의 예시의 보조 근거로만 둔다. |
 | 채널톡 웹/쇼핑몰 설치 후 `Boot`, `memberHash`, `profile` 타입, SPA `setPage/track`, 빌더별 권한 업데이트가 빠져 CRM/마케팅 데이터가 제대로 쌓이지 않는다. | https://docs.channel.io/help/ko/articles/%EC%B1%84%EB%84%90%ED%86%A1-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-1bfa136b, https://channel.io/kr/blog/articles/guide-self-install-42adf567, https://developers.channel.io/ko/articles/d27c51d1, https://developers.channel.io/en/articles/11e97a83, https://developers.channel.io/en/articles/3b9fc715 | 2026-07-08 | 프론트엔드 개발자, 쇼핑몰 운영 대행사, 1인몰 운영자가 채널톡 버튼은 붙였지만 고객정보·이벤트·워크플로우가 기대대로 작동하지 않을 때. | 코드 점검형 플러그인으로 좋지만, 사용자가 실제 프로젝트 파일을 넣어야 해 채널톡 트랙의 "이커머스 상담 문제"와 직접성은 1번보다 약하다. |
 | 상담 알림 누락 원인을 찾기 어렵다. PC 앱/브라우저, 모바일 앱, 수신함 알림, 계정 공유, 오프라인 처리 조건이 겹친다. | https://apps.apple.com/us/app/channel-works/id1088828788?see-all=reviews&platform=iphone, https://channel.io/kr/blog/articles/notifications-56c7413f | 2026-07-08 | 상담원/운영자가 고객 문의를 놓친 뒤 알림이 왜 오지 않았는지 재현·체크해야 할 때. | 실제 OS/앱 설정 접근이 필요해 Codex 스킬만으로 자동 검증하기 어렵다. 체크리스트 생성은 가능하나 제출물 임팩트가 작다. |
 | 카카오 알림톡 템플릿과 배송조회 버튼이 규칙·검수·택배사 예외 때문에 발송 전 실패 가능성을 예측하기 어렵다. | https://docs.channel.io/help/ko/articles/%EC%95%8C%EB%A6%BC%ED%86%A1-9747de9a, https://channel.io/kr/blog/articles/alimtalk-7f4003bb | 2026-07-08 | 마케팅/CS 운영자가 알림톡 템플릿을 만들고 캠페인을 발송하기 전. 개인화 변수, 글자 수, 광고성 표현, 택배사 지원 여부를 일일이 확인해야 한다. | 정적 검수 스킬은 가능하지만 카카오 검수 결과와 채널톡 내부 설정은 API/로그인이 필요하다. |
@@ -72,9 +72,9 @@
 - 선정한 문제: **ALF 도입 전 공개 사이트/FAQ/정책 문서를 구조화된 지식·규칙·테스트 세트로 바꾸는 수작업 문제**
 - 선정 이유:
   - 대회 영상이 직접 "이커머스 고객사의 상담 문제"와 "AI 에이전트"를 언급한다.
-  - 채널톡 공식 제품 설명은 ALF 성공 조건을 `규칙`, `구조화된 지식`, `실행 가능한 태스크`로 제시한다. 이는 Codex가 문서를 읽고 워크플로우 산출물을 만드는 형태와 맞다.
+  - 채널톡 공식 제품 설명과 도움말은 ALF 성공 조건을 `규칙`, `구조화된 지식`, `실행 가능한 태스크`, 배포 전 테스트로 제시한다. 이는 Codex가 문서를 읽고 워크플로우 산출물을 만드는 형태와 맞다.
   - 공식 AI 상담 시뮬레이션은 URL 입력과 웹 크롤링으로 상담 환경을 체험하게 한다. 즉, 공개 사이트 정보에서 AI 상담 지식 초안을 만드는 문제는 채널톡의 실제 제품 방향과도 맞다.
-  - ZDNet 인터뷰와 공식 사례 페이지는 이커머스 반복 문의(배송지 변경, 주문 취소, 사이즈, 프로모션 상담량)를 실제 pain point로 제시한다.
+  - 공식 AI 고객 상담 사례 리포트 소개 페이지는 반복 문의와 프로모션 상담량 폭증을 CS팀 pain point로 제시한다. ZDNet 인터뷰의 배송지 변경, 주문 취소, 사이즈 문의 예시는 보조 근거로만 사용한다.
   - 1인 참가자가 2일 안에 만들 수 있다. 실제 Channel API, 고객사 계정, 비공개 데이터 없이도 Codex 스킬이 URL/문서 입력을 받아 지식 구조·규칙·테스트 질문·누락 리포트를 생성할 수 있다.
 - 탈락시킨 후보와 탈락 이유:
   - 설치/연동 진단: 개발자에게 유용하지만 프레임워크 범위가 넓고, 대회 영상의 이커머스 상담/AI 에이전트 방향보다 구현 검증 범위가 커진다.
@@ -126,7 +126,7 @@
 
 (작성 날짜: 2026-07-08)
 
-채널톡 트랙 영상은 회사가 "이커머스 고객사의 상담 문제"를 AI 에이전트로 풀고 있다고 말합니다. 공식 홈페이지도 ALF가 제대로 답하려면 규칙, 구조화된 지식, 실행 가능한 태스크가 필요하다고 설명합니다(https://channel.io/kr, https://channel.io/us/talk). ZDNet 인터뷰에서는 이커머스 고객사가 배송지 변경, 주문 취소, 사이즈 문의 같은 단순 반복 문의로 비효율을 겪었다고 밝혔습니다(https://zdnet.co.kr/view/?no=20241217160629). 또한 채널톡은 URL 입력으로 홈페이지 정보를 수집해 AI 상담을 사전 체험하는 기능을 출시했습니다(https://channel.io/kr/blog/articles/crawling-press-9b611f25). 따라서 공개 사이트 정보를 ALF용 지식·규칙·테스트로 바꾸는 일은 실제 제품 방향과 고객 pain point가 만나는 지점이고, API 키 없이 Codex 스킬로 2일 안에 검증 가능한 문제라 선택했습니다.
+채널톡 트랙 영상은 회사가 "이커머스 고객사의 상담 문제"를 AI 에이전트로 풀고 있다고 말합니다. 공식 제품 페이지는 ALF가 제대로 답하려면 올바른 규칙, 구조화된 지식, 실행 가능한 태스크가 필요하다고 설명합니다(https://channel.io/kr/talk). 공식 도움말도 지식은 ALF가 참조할 문서·파일·웹사이트 자료이고, 규칙은 상황별 지시문이라고 안내합니다(https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9, https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1). 채널톡은 URL 입력으로 홈페이지 자료를 수집해 AI 상담을 사전 체험하는 기능도 출시했습니다(https://channel.io/kr/blog/articles/crawling-press-9b611f25). 반복 문의와 프로모션 상담량 폭증을 겪는 CS팀을 공식 리포트 독자로 제시한 점도 이 문제를 뒷받침합니다(https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d). 따라서 공개 사이트 정보를 ALF용 지식·규칙·테스트로 바꾸는 일은 실제 제품 방향과 고객 pain point가 만나는 지점이고, API 키 없이 Codex 스킬로 검증 가능한 문제라 선택했습니다.
 
 ## 9. 제출 답변 작성 시 주의할 점
 
@@ -135,3 +135,74 @@
 - "AI가 알아서 다 해결"이라고 쓰지 않는다. 위험 주제는 상담원 이관, 미확인 정보 표시, 출처 없는 답변 금지가 핵심이다.
 - 유저 피드백 근거로 App Store/Shopify 리뷰를 쓸 때는 단독 근거로 과장하지 않는다. 리뷰는 공개된 정성 단서로만 사용한다.
 
+## 10. 근거 감사 결과
+
+- 감사 날짜: 2026-07-08
+- 감사 범위: `docs/research.md`의 최종 선정 문제와 문항 ①② 근거, `src/references/evidence.md`의 핵심 주장, 문항 ② 후보 URL
+- 수집 방법: 로컬 자막 `rg`, 공식 문서 웹 검색, `web.open` 본문 확인, `curl -L` HTTP 200 확인
+- 감사 통계:
+  - 핵심 주장 감사: 11건
+  - 승격/보강된 공식 근거: 8건
+  - 보조 근거로 강등한 자료: 6건
+  - 역추적 불가로 폐기한 근거: 0건
+  - 최종 후보 URL 접근 실패: 0건
+- 접근 실패 목록: 없음. 최종 후보와 반증 검토용 공식 URL은 모두 2026-07-08 기준 `curl -L` 200 및 AI 웹 열람 성공.
+
+### 핵심 주장 감사표
+
+| ID | 핵심 주장 | 등급 | 출처 URL/위치 | 확인일 | 수집 방법 | 조치 |
+| --- | --- | --- | --- | --- | --- | --- |
+| CT-01 | 채널톡 트랙은 이커머스 고객사의 상담 문제와 AI 에이전트 활용을 직접 힌트로 준다. | 자막5 | `docs/source-video.ko.vtt` | 2026-07-08 | `rg "이커머스|AI|에이전트|상담"` | 유지 |
+| CT-02 | 채널톡 AI 상담사가 제대로 답하려면 규칙, 구조화된 지식, 실행 가능한 태스크/액션이 필요하다. | 공식4 | https://channel.io/kr/talk | 2026-07-08 | 웹 검색, `web.open`, `curl -L` 200 | `channel.io/us/talk`보다 직접적인 한국어 공식 페이지로 승격 |
+| CT-03 | ALF 지식은 문서, 파일, 웹사이트 자료를 모아 관리하며 구조화된 지식은 RAG 품질을 높인다. | 공식4 | https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9 | 2026-07-08 | 공식 도움말 검색, `web.open`, `curl -L` 200 | 신규 보강 |
+| CT-04 | ALF 규칙은 상황별 지시문이고 필터, 개인화 변수, 상담 처리 액션, 미리보기로 제어된다. | 공식4 | https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1 | 2026-07-08 | 공식 도움말 검색, `web.open`, `curl -L` 200 | 신규 보강 |
+| CT-05 | ALF 테스트는 배포 전 고객 시나리오와 평가 기준으로 답변 품질을 반복 검증한다. | 공식4 | https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d | 2026-07-08 | 공식 도움말 검색, `web.open`, `curl -L` 200 | 신규 보강 |
+| CT-06 | ALF 오답변, 지식 미참조, 할 수 없는 일 약속은 지식/규칙/태스크 설정으로 점검해야 한다. | 공식4 | https://docs.channel.io/help/ko/articles/ALF-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0--219af581 | 2026-07-08 | 공식 도움말 검색, `web.open` | 신규 보강 |
+| CT-07 | 채널톡은 URL 입력과 웹 크롤링으로 AI 상담 환경을 사전 체험하는 기능을 공식 출시했다. | 공식4 | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | 2026-07-08 | 공식 뉴스룸 검색, `web.open`, `curl -L` 200 | 유지/핵심화 |
+| CT-08 | 반복 문의와 프로모션 시 상담량 폭증은 채널톡이 직접 제시한 CS팀 pain point다. | 공식4 | https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d | 2026-07-08 | 공식 블로그 검색, `web.open`, `curl -L` 200 | 보조 기사 대신 공식 근거로 승격 |
+| CT-09 | 배송지 변경, 주문 취소, 사이즈 문의 같은 이커머스 반복 문의 예시는 공개 기사에서 확인된다. | 보조3 | https://zdnet.co.kr/view/?no=20241217160629 | 2026-07-08 | 웹 검색, `web.open` | 문항 ② 핵심 근거에서 제외하고 보조 근거로 강등 |
+| CT-10 | 채널톡에는 이미 AI 상담 시뮬레이션, ALF 테스트, CoS가 있어 동일 기능 제공 여부를 반증으로 검토해야 한다. | 공식4 | https://channel.io/kr/blog/articles/crawling-press-9b611f25, https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d, https://docs.channel.io/help/ko/articles/CoS-a8e86305 | 2026-07-08 | 공식 자료 검색, `web.open`, `curl -L` 200 | 반증 검토로 추가 |
+| CT-11 | 실제 주문 변경/취소 같은 업무 자동화는 태스크·코드 노드·API와 연결될 수 있으나, 제출 플러그인은 공개 자료 기반 설정 초안까지만 다룬다. | 공식4 | https://docs.channel.io/help/ko/articles/%ED%83%9C%EC%8A%A4%ED%81%AC-2a16be8b, https://developers.channel.io/ko/articles/%EC%BD%94%EB%93%9C-%EB%85%B8%EB%93%9C-fdcd71b4 | 2026-07-08 | 공식 도움말/개발자 문서 검색, `web.open`, `curl -L` 200 | 범위 제한 근거로 보강 |
+
+### 강등·제외된 근거
+
+| 출처 | 등급 | 처리 | 이유 |
+| --- | --- | --- | --- |
+| https://zdnet.co.kr/view/?no=20241217160629 | 보조3 | 강등 | 반복 문의 예시는 유용하지만 기사이므로 공식 도움말·뉴스룸을 핵심 근거로 둔다. |
+| https://apps.shopify.com/channel-talk?locale=ko | 보조3 | 강등 | 리뷰는 정성 단서일 뿐 최종 문제의 핵심 근거로 쓰지 않는다. |
+| App Store 리뷰 URL들 | 보조3 | 강등 | 알림/데스크톱 품질 후보에는 유효하나 ALF 지식·규칙 문제와 직접성이 낮다. |
+| https://www.oopy.io/ko/guides/plugins/channeltalk | 검색2 | 제외 | 설치 후보 탐색용으로만 사용한다. |
+| https://adjh54.tistory.com/755 | 검색2 | 제외 | 개인 블로그이므로 설치 후보 탐색용으로만 사용한다. |
+| AI/NotebookLM 요약 | AI요약1 | 미사용 | 이번 감사에서는 원문 URL로 역추적한 내용만 남겼다. |
+
+### 보강 수집한 공식 자료
+
+| 자료 유형 | URL | 새로 입증한 내용 |
+| --- | --- | --- |
+| 제품 문서 | https://channel.io/kr/talk | ALF 성공 조건이 규칙, 구조화된 지식, 태스크/액션, 개선 제안이라는 점 |
+| 도움말/FAQ | https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9 | ALF가 참조하는 지식의 대상, 폴더 구조, 웹사이트/파일/문서 등록 방식 |
+| 도움말/FAQ | https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1 | 상황별 규칙, 필터, 개인화 변수, 상담 처리 액션, 미리보기 |
+| 도움말/FAQ | https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d | 배포 전 테스트 케이스, 시나리오, 평가 기준, 반복 실행 필요성 |
+| 도움말/FAQ | https://docs.channel.io/help/ko/articles/ALF-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0--219af581 | 오답변, 지식 미참조, 환각성 약속을 지식·규칙·태스크 설정으로 다루는 방식 |
+| 도움말/FAQ | https://docs.channel.io/help/ko/articles/%EB%B0%B0%ED%8F%AC-%EC%84%A4%EC%A0%95-e9dbb764 | 배포 화면에서 규칙·지식·태스크를 점검하고 미리보기로 테스트하는 방식 |
+| 뉴스룸/공지 | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | URL 입력과 웹 크롤링으로 AI 상담 환경을 사전 체험하는 공식 기능 |
+| 개발자 문서 | https://developers.channel.io/ko/articles/%EC%BD%94%EB%93%9C-%EB%85%B8%EB%93%9C-fdcd71b4 | 실제 업무 처리 단계에는 코드 노드/외부 요청/테스트 환경 구분이 필요하므로 제출 플러그인의 범위를 설계 초안으로 제한해야 함 |
+
+### 반증 검토
+
+| 반증 후보 | 출처 | 문제를 약화시키는 이유 | 대응 논리 |
+| --- | --- | --- | --- |
+| 채널톡은 URL 기반 AI 상담 시뮬레이션을 이미 제공한다. | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | 공개 사이트를 AI 상담 환경으로 변환하는 제품 흐름이 이미 존재한다. | 제출 플러그인은 제품 기능 대체가 아니라, 로그인 전/외부 감사 단계에서 공개 문서를 지식 폴더, 규칙, 이관 기준, 테스트 질문, 누락 질문으로 정리하는 Codex 워크플로우다. |
+| ALF 테스트가 공식 제품 기능으로 존재한다. | https://docs.channel.io/help/ko/articles/ALF-%ED%85%8C%EC%8A%A4%ED%8A%B8-bffe077d | 테스트 질문 생성이 이미 제품 내 기능처럼 보일 수 있다. | 플러그인은 제품 안에서 테스트를 실행하지 않는다. ALF 테스트에 넣을 고객 시나리오와 평가 기준 초안을 공개 근거와 함께 만든다. |
+| CoS는 ALF 개선 제안과 태스크 설계를 도울 예정이라고 안내한다. | https://docs.channel.io/help/ko/articles/CoS-a8e86305 | CoS가 ALF 세팅 보조 기능을 제공하면 플러그인의 필요성이 낮아질 수 있다. | CoS는 채널 내부 데이터와 설정을 다루는 제품 기능이다. 제출 플러그인은 공개 URL과 붙여넣은 정책만으로 심사자가 재현할 수 있는 사전 설계 산출물을 만든다. |
+| 카페24 등 앱 태스크로 이미 복잡한 AI 상담을 적용할 수 있다. | https://channel.io/kr/alf-customer | 쇼핑몰 연동 사용자는 일부 태스크를 간편하게 쓸 수 있다. | 플러그인은 특정 빌더 연동이 아니라 브랜드별 공개 정책을 안전한 답변 규칙과 테스트 세트로 정리하는 데 초점을 둔다. |
+
+### 문항 ② 최종 URL 후보
+
+| 우선순위 | URL | 등급 | 접근성 확인 | 문항 ②에서 쓰는 이유 |
+| --- | --- | --- | --- | --- |
+| 1 | https://channel.io/kr/talk | 공식4 | 2026-07-08 `curl -L` 200, `web.open` 성공 | ALF가 제대로 답하려면 규칙, 구조화된 지식, 태스크/액션이 필요하다는 핵심 제품 근거 |
+| 2 | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | 공식4 | 2026-07-08 `curl -L` 200, `web.open` 성공 | URL/웹 크롤링으로 AI 상담 환경을 구성한다는 제품 방향 |
+| 3 | https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9 | 공식4 | 2026-07-08 `curl -L` 200, `web.open` 성공 | ALF 지식의 형태와 구조화 필요성 |
+| 4 | https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1 | 공식4 | 2026-07-08 `curl -L` 200, `web.open` 성공 | 상황별 규칙과 필터가 필요한 이유 |
+| 5 | https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d | 공식4 | 2026-07-08 `curl -L` 200, `web.open` 성공 | 반복 문의와 프로모션 상담량 폭증이 실제 CS팀 pain point라는 공식 근거 |

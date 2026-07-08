@@ -13,10 +13,11 @@
 | 출처 URL | 발행 주체 | 확인일 | 입증하는 주장 |
 | --- | --- | --- | --- |
 | `docs/source-video.ko.vtt` | 프라이머/채널코퍼레이션 발표 영상 자막 | 2026-07-08 | 채널톡 트랙은 이커머스 고객사의 상담 문제와 AI 에이전트 활용을 직접 힌트로 제시한다. |
-| https://channel.io/us/talk | ChannelTalk | 2026-07-08 | ALF/AI 상담은 지식, 규칙, 고객지원 자동화, 상담원 이관 맥락과 연결된다. |
+| https://channel.io/kr/talk | ChannelTalk | 2026-07-08 | ALF/AI 상담은 규칙, 구조화된 지식, 실행 가능한 태스크/액션과 연결된다. |
+| https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9 | ChannelTalk | 2026-07-08 | ALF가 참조할 지식은 문서, 파일, 웹사이트 자료를 구조화해 관리해야 한다. |
+| https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1 | ChannelTalk | 2026-07-08 | ALF 규칙은 상황별 지시문, 필터, 개인화 변수, 상담 처리 액션으로 답변을 제어한다. |
 | https://channel.io/kr/blog/articles/crawling-press-9b611f25 | ChannelTalk | 2026-07-08 | URL 입력과 웹 크롤링으로 AI 상담 사전 체험을 제공한다는 공개 자료다. |
-| https://zdnet.co.kr/view/?no=20241217160629 | ZDNet Korea | 2026-07-08 | 이커머스 고객사가 배송지 변경, 주문 취소, 사이즈 문의 같은 반복 문의를 겪는다는 공개 근거다. |
-| https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d | ChannelTalk | 2026-07-08 | AI 고객지원 적용 사례와 운영 자동화 맥락을 보강한다. |
+| https://channel.io/kr/blog/articles/ai-cs-best-cases-6a7fd39d | ChannelTalk | 2026-07-08 | 반복 문의와 프로모션 상담량 폭증이 CS팀 pain point라는 공식 근거다. |
 
 ## 3. 작동 방식
 
