@@ -1,5 +1,7 @@
 # ChannelTalk Evidence Map
 
+> 공식 힌트 영상 원본: https://www.youtube.com/watch?v=5iRf37Z8Wd4 (자막 사본: `docs/source-video.ko.vtt`, 확인일 2026-07-08) — 자막 5등급 근거의 역추적 경로.
+
 ## Selected Problem
 
 채널톡 트랙의 제출 플러그인은 이커머스 운영자, CX/CS 담당자, 채널톡 AX 컨설턴트가 공개 FAQ, 배송/교환/환불 정책, 상품/프로모션 페이지를 ALF 도입 전 `지식`, `규칙`, `상담원 이관 기준`, `테스트 질문`으로 구조화하도록 돕는다.

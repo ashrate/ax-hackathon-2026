@@ -1,5 +1,7 @@
 # 카카오페이증권 근거 맵
 
+> 공식 힌트 영상 원본: https://www.youtube.com/watch?v=aBuoojGjyf4 (자막 사본: `docs/source-video.ko.vtt`, 확인일 2026-07-08) — 자막 5등급 근거의 역추적 경로.
+
 확인일은 모두 2026-07-08이다. 가중치는 루트 `docs/research-workflow.md` 기준을 따른다: 자막 5, 회사/FAQ/공지/약관/감독당국 공식 자료 4, 기사·리뷰·산업 자료 3, 검색 결과 2, AI 요약 1.
 
 ## 선정 문제

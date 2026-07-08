@@ -1,61 +1,76 @@
 # Musinsa Evidence Map
 
+> 공식 힌트 영상 원본: https://www.youtube.com/watch?v=OLAWeIuiD5Y (자막 사본: `docs/source-video.ko.vtt`, 확인일 2026-07-08) — 자막 5등급 근거의 역추적 경로.
+
 ## Selected Problem
 
-Musinsa track focuses on MDs, brand scouts, category owners, beauty/fashion strategists, and marketers who need to continuously discover customer-loved brands and trend signals from public sources without turning the work into a one-off manual report.
+`MUSINSA Trend & Brand Scout`는 무신사 MD, 브랜드 스카우트, 카테고리/뷰티 담당자, 마케팅·전략 담당자가 공개 자료에서 고객이 좋아할 만한 브랜드와 무신사가 놓치지 말아야 할 트렌드 후보를 반복 발굴하도록 돕는 Codex 플러그인이다.
 
-## Video Intent Weight
+## Source Weight Scale
 
-- Source: `docs/source-video.ko.vtt` in the repository workspace.
-- Weight: highest source priority.
-- Key intent captured from the transcript: Musinsa asks how it can stay ahead in fashion and beauty, how it can find brands customers will like, and how AI can help it avoid missing trends it should care about.
-
-## Primary User
-
-- Musinsa MD
-- Brand scout
-- Category or beauty strategy operator
-- Marketing or platform strategy team member preparing weekly trend review
-
-## Core Public Sources
-
-| Priority | URL | Claim Supported |
+| 등급 | 의미 | 사용 규칙 |
 | --- | --- | --- |
-| 1 | `docs/source-video.ko.vtt` | Official problem hint prioritizing brand discovery and trend sensing. |
-| 1 | https://newsroom.musinsa.com/newsroom-menu/2021-0930-03 | Musinsa's platform identity around brands and customer discovery. |
-| 1 | https://newsroom.musinsa.com/newsroom-menu/2026-0324 | Public direction toward AI-assisted conversational fashion commerce and recommendation. |
-| 2 | https://newsroom.musinsa.com/newsroom-menu/2025-1119 | Public evidence around Musinsa's brand/content/platform activity. |
-| 2 | https://www.musinsa.com/main/musinsa/ranking | Public ranking signal for current customer interest inside Musinsa. |
-| 2 | https://www.musinsa.com/ranking/archive | Public archive signal for trend movement over time. |
-| 3 | https://play.google.com/store/apps/details?hl=ko&id=com.musinsa.store | Public app positioning around recommendation, trend indicators, and reviews. |
+| 5 | 공식 영상 자막 | 출제 의도와 문제 선정의 최상위 근거다. |
+| 4 | 회사 공식 사이트, 뉴스룸, 채용공고, 파트너 문서, 공식 서비스 페이지 | 핵심 주장 근거로 사용할 수 있다. |
+| 3 | 기사, 앱마켓 리뷰, 공개 커뮤니티 | 보조 근거로만 사용한다. 핵심 근거는 4~5등급으로 보강한다. |
+| 2 | 검색 결과 스니펫, 블로그, 2차 요약 | 후보 탐색용이다. 핵심 근거로 쓰지 않는다. |
+| 1 | AI 요약, NotebookLM 답변 | 구조화 보조용이다. 원문으로 역추적되지 않으면 폐기한다. |
+
+## Audited Core Claims
+
+확인일은 모두 2026-07-08이다.
+
+| 핵심 주장 | 등급 | 출처 URL/파일 | 확인일 | 수집 방법 | 판단 |
+| --- | --- | --- | --- | --- | --- |
+| 출제 영상은 브랜드 발굴과 트렌드 포착을 무신사의 본질 질문으로 제시한다. | 5 | `docs/source-video.ko.vtt` | 2026-07-08 | 로컬 `grep`/`sed`로 00:01:35~00:01:59 구간 확인 | 유지. 최종 문제 선정의 최상위 근거다. |
+| 무신사 MD 업무에는 신규 브랜드 발굴, 입점, 트렌드 상품 소싱이 포함된다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2022-0216-01 | 2026-07-08 | 웹 검색 후 본문 접속 | 보강. “MD/스카우트 업무가 실재한다”는 주장의 핵심 근거다. |
+| 현행 MD 채용공고도 신규 브랜드 발굴, 고객 인사이트 기반 브랜드 성장/발굴, 트렌드 상품 소싱을 요구한다. | 4 | https://www.musinsacareers.com/ko/o/213276 | 2026-07-08 | 웹 검색 후 본문 접속 | 보강. 2026년 현재 채용 중인 직무기술 근거로 사용한다. |
+| 무신사 MD는 브랜드와 고객을 연결하고 매 순간 트렌드를 살피는 역할이다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2022-0216-md-10 | 2026-07-08 | 웹 검색 후 본문 접속 | 보강. 직무의 반복 리서치 성격을 뒷받침한다. |
+| 무신사의 사업 구조에는 브랜드 소싱, 국내외 감각적 브랜드 연결, 브랜드 취향 콘텐츠 소개가 포함된다. | 4 | https://corp.musinsa.com/ko/business | 2026-07-08 | 웹 접속 | 보강. 브랜드 발굴이 회사 사업 범위와 맞는다는 근거다. |
+| 29CM는 신진 브랜드 발굴에 적극적이고, MD와 에디터가 유망 브랜드를 엄선해 소개한다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2022-0223-03 | 2026-07-08 | 웹 검색 후 본문 접속 | 보강. 무신사 그룹 내 브랜드 발굴·콘텐츠화 사례다. |
+| 무신사는 이미 업무와 서비스 개발에 AI를 활용하고 패션 빅데이터 기반 트렌드 분석을 공개했다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2025-1119 | 2026-07-08 | 웹 검색 후 본문 접속 | 유지. 플러그인의 AI 방향성과 맞지만 “이미 일부 자동화 중”이라는 반증 검토에도 사용한다. |
+| 무신사는 소비자용 AI 트렌드 큐레이션을 공개했다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2026-0603 | 2026-07-08 | 웹 검색 후 본문 접속 | 신규 반증 근거. 플러그인은 소비자 상품 추천이 아니라 MD용 근거 감사 워크플로우로 제한한다. |
+| 무신사 ChatGPT/Kakao 서비스는 소비자에게 상품·스타일을 추천하는 방향이다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2026-0324, https://newsroom.musinsa.com/newsroom-menu/2026-0609-01 | 2026-07-08 | 웹 검색 후 본문 접속 | 반증 보강. 기존 소비자 추천과 제출 플러그인의 차별 범위를 명시한다. |
+| 무신사 랭킹·월간 랭킹·추천 페이지는 공개 신호 수집 대상이 될 수 있다. | 4(부분) | https://www.musinsa.com/main/musinsa/ranking, https://www.musinsa.com/ranking/archive, https://www.musinsa.com/main/musinsa/recommend?gf=F | 2026-07-08 | `curl` HTTP 200 확인, 웹 검색 스니펫 확인, `web.open` 제목 확인 | 유지하되 핵심 주장 근거는 아님. 동적 페이지라 본문 추출이 제한되어 실행 입력 후보로만 둔다. |
+| 29CM 파트너 문서는 신규 입점 브랜드를 소개하는 수요입점회/일요입점회와 상품 등록·승인 절차를 공개한다. | 4 | https://partner-stage.one.musinsa.com/posts/basic-strategy/36 | 2026-07-08 | 웹 본문 접속 | 보조 보강. 발굴 이후 입점/노출 검토 게이트 근거로만 사용한다. |
+
+## Downgraded Or Discarded Evidence
+
+| 근거 | 처리 | 이유 |
+| --- | --- | --- |
+| App Store/Google Play 리뷰 | 보조 3등급으로 강등 | 고객 불만·앱 포지셔닝 보조에는 유효하지만 MD/브랜드 발굴 문제의 핵심 근거가 아니다. |
+| Reddit/Blind 공개 글 | 보조 3등급 이하로 격리 | 글로벌 CS·배송 후보 검토에는 도움되지만 최종 문제의 핵심 근거로 쓰지 않는다. |
+| `www.musinsacareers.com/ko/o/219295`, `/225987`, `/217964` 등 일부 채용공고 검색 결과 | 핵심 근거에서 제외 | 검색 결과에는 유용한 문구가 보였으나 이번 접속에서 안정적으로 본문을 확보하지 못했다. 접근 안정성이 확인된 `/ko/o/213276`과 뉴스룸 MD 채용 기사로 대체했다. |
+| NotebookLM/AI 요약 | 폐기 또는 구조화 보조만 허용 | 원문 URL이나 자막으로 역추적되지 않으면 제출 근거로 쓰지 않는다. |
 
 ## Plugin Scope
 
 Inputs:
 
-- Category, demographic, trend question, or seed brand
-- Optional public URLs from Musinsa ranking, newsroom, reviews, community posts, or search results
+- 카테고리, 고객군, 트렌드 질문, seed brand
+- 선택 입력: 무신사 랭킹·월간 랭킹·추천, 뉴스룸, 파트너 문서, 앱 리뷰, 공개 커뮤니티, 검색 결과 URL
 
 Outputs:
 
 - trend-signal ledger
 - brand-candidate scorecard
-- supporting and opposing evidence list
-- confidence level and source-strength labels
+- supporting/opposing evidence
+- source weight label and access status
 - next action for MD or brand scout
 - monitoring query list for later runs
 
 ## Judgment Rules
 
-- Video intent outranks generic ecommerce operations problems.
-- Public source strength matters more than model confidence.
-- Separate `already visible in Musinsa` signals from `external emerging` signals.
-- A candidate brand is not "recommended"; it is a research hypothesis that needs human review.
-- If a source is blocked, login-only, or noisy, mark it as unavailable or weak instead of using it as a core claim.
+- 영상 자막 5등급 근거가 일반 커머스 운영 문제보다 우선한다.
+- 핵심 근거는 4~5등급이어야 한다. 3등급 이하는 보조 신호로만 둔다.
+- `already visible in Musinsa` 신호와 `external emerging` 신호를 분리한다.
+- 후보 브랜드는 입점 추천이 아니라 사람이 검토할 리서치 가설이다.
+- 소비자용 AI 추천·트렌드 큐레이션과 중복되지 않도록, 결과물은 MD용 출처 감사·반대 근거·다음 액션 스코어카드로 제한한다.
+- 동적 페이지, 로그인 전용, 출처 불명, 단일 바이럴 노이즈는 unavailable 또는 weak로 기록하고 핵심 근거에서 제외한다.
 
 ## Do Not Claim
 
-- Do not claim access to Musinsa internal sales, search, CRM, or partner data.
-- Do not rank brands as objectively best.
-- Do not scrape private social accounts or login-only pages.
-- Do not treat viral noise as a verified trend without public corroboration.
+- 무신사 내부 매출, 검색, CRM, 파트너 데이터에 접근한다고 말하지 않는다.
+- 브랜드를 객관적으로 “최고”라고 순위화하지 않는다.
+- 비공개 SNS 계정이나 로그인 전용 페이지를 수집한다고 말하지 않는다.
+- 공개 반증 없이 유행 예측을 확정하지 않는다.
