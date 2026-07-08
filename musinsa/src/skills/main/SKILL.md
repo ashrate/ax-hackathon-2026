@@ -1,15 +1,15 @@
 ---
 name: main
-description: "Use for the Musinsa AX Talent War plugin that discovers public trend signals and customer-loved brand candidates for MD, brand scout, category, and strategy work."
+description: "Use for the Musinsa AX Talent War plugin that automates weekly public-signal triage for brand, collaboration, content, and onboarding candidates."
 ---
 
-# MUSINSA Trend & Brand Scout
+# MUSINSA Trend & Brand Triage
 
 ## 목적
 
-무신사 공식 영상 힌트인 “고객들이 좋아할 브랜드를 어떻게 찾을까”와 “AI로 관심 트렌드를 어떻게 놓치지 않을까”에 맞춰, 공개 자료에서 브랜드 후보와 트렌드 신호를 반복 발굴한다.
+무신사 공식 영상 힌트인 “고객들이 좋아할 브랜드를 어떻게 찾을까”와 “AI로 관심 트렌드를 어떻게 놓치지 않을까”에 맞춰, 공개 자료에서 브랜드/협업/입점 후보 신호를 반복 스크리닝하고 4분류 triage로 정리한다. 여기서 "찾는다"는 순수 신규 브랜드만 발굴한다는 뜻이 아니라, 매주 흩어진 공개 신호를 놓치지 않고 분류한다는 뜻이다.
 
-이 스킬의 목표는 설명서 작성이 아니라 결과물 생성이다. 사용자가 카테고리나 트렌드 질문을 던지면, 먼저 출력 폴더와 파일 계약을 확정하고 `scout-report.md`, 브랜드별 `scorecards/*.md`, `signals-log.csv`, `watchlist.md`를 만들어야 한다.
+이 스킬의 목표는 설명서 작성이 아니라 결과물 생성이다. 사용자가 카테고리나 트렌드 질문을 던지면, 먼저 출력 폴더와 파일 계약을 확정하고 `scout-report.md`, 브랜드별 `scorecards/*.md`, `signals-log.csv`, `watchlist.md`를 만들어 `신규 검토`, `협업/콘텐츠 확장`, `모니터링`, `제외` 판단을 남겨야 한다.
 
 ## 먼저 읽을 자료
 
@@ -25,14 +25,14 @@ description: "Use for the Musinsa AX Talent War plugin that discovers public tre
 다음 요청에서 사용한다.
 
 - 무신사 MD, 브랜드 스카우트, 카테고리/뷰티, 마케팅·전략 담당자의 트렌드 리뷰를 준비할 때
-- 공개 랭킹, 뉴스룸, 브랜드 공식 사이트, 29CM/무신사 공개 페이지, 앱 리뷰, 커뮤니티, 검색 결과를 브랜드 후보 스코어카드로 정리할 때
+- 공개 랭킹, 뉴스룸, 브랜드 공식 사이트, 29CM/무신사 공개 페이지, 앱 리뷰, 커뮤니티, 검색 결과를 브랜드/협업/입점 후보 triage 스코어카드로 정리할 때
 - 5문항 답변, README, 검증 기록을 이 문제 기준으로 정리할 때
 
 ## 입력
 
 - 카테고리, 고객군, 트렌드 질문, seed brand 중 하나 이상
 - 선택 입력: 공개 URL 목록, 무신사 랭킹/아카이브 링크, 뉴스룸 기사, 앱 리뷰, 커뮤니티 게시물, 검색 결과
-- 선택 입력: 평가 관점(입점 가능성, 협업 가능성, 뷰티 확장성, 고객 반응, 경쟁/리스크 등)
+- 선택 입력: 평가 관점(신규 검토, 협업 가능성, 콘텐츠 확장성, 뷰티 확장성, 고객 반응, 경쟁/리스크 등)
 
 입력이 너무 비어 있으면 카테고리 또는 트렌드 질문 하나만 추가로 요청한다. 그 외에는 공개 자료 기반으로 바로 실행한다.
 
@@ -53,7 +53,7 @@ output/<카테고리-slug>-<YYYY-MM-DD>/
 
 ### scout-report.md
 
-주간 스카우트 리포트다. 후보 브랜드 5~10개 요약표와 이번 주 트렌드 신호 3~5개를 포함한다.
+주간 triage 리포트다. 후보 브랜드 5~10개 요약표와 이번 주 트렌드 신호 3~5개를 포함한다.
 
 후보 표는 반드시 다음 정보를 가진다.
 
@@ -62,7 +62,7 @@ output/<카테고리-slug>-<YYYY-MM-DD>/
 - 출처 URL·확인일
 - 고객 반응 신호
 - 반대 근거
-- 입점 관점 평가
+- triage 상태
 - 추천 다음 액션
 
 ### scorecards/<브랜드>.md
@@ -88,7 +88,7 @@ date,signal,source_url,source_strength,related_brand,note
 
 ### watchlist.md
 
-보류/모니터링 후보, 이유, 필요한 추가 근거, 다음 확인 시점을 적는다.
+모니터링/제외 후보, 이유, 필요한 추가 근거, 다음 확인 시점을 적는다.
 
 ## 실행 절차
 
@@ -99,9 +99,9 @@ date,signal,source_url,source_strength,related_brand,note
 3. 생성할 폴더와 네 파일 이름을 사용자에게 먼저 선언한다.
 4. 사용자가 별도 저장 위치를 주지 않으면 `output/<slug>-<date>/`에 쓴다.
 
-### 2. 발굴
+### 2. 공개 신호 수집
 
-1. 카테고리, 고객군, 트렌드 질문을 기준으로 후보 브랜드 seed를 만든다.
+1. 카테고리, 고객군, 트렌드 질문을 기준으로 후보 브랜드와 협업/콘텐츠/입점 신호 seed를 만든다.
 2. 공개 출처를 우선순위대로 확인한다.
    - 무신사 뉴스룸, 회사/브랜드 공식 사이트, 29CM/무신사 공개 브랜드 페이지
    - 공개 랭킹/아카이브/콘텐츠 페이지
@@ -117,14 +117,14 @@ date,signal,source_url,source_strength,related_brand,note
 4. 접근 제한, 로그인 필요, 본문 추출 실패, 동명 브랜드 혼선은 `unavailable` 또는 `manual-check-required`로 기록한다.
 5. supporting evidence와 opposing evidence를 모두 찾는다.
 
-### 4. 입점 평가
+### 4. 4분류 triage
 
 브랜드별로 다음 상태 중 하나를 부여한다.
 
-- `즉시 검토`: 4등급 이상 근거와 공개 고객 반응 신호가 있고 다음 액션이 명확하다.
-- `협업/콘텐츠 검토`: 이미 무신사/29CM에 노출되어 신규 입점보다 단독 상품, 라이브, 콘텐츠, 글로벌 확장이 더 적합하다.
+- `신규 검토`: 4등급 이상 근거와 공개 고객 반응 신호가 있고, 아직 무신사/29CM 노출이 강하지 않으며 다음 검토 액션이 명확하다.
+- `협업/콘텐츠 확장`: 이미 무신사/29CM에 노출되어 신규 입점보다 단독 상품, 라이브, 콘텐츠, 글로벌 확장이 더 적합하다.
 - `모니터링`: 방향성은 맞지만 출처 수, 최근성, 고객 반응 중 하나가 부족하다.
-- `보류`: 공개 근거가 약하거나 접근 제한·카테고리 부적합·운영 리스크가 크다.
+- `제외`: 공개 근거가 약하거나 접근 제한·카테고리 부적합·운영 리스크가 커서 이번 주 검토 대상에서 뺀다.
 
 평가할 때 내부 매출, 내부 검색량, CRM, 파트너센터 데이터를 안다고 가정하지 않는다.
 
@@ -138,8 +138,8 @@ date,signal,source_url,source_strength,related_brand,note
 
 1. `signals-log.csv`를 먼저 작성해 모든 판단의 원장을 만든다.
 2. 후보별 `scorecards/<브랜드>.md`를 작성한다.
-3. `scout-report.md`에 요약표와 트렌드 신호를 만든다.
-4. 핵심 후보에서 제외한 항목을 `watchlist.md`에 남긴다.
+3. `scout-report.md`에 요약표, 4분류 triage 집계, 트렌드 신호를 만든다.
+4. 이번 주 핵심 검토에서 제외하거나 모니터링할 항목을 `watchlist.md`에 남긴다.
 5. 마지막에 생성된 파일 트리, 후보 브랜드 수, 신호 수, validator 실행 결과를 보고한다.
 
 ## 주의사항

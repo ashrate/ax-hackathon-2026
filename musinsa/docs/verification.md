@@ -36,7 +36,7 @@
 
 ## 5. 테스트하며 고친 것
 
-- 기존 최종 후보였던 파트너 운영 QA는 영상 힌트와 간접적으로 연결됐다. 최종 스킬을 브랜드/트렌드 발굴 중심으로 바꿨다.
+- 기존 최종 후보였던 파트너 운영 QA는 영상 힌트와 간접적으로 연결됐다. 최종 스킬을 브랜드/트렌드 공개 신호 triage 중심으로 바꿨다.
 - 제출 zip에 `docs/research.md`가 들어가지 않기 때문에 `src/references/evidence.md`를 추가해 플러그인 소스 안에도 근거 맵이 남도록 고쳤다.
 - 패키징 후 zip 내부에 `src/references/evidence.md`, `src/skills/main/SKILL.md`, `README.md`, `logs/repo/`, `logs/musinsa/`가 포함되는지 확인했다.
 - 참가자 새 지침에 맞춰 결과물을 먼저 정의하도록 `docs/output-spec.md`를 추가했다.
@@ -68,8 +68,25 @@
 - validator 결과: `python C:/Users/kimdo/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py src` 통과.
 - 산출물 스키마 확인: `signals-log.csv` 헤더 일치, 스코어카드 8개 모두 필수 섹션 포함, `scout-report.md` 필수 섹션 포함.
 
-## 7. 답변 초안
+## 7. URL 접근성 전수 점검
+
+- 점검 날짜: 2026-07-08
+- 점검 명령: `curl -L -o /dev/null -s -w "%{http_code}"`
+- 점검 범위: `README.md`, `docs/research.md`, `src/references/evidence.md`, `examples/**`
+- 1차 점검 결과: 실패 6개. Fashionbiz 3개, Apparelnews 2개, Teamblind 1개가 curl 기준 403이었다.
+- 조치 후 재점검 결과: 대상 범위 고유 URL 53개, 실패 0개.
+
+| URL | 1차 상태 | 조치 | 조치 후 상태 |
+| --- | --- | --- | --- |
+| https://fashionbiz.co.kr/article/222002 | 403 | THE BARNNET 라이브 반응 근거를 29CM 공식 라이브 페이지와 KTNews 접근 가능 기사로 교체했다. | 교체 URL 200 |
+| https://fashionbiz.co.kr/article/223560 | 403 | SIYAZU 잡화/워크웨어 확장 주장을 핵심 근거에서 제외하고 공식 스토어·29CM 페이지 기반 모니터링으로 낮췄다. | 대상 인용 제거 |
+| https://fashionbiz.co.kr/article/225539 | 403 | LE17SEPTEMBRE 2026 S/S 보조 기사 근거를 공식 글로벌 사이트와 29CM 콘텐츠로 교체했다. | 교체 URL 200 |
+| https://www.apparelnews.co.kr/news/news_view/?idx=223492 | 403 | SIYAZU 2026 스프링 보조 기사 근거를 공식 스토어·29CM 페이지로 교체했다. | 교체 URL 200 |
+| https://www.apparelnews.co.kr/news/news_view/?cat=CAT100&idx=216123 | 403 | TREEMINGBIRD 반응 근거를 29CM/무신사 브랜드 페이지와 Fashion Insight 접근 가능 기사로 교체하고 상태를 모니터링으로 낮췄다. | 교체 URL 200 |
+| https://www.teamblind.com/kr/post/%EC%9C%BC-%EB%AC%B4%EC%8B%A0%EC%82%AC-%EA%B5%90%ED%99%98-%EC%A7%9C%EC%A6%9D%EB%82%98%EB%84%A4%E3%85%A0%E3%85%A0-Ch3YJ72j | 403 | 최종 문제와 무관한 탈락 후보 보조 근거였으므로 research 후보 목록과 사용자 피드백 근거에서 제외했다. | 대상 인용 제거 |
+
+## 8. 답변 초안
 
 ### 문항 ⑤ 어떻게 검증했나요? (800자 제한)
 
-검증은 정상 입력과 예외 입력을 나눠 설계했습니다. 정상 입력은 “여성 캐주얼/뷰티에서 다음 달 주간 리뷰에 볼 브랜드 후보를 찾아줘”라는 질문과 무신사 랭킹, 뉴스룸, 앱 설명, 공개 커뮤니티 URL을 넣는 방식입니다. 기대 결과는 트렌드 신호 ledger, 브랜드 후보 scorecard, 지지 근거와 반대 근거, 출처 강도, 다음 액션입니다. 예외 입력은 단일 커뮤니티 글만 있는 후보와 로그인 전용 SNS 링크입니다. 이 경우 후보를 확정하지 않고 weak 또는 unavailable로 표시해야 합니다. 의심한 점은 플러그인이 브랜드를 추천처럼 단정하거나 일회성 리포트로 끝나는 것이었고, 이를 막기 위해 “검토할 후보 가설” 표현, opposing evidence, monitoring query를 출력에 넣었습니다. 아직 내부 매출·검색 데이터로 성과를 검증하지 못하는 한계가 있습니다.
+검증은 정상 입력과 예외 입력을 나눠 설계했습니다. 정상 입력은 “여성 컨템포러리에서 다음 주간 리뷰에 볼 브랜드/협업/입점 후보를 공개 자료 기반으로 triage해줘”라는 질문입니다. 기대 결과는 `signals-log.csv`, 브랜드별 scorecard, `scout-report.md`, `watchlist.md`이며, 실제 예시는 후보 8개를 `협업/콘텐츠 확장` 3개와 `모니터링` 5개로 분류했습니다. 예외 입력은 403 기사 URL, 동적 렌더링 페이지, 단일 보조 기사 근거입니다. 이 경우 후보를 확정하지 않고 `manual-check-required`, `가설`, `모니터링`으로 낮춰야 합니다. 의심한 점은 이미 알려진 브랜드를 신규 발굴처럼 포장하는 것이었고, 이를 막기 위해 이미 노출된 브랜드를 확장 후보로 분기했습니다. 아직 내부 매출·검색 데이터로 성과를 검증하지 못하는 한계가 있습니다.

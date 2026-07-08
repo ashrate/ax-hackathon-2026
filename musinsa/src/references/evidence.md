@@ -4,7 +4,7 @@
 
 ## Selected Problem
 
-`MUSINSA Trend & Brand Scout`는 무신사 MD, 브랜드 스카우트, 카테고리/뷰티 담당자, 마케팅·전략 담당자가 공개 자료에서 고객이 좋아할 만한 브랜드와 무신사가 놓치지 말아야 할 트렌드 후보를 반복 발굴하도록 돕는 Codex 플러그인이다.
+`MUSINSA Trend & Brand Triage`는 무신사 MD, 브랜드 스카우트, 카테고리/뷰티 담당자, 마케팅·전략 담당자가 공개 자료에 흩어진 브랜드/협업/입점 후보 신호를 매주 스크리닝해 `신규 검토`, `협업/콘텐츠 확장`, `모니터링`, `제외`로 분류하도록 돕는 Codex 플러그인이다.
 
 ## Source Weight Scale
 
@@ -62,7 +62,7 @@ Output contract rules:
 - `scout-report.md`에는 후보 브랜드 5~10개 요약표와 이번 주 트렌드 신호 3~5개가 있어야 한다.
 - `scorecards/<brand>.md`에는 개요, 신호와 근거, 고객 반응 신호, 리스크/반대 근거, 입점 적합성, 다음 액션이 있어야 한다.
 - `signals-log.csv` 헤더는 `date,signal,source_url,source_strength,related_brand,note` 순서를 지킨다.
-- `watchlist.md`에는 신호 부족 후보, 보류 이유, 필요한 추가 근거, 다음 확인 시점을 남긴다.
+- `watchlist.md`에는 모니터링/제외 후보, 이유, 필요한 추가 근거, 다음 확인 시점을 남긴다.
 - 출처 강도 3 이하 단독 근거는 `가설`로 표시한다.
 - 동적 페이지는 `manual-check-required`로 두고 사용자가 화면으로 확인할 입력 후보로 안내한다.
 
@@ -75,6 +75,7 @@ Output contract rules:
 - 후보 브랜드 수: 8개
 - 신호 수: 24개
 - 후보 브랜드: MATIN KIM, THE BARNNET, FOETO, SIYAZU, LE17SEPTEMBRE, RECTO, TREEMINGBIRD, HAAG
+- triage 결과: `협업/콘텐츠 확장` 3개, `모니터링` 5개
 
 예시 실행에서 사용한 주요 공개 근거:
 
@@ -82,18 +83,18 @@ Output contract rules:
 | --- | --- | --- | --- | --- |
 | MATIN KIM은 무신사와 일본 총판 파트너십 및 오프라인 성과가 공개되어 있다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2024-1112, https://newsroom.musinsa.com/newsroom-menu/2025-0428 | 2026-07-08 | 신규 입점보다 글로벌/콘텐츠 확장 사례로 사용한다. |
 | 29CM는 신진 여성 디자이너 브랜드의 성장과 FOETO 성과를 공식 뉴스룸에 공개했다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2025-0326-29cm | 2026-07-08 | 수요입점회/스토리텔링 기반 검증 모델 근거로 사용한다. |
-| THE BARNNET은 공식 Summer 2026 전개와 29CM 단독 콘텐츠가 확인된다. | 4 | https://the-barnnet.com/, https://www.29cm.co.kr/content/29edition/2026/02/thebarnnet | 2026-07-08 | 협업/콘텐츠 검토 후보로 사용한다. |
-| SIYAZU는 2026 스프링과 워크웨어/잡화 확장 신호가 있다. | 3/4 | https://www.apparelnews.co.kr/news/news_view/?idx=223492, https://fashionbiz.co.kr/article/223560, https://shop.29cm.co.kr/brand/10005 | 2026-07-08 | 고객 반응 수치 부족으로 모니터링에 둔다. |
-| LE17SEPTEMBRE는 공식 브랜드 페이지와 29CM 단독 콘텐츠가 확인된다. | 4 | https://le17septembre.com/about.html, https://content.29cm.co.kr/brand-event/2026/06/01/2nd | 2026-07-08 | 정량 반응 확인 전까지 모니터링에 둔다. |
+| THE BARNNET은 공식 Summer 2026 전개, 29CM 단독 콘텐츠, 29LIVE 편성이 확인된다. | 3/4 | https://the-barnnet.com/, https://www.29cm.co.kr/content/29edition/2026/02/thebarnnet, https://content.29cm.co.kr/29live/2025/11/thebarnnet, https://www.ktnews.com/news/articleView.html?idxno=142676 | 2026-07-08 | 협업/콘텐츠 확장 후보로 사용한다. |
+| SIYAZU는 공식 사이트와 29CM 브랜드 페이지에서 미니멀 여성복 포지션이 확인된다. | 4 | https://en.siyazu.co.kr/, https://shop.29cm.co.kr/brand/10005 | 2026-07-08 | 고객 반응 수치 부족으로 모니터링에 둔다. |
+| LE17SEPTEMBRE는 공식 브랜드 페이지, 공식 컬렉션 페이지, 29CM 단독 콘텐츠가 확인된다. | 4 | https://le17septembre.com/about.html, https://en.le17septembre.com/, https://content.29cm.co.kr/brand-event/2026/06/01/2nd | 2026-07-08 | 정량 반응 확인 전까지 모니터링에 둔다. |
 | RECTO는 공식 브랜드 철학과 2026 SS 보조 기사 신호가 있다. | 3/4 | https://recto.co/about.html, https://www.ktnews.com/news/articleView.html?idxno=144475 | 2026-07-08 | 고객 반응 부족으로 가설/모니터링에 둔다. |
-| TREEMINGBIRD는 29CM 브랜드 페이지와 업계 기사상 반응 신호가 있다. | 3/4 | https://shop.29cm.co.kr/brand/40284, https://www.apparelnews.co.kr/news/news_view/?cat=CAT100&idx=216123 | 2026-07-08 | 공식 플랫폼 재확인 후 협업/콘텐츠로 검토한다. |
+| TREEMINGBIRD는 29CM/무신사 브랜드 페이지와 접근 가능한 보조 기사상 반응 신호가 있다. | 3/4 | https://shop.29cm.co.kr/brand/40284, https://www.musinsa.com/brand/treemingbird/contents, https://www.fi.co.kr/main/view.asp?idx=82565 | 2026-07-08 | 보조 기사 수치의 공식 재확인이 필요해 모니터링에 둔다. |
 | HAAG는 29CM 브랜드 페이지와 여름 콘텐츠가 확인된다. | 4 | https://shop.29cm.co.kr/brand/19972, https://www.29cm.co.kr/content/special/2026/06/haag | 2026-07-08 | 고객 반응 수치 부족으로 모니터링에 둔다. |
 
 ## Judgment Rules
 
 - 영상 자막 5등급 근거가 일반 커머스 운영 문제보다 우선한다.
 - 핵심 근거는 4~5등급이어야 한다. 3등급 이하는 보조 신호로만 둔다.
-- `already visible in Musinsa` 신호와 `external emerging` 신호를 분리한다.
+- `already visible in Musinsa` 신호와 `external emerging` 신호를 분리한다. 이미 노출된 브랜드는 신규 발굴이 아니라 `협업/콘텐츠 확장`으로 분기한다.
 - 후보 브랜드는 입점 추천이 아니라 사람이 검토할 리서치 가설이다.
 - 소비자용 AI 추천·트렌드 큐레이션과 중복되지 않도록, 결과물은 MD용 출처 감사·반대 근거·다음 액션 스코어카드로 제한한다.
 - 동적 페이지, 로그인 전용, 출처 불명, 단일 바이럴 노이즈는 unavailable 또는 weak로 기록하고 핵심 근거에서 제외한다.
