@@ -1,4 +1,6 @@
-# 고객 답변 초안
+# 검토용 초안 — 발송 전 상담사·컴플라이언스 확인 필수
+
+> 아래 문안은 상담사 또는 컴플라이언스 담당자가 검토 후 사용하는 답변 초안입니다. 고객 발송 전 회사 기준, 고객별 사실관계, 최신 공지 확인이 필요합니다.
 
 안녕하세요, 카카오페이증권입니다.
 
@@ -17,5 +19,5 @@
 ## 근거
 
 [^1]: 금융위원회, 투자자문 이용 전 유의사항, https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText=
-[^2]: 금융감독원, 민원·신고 및 제도권 금융회사 조회 안내, https://www.fss.or.kr/
+[^2]: 금융투자협회, 제도권 금융투자회사 조회, https://www.kofia.or.kr/wpge/m_168/sub04070102.do
 [^3]: 금융투자협회 법규정보시스템, 표준투자권유준칙, https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149

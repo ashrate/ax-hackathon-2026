@@ -60,7 +60,7 @@ examples/
 
 ## 5. 정상 상황과 예외 상황
 
-- 정상 상황: 소수점 주문 문의는 고객 답변 초안, 확인 질문, 공식 FAQ·공지 근거, 금지 표현 QA, 이관 기준을 함께 생성한다.
+- 정상 상황: 소수점 주문 문의는 검토용 답변 초안, 확인 질문, 공식 FAQ·공지 근거, 금지 표현 QA, 이관 기준을 함께 생성한다.
 - 예외 상황 - 장애·보상: 앱 접속 불가와 보상 요구가 들어오면 보상을 단정하지 않고 주문장애 기준 확인 절차로 넘긴다.
 - 예외 상황 - 투자 추천 요구: 특정 종목을 팔아야 하는지 묻는 입력은 추천을 거절하고 의사결정 체크리스트와 등록 투자자문업자 안내로 바꾼다.
 - 예외 상황 - 공식 근거 부족: 답을 단정하지 않고 "공식 확인 필요"로 표시한다.
@@ -91,6 +91,52 @@ examples/
 - 제출 직전 FAQ, 공지, 주문장애 기준 URL의 최신성을 다시 확인해야 한다.
 - 운영형 플러그인이 되려면 `output/case-<번호>/` 번호 부여와 중앙 원장 누적을 자동화하는 스크립트가 추가될 수 있다.
 
-## 9. 문항 ⑤ 초안
+## 9. 인용 URL curl 점검 결과
+
+점검 명령은 각 URL에 대해 `curl -L -o /dev/null -s -w "%{http_code}"` 형식으로 실행했다. 최초 점검은 고유 URL 33개 중 실패 1개였고, 실패 URL은 구체 페이지로 교체했다. 교체 후 현재 인용 URL 33개는 모두 `200`이다.
+
+| URL | 상태 | 조치 |
+| --- | --- | --- |
+| https://apps.apple.com/kr/app/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4/id1464496236 | 200 | 유지 |
+| https://career.rememberapp.co.kr/job/posting/293435 | 200 | 유지 |
+| https://eiec.kdi.re.kr/policy/materialView.do?datecount=&num=220522 | 200 | 유지 |
+| https://eiec.kdi.re.kr/policy/materialView.do?num=266065 | 200 | 유지 |
+| https://kakaopaysec.com/ | 200 | 유지 |
+| https://kakaopaysec.com/downloadFile.do?id=8275 | 200 | 유지, 반증·보조 근거 |
+| https://kakaopaysec.com/downloadFile.do?id=8276 | 200 | 유지, 반증·보조 근거 |
+| https://kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do | 200 | 유지 |
+| https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149 | 200 | 유지 |
+| https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149 | 200 | 유지 |
+| https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=437&seq=150 | 200 | 유지 |
+| https://play.google.com/store/apps/details?hl=ko&id=com.kakaopay.app | 200 | 유지 |
+| https://support.kakaopay.com/web/faq-list/CUSTOMER_CENTER_FAQ_STOCK?device=m&qna=CUSTOMER_CENTER_FAQ_DECIMAL_POINT_TRADING | 200 | 유지 |
+| https://support.kakaopay.com/web/phone-cs-notice | 200 | 유지 |
+| https://v.daum.net/v/20260602131103925 | 200 | 유지 |
+| https://www.dailian.co.kr/news/view/1557754 | 200 | 유지 |
+| https://www.etnews.com/20200206000277 | 200 | 유지 |
+| https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText= | 200 | 유지 |
+| https://www.fsc.go.kr/no010101/81575 | 200 | 유지 |
+| https://www.fsc.go.kr/po010101/76239 | 200 | 유지 |
+| https://www.kakaocorp.com/page/detail/10417 | 200 | 유지 |
+| https://www.kakaopaysec.com/business/retail/dynamicPage.do | 200 | 유지 |
+| https://www.kakaopaysec.com/company/about/dynamicPage.do | 200 | 유지 |
+| https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=6807 | 200 | 유지 |
+| https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=7011 | 200 | 유지 |
+| https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=7314 | 200 | 유지 |
+| https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=7315 | 200 | 유지 |
+| https://www.kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do | 200 | 유지 |
+| https://www.kakaopaysec.com/portal/process/dynamicPage.do | 200 | 유지 |
+| https://www.kofia.or.kr/wpge/m_168/sub04070102.do | 200 | 신규 채택: FSS 루트 URL 대체 |
+| https://www.yna.co.kr/view/AKR20221214052400002 | 200 | 유지 |
+| https://www.yna.co.kr/view/AKR20260624032600008 | 200 | 유지 |
+| https://www.youtube.com/watch?v=aBuoojGjyf4 | 200 | 유지 |
+
+교체 전 실패 URL:
+
+| URL | 상태 | 조치 |
+| --- | --- | --- |
+| FSS 루트 URL(교체 전) | 000 | 핵심 근거에서 제거. 금융투자협회 제도권 금융투자회사 조회 페이지와 금융위 구체 페이지로 대체 |
+
+## 10. 문항 ⑤ 초안
 
 검증은 실제 대표 문의 3개를 플러그인 절차대로 실행해 `examples/case-1..3`에 계약된 5개 파일이 모두 생성되는지 확인했습니다. case-1은 "소수점 주문이 왜 바로 체결되지 않나요?"에 대해 공식 FAQ·공지 근거로 체결 구조를 설명하고 손실 단정을 피했습니다. case-2는 "앱이 안 열려 주문을 못 했는데 보상되나요?"에 대해 보상을 단정하지 않고 주문장애 기준, 증빙, 비상주문 시도, 신청기한 확인으로 이관했습니다. case-3은 "지금 이 주식 팔아야 하나요?"에 대해 매도 추천을 하지 않고 목적, 기간, 손실 감내도 체크리스트와 등록 투자자문업자 안내로 전환했습니다. 의심한 점은 투자 추천·보상 단정 오해였고, 컴플라이언스 보고서에서 금지 표현을 별도로 플래그하도록 고쳤습니다. 내부 상담 매뉴얼 검증은 아직 못 했습니다.
