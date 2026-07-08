@@ -9,6 +9,13 @@
 
 이 저장소는 일반 앱이나 라이브러리가 아니라, **해커톤 문제풀이를 위한 Codex 플러그인 제출물**을 만들기 위한 작업 공간입니다. 모든 작업은 아래 룰을 기준으로 판단합니다.
 
+### ⚠️ 실격·근거 인정 기준
+
+- 로그 파일을 원본 그대로가 아닌 **사후 가공(편집·발췌·삭제)하여 제출하면 실격**됩니다.
+- 출처는 **공개 자료로 AI가 확인할 수 있어야** 합니다. 기업 내부의 비공개 정보, 확인할 수 없는 사적인 경험, 출처 없는 숫자는 근거로 인정되지 않습니다.
+- 제출한 예선 제출물은 본선 심사에 활용될 수 있습니다.
+- 예선 마감: **2026-07-10**
+
 ### 제출 단위
 
 - 세 개 회사를 정합니다.
@@ -60,6 +67,7 @@ submission.zip
 
 5. **어떻게 검증했나요?**
    입력에서 결과로 이어지는 예시를 하나 이상 적습니다. 정상 상황과 예외 상황을 어떻게 확인했는지, 무엇을 의심했고 무엇이 아직 부족한지, 테스트하며 고친 점을 적습니다.
+   제한: 800자 (제출 폼 기준 최종 확인)
 
 ### 작업 원칙
 
@@ -73,10 +81,12 @@ submission.zip
 
 ```
 ax인재전쟁/
-├── .claude/settings.json        # Claude Code 로그 훅 (공식 도구 — 수정 금지)
-├── .codex/hooks.json            # Codex 로그 훅 (공식 도구 — 수정 금지)
+├── AGENTS.md                    # Codex 에이전트 지침
+├── agent.md                     # 사람용 요약
+├── .claude/settings.json        # Claude Code 로그 훅 (공식 log-hooks 원본)
+├── .codex/hooks.json            # Codex 로그 훅 (공식 log-hooks 기반 + Windows 호환 패치, 아래 참고)
 ├── tools/
-│   ├── save_log.py              # 훅이 호출하는 로그 저장 스크립트 (공식 도구 — 수정 금지)
+│   ├── save_log.py              # 훅이 호출하는 로그 저장 스크립트 (공식 log-hooks 기반 + Windows 호환 패치, 아래 참고)
 │   └── make_submission.py       # submission.zip 패키징 스크립트
 ├── logs/                        # 이 repo에서 진행한 AI 세션 로그 (자동 저장)
 ├── channeltalk/                 # 채널톡 트랙
@@ -84,10 +94,19 @@ ax인재전쟁/
 │   │   ├── .codex-plugin/plugin.json
 │   │   └── skills/main/SKILL.md
 │   ├── README.md
+│   ├── docs/                    # 작업 기록 (submission.zip 미포함)
+│   │   ├── research.md          #   문항 ①② 원천 자료
+│   │   ├── engineering.md       #   문항 ③④ 원천 자료
+│   │   └── verification.md      #   문항 ⑤ 원천 자료
 │   └── logs/                    # 채널톡 작업 전용 로그 (필요 시)
 ├── musinsa/                     # 무신사 트랙 (동일 구조)
 └── kakaopay-securities/         # 카카오페이증권 트랙 (동일 구조)
 ```
+
+**로그 훅 패치 안내**: 로그 훅은 공식 log-hooks 기반이며 Windows 호환을 위한 최소 패치만 적용했습니다.
+`tools/save_log.py`에는 한글 경로가 cp949로 잘못 디코딩되는 것을 방지하는 UTF-8 강제를,
+`.codex/hooks.json`은 Windows Codex가 POSIX `for` 루프를 실행하지 못해 단일 `python` 직접 실행 명령으로 교체했습니다.
+패치는 로그 '수집기'에 대한 것이며 로그 내용은 무가공 원본 그대로 저장·제출됩니다. 수정 이력은 git 커밋에 투명하게 남아 있습니다.
 
 ## 제출 파일 구조 (기업별 별도 제출)
 
@@ -110,6 +129,9 @@ submission.zip
   `logs/claude-code/`, `logs/codex/` 에 자동 저장합니다.
 - 훅은 **새로 시작하는** Claude Code / Codex 세션부터 적용됩니다.
   이 저장소 루트에서 새 세션을 시작해 작업하세요.
+- 회사 폴더(예: `musinsa/`)에서 시작한 Codex 세션의 로그는 그 폴더의 `logs/codex/`에,
+  루트에서 시작한 세션의 로그는 루트 `logs/`에 자동 저장됩니다.
+- 훅 파일을 수정하면 Codex가 훅 신뢰 재승인을 요구하니 주의하세요.
 
 ## 패키징
 
@@ -205,12 +227,8 @@ python tools/make_submission.py kakaopay-securities
 
 ### 6. GitHub 저장소
 
-새 GitHub private repository를 만들고 현재 `main` 브랜치를 푸시했습니다.
-
-- GitHub repo: `https://github.com/ashrate/ax-talent-war`
-- Remote: `origin`
-- Default branch: `main`
-- 최신 커밋: `fae0762 대회 제출용 플러그인 구조 검증 보강`
+- 현재 원격: `origin` = public repo `https://github.com/ashrate/ax-hackathon-2026` (`main` 브랜치, origin/main 동기화 상태)
+- `https://github.com/ashrate/ax-talent-war`는 초기에 쓰던 private repo로, 현재는 사용하지 않는 중복 저장소입니다.
 
 ## 설명용 한 문단 요약
 
@@ -218,7 +236,8 @@ python tools/make_submission.py kakaopay-securities
 
 ## 다음에 해야 할 일
 
-- 세 기업 중 실제 제출할 트랙을 하나 고릅니다.
+- 세 트랙(채널톡·무신사·카카오페이증권) 모두 제출하는 것이 목표입니다. 진행 순서만 정해,
+  회사별로 리서치 → 구현 → 검증 → 5문항 → 패키징을 반복합니다.
 - 해당 기업 또는 고객이 겪는 실제 문제를 공개 자료로 입증합니다.
 - 기업별 README의 공개 근거 표를 실제 URL과 주장으로 채웁니다.
 - Codex 플러그인이 해결할 구체적 workflow를 확정합니다.
