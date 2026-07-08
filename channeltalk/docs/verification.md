@@ -196,3 +196,51 @@
 - 감사한 주장: 14 (문항2 후보 5 + Core Claim Audit 4~5등급 10 중 중복 제외, CoS 반증 문구 1, README 수치·사실 3)
 - 지지 13 / 부분지지 1 / 불지지 0 / 보류 0
 - 부분지지 1건: 반증표의 CoS 설명이 실제 도움말 원문과 달라 문구를 원문 범위로 축소 조정함(아래 evidence.md 반영).
+
+## 실구동 테스트 (2026-07-09)
+
+### 설치 방법
+
+- 확인 명령: `codex plugin --help`, `codex plugin add --help`, `codex plugin marketplace add --help`, `codex plugin marketplace list --help`, `codex plugin remove --help`.
+- 공식 문서 기준의 repo 스코프 `.agents/plugins/marketplace.json`은 이 작업의 수정 허용 범위 밖이므로 만들지 않았다.
+- 대신 허용 범위 안인 `channeltalk/output/live-test/marketplace/`에 로컬 마켓플레이스를 만들고, 그 아래 `plugins/channeltalk-plugin/`에 `src` 사본을 둔 뒤 `source.path`를 `./plugins/channeltalk-plugin`으로 지정했다.
+- `codex plugin marketplace add <repo>/channeltalk/output/live-test/marketplace --json` 결과 `ax-live-channeltalk` 등록 성공.
+- `codex plugin add channeltalk-plugin@ax-live-channeltalk --json` 결과 설치 성공. 설치 경로는 사용자 Codex 캐시(`~/.codex/plugins/cache/ax-live-channeltalk/...`)였다.
+- 참고: 처음에는 `source.path`를 `./../../../src`로 두었으나 `codex plugin list --marketplace ax-live-channeltalk --available --json`에서 available이 비어 있었다. 로컬 marketplace root 밖의 경로는 이 CLI에서 발견되지 않아, 테스트용 사본을 marketplace root 아래에 두는 방식으로 재시도했다.
+
+### 실행 시나리오와 입력
+
+- 실행 명령: `codex exec --ephemeral -C channeltalk -s workspace-write -o output/live-test/channeltalk-codex-last-message.md -`
+- 입력: 브랜드명 `live-test-mini-faq`, 사용자 제공 공개 FAQ 텍스트 4문장(배송 2~3영업일, 단순 변심 교환/반품 7일 이내, 사용 흔적/포장 훼손 제한, 주문 취소 시 쿠폰 복구 조건).
+- 지시: 설치된 `channeltalk-plugin:main` 스킬을 사용하고 `output/live-test/channeltalk-mini-faq/` 아래에만 ALF 지식 구조 초안을 생성.
+
+### 생성된 출력 파일
+
+- `output/live-test/channeltalk-mini-faq/alf-knowledge/01-brand-and-scope/scope.md`
+- `output/live-test/channeltalk-mini-faq/alf-knowledge/03-shipping/shipping.md`
+- `output/live-test/channeltalk-mini-faq/alf-knowledge/04-exchange-return-refund/exchange-return.md`
+- `output/live-test/channeltalk-mini-faq/alf-knowledge/05-coupons-points/coupon-cancel.md`
+- `output/live-test/channeltalk-mini-faq/alf-rules.md`
+- `output/live-test/channeltalk-mini-faq/alf-test-cases.csv`
+- `output/live-test/channeltalk-mini-faq/alf-escalation.md`
+- `output/live-test/channeltalk-mini-faq/gaps.md`
+- `output/live-test/channeltalk-mini-faq/APPLY-GUIDE.md`
+
+### 확인 결과
+
+- `codex exec` 출력에서 `channeltalk-plugin:main` 스킬을 사용했다고 보고했다.
+- 계약 파일 구조가 생성됐다. `alf-knowledge/**/*.md` 4개, 필수 상위 파일 5개가 존재한다.
+- `alf-test-cases.csv`는 데이터 30행으로 파싱됐고, 오답위험도 값은 `낮음/중간/높음` 범위 안이었다.
+- 원문 URL이 없었으므로 출처는 `N/A - 사용자 제공 공개 FAQ 텍스트`로 분리됐고, `gaps.md`에 원문 FAQ URL 확인 질문이 남았다.
+
+### 검증하지 못한 것과 제약
+
+- 대화형 `/plugins` 설치 UI와 Space 토글은 헤드리스 환경이라 검증하지 못했다. CLI `codex plugin marketplace add`, `codex plugin add`, fresh `codex exec`로 대체 검증했다.
+- `-o output/live-test/channeltalk-codex-last-message.md`는 상대 경로 해석 문제로 마지막 메시지 파일 저장에 실패했다. 다만 `codex exec` 표준 출력에 최종 보고와 생성 파일 목록이 남았고, 실제 파일 생성과 CSV 검증은 별도 명령으로 확인했다.
+- 실제 채널톡 관리자 화면에 지식/규칙을 업로드하거나 ALF 테스트 UI를 실행하지는 않았다.
+
+### 전역 상태 복구
+
+- 실행 후 `codex plugin remove channeltalk-plugin@ax-live-channeltalk --json` 및 `codex plugin marketplace remove ax-live-channeltalk --json` 실행.
+- 최종 확인에서 `codex plugin list --json`과 `codex plugin marketplace list --json`에 `channeltalk-plugin` 및 `ax-live-channeltalk`가 남아 있지 않았다.
+- `~/.codex/config.toml` SHA-256은 테스트 전후 동일했다: `6f8f473a8ce0cdda196e32fe5512f1ceb6ad575cea781729f2fc4e4ab2f1f52c`.

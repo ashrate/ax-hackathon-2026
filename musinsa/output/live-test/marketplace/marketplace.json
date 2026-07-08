@@ -1,0 +1,20 @@
+{
+  "name": "ax-live-musinsa",
+  "interface": {
+    "displayName": "AX Live Test - Musinsa"
+  },
+  "plugins": [
+    {
+      "name": "musinsa-plugin",
+      "source": {
+        "source": "local",
+        "path": "./plugins/musinsa-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

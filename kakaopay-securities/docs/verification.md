@@ -168,3 +168,48 @@ examples/
 | 카카오페이증권에 시세 감지 주문·주식 모으기 등 투자 보조 기능이 이미 존재 | kakaopaysec.com 홈(+PDF 8276) | 홈 원문 "시세 감지 주문" · "모으기" 확인. 종목추천서비스 설명서는 PDF(8276)로 generic fetch 실패 | 부분지지 | 유지. 반증·보조 근거로만 사용, 종목추천 PDF 본문은 도구 한계로 보류 처리(evidence.md 기존 caveat 유지) |
 
 감사 요약: 감사 19건 = 지지 17, 부분지지 2(표준투자권유준칙 링크 조정, 시세감지 홈+PDF 일부 보류), 불지지 0, 보류 0(종목추천 PDF 본문 1건은 부분지지 내 도구 한계 보류). 규제 인용(표준투자권유준칙·표준내부통제기준·투자자문 유의사항·주문장애 보상기준)은 4건 모두 원문 조항 수준에서 정확. 유일한 조치는 표준투자권유준칙 인용 URL을 원문이 노출되는 콘텐츠 엔드포인트로 교체(evidence.md, README.md, case-1/compliance-report.md, case-3/response-draft.md·escalation.md·case-log.csv 6개 파일). 가드레일(추천·보상 단정 금지) 문구는 변경 없이 유지.
+
+## 실구동 테스트 (2026-07-09)
+
+### 설치 방법
+
+- 확인 명령: `codex plugin --help`, `codex plugin add --help`, `codex plugin marketplace add --help`, `codex plugin marketplace list --help`, `codex plugin remove --help`.
+- repo 스코프 `.agents/plugins/marketplace.json` 생성은 이 작업의 수정 허용 범위 밖이라 사용하지 않았다.
+- 허용 범위 안인 `kakaopay-securities/output/live-test/marketplace/`에 로컬 마켓플레이스를 만들고, `plugins/kakaopay-securities-plugin/`에 `src` 사본을 둔 뒤 `source.path`를 `./plugins/kakaopay-securities-plugin`으로 지정했다.
+- `codex plugin marketplace add <repo>/kakaopay-securities/output/live-test/marketplace --json` 결과 `ax-live-kakaopay-securities` 등록 성공.
+- `codex plugin add kakaopay-securities-plugin@ax-live-kakaopay-securities --json` 결과 설치 성공. 설치 경로는 사용자 Codex 캐시(`~/.codex/plugins/cache/ax-live-kakaopay-securities/...`)였다.
+
+### 실행 시나리오와 입력
+
+- 실행 명령: `codex exec --ephemeral -C kakaopay-securities -s workspace-write -o <repo>/kakaopay-securities/output/live-test/kakaopay-codex-last-message.md -`
+- 입력: case id `kakaopay-case1-live`, 접수일 `2026-07-09`, 문의 유형 `소수점 주문/체결 지연/손실 불안`.
+- 고객 문의 원문: "소수점 주문을 넣었는데 왜 바로 체결이 안 되나요? 손해 보는 것 아닌가요?"
+- 지시: 설치된 `kakaopay-securities-plugin:main` 스킬을 사용하고 `references/evidence.md`의 공식 URL만 근거로 사용하며, `output/live-test/kakaopay-case1-live/` 아래에 계약 파일 5종을 생성. `response-draft.md`에는 "검토용 초안"과 상담사/컴플라이언스 확인 필수 문구를 명시.
+
+### 생성된 출력 파일
+
+- `output/live-test/kakaopay-case1-live/response-draft.md`
+- `output/live-test/kakaopay-case1-live/checklist.md`
+- `output/live-test/kakaopay-case1-live/compliance-report.md`
+- `output/live-test/kakaopay-case1-live/escalation.md`
+- `output/live-test/kakaopay-case1-live/case-log.csv`
+
+### 확인 결과
+
+- 계약 파일 5종이 모두 생성됐다.
+- `response-draft.md`는 `# 검토용 초안 — 발송 전 상담사·컴플라이언스 확인 필수`로 시작한다.
+- 답변 초안은 고객별 주문 상태, 실제 손익, 체결 시점, 체결 가격, 보상 여부를 단정하지 않고 인증된 채널 확인과 최신 FAQ·공지 확인으로 처리했다.
+- `compliance-report.md`는 추천성 표현, 보상 단정, 원금·수익 보장성 표현, 개인정보 요구를 별도로 점검했다.
+- 산출물에는 `support.kakaopay.com`, `kakaopaysec.com`, `law.kofia.or.kr`, `fsc.go.kr` 공식 URL이 포함됐다.
+
+### 검증하지 못한 것과 제약
+
+- `codex exec` MCP 래퍼가 300초 제한에 걸렸고, 마지막 메시지 파일은 생성되지 않았다. 다만 제한 전 계약 파일 5종은 모두 생성됐고, 별도 검증 명령으로 파일 존재, "검토용 초안" 문구, 상담사/컴플라이언스 확인 문구, 공식 URL 포함 여부를 확인했다. 남아 있던 child `codex exec` 프로세스는 종료했다.
+- 대화형 `/plugins` 설치 UI와 Space 토글은 헤드리스 환경이라 검증하지 못했다. CLI 설치와 fresh `codex exec` 실행으로 대체 검증했다.
+- 실제 카카오페이증권 상담 시스템, 고객 인증 화면, 주문 원장, 컴플라이언스 승인 워크플로우는 검증하지 못했다.
+
+### 전역 상태 복구
+
+- 실행 후 `codex plugin remove kakaopay-securities-plugin@ax-live-kakaopay-securities --json` 및 `codex plugin marketplace remove ax-live-kakaopay-securities --json` 실행.
+- 최종 확인에서 `codex plugin list --json`과 `codex plugin marketplace list --json`에 `kakaopay-securities-plugin` 및 `ax-live-kakaopay-securities`가 남아 있지 않았다.
+- `~/.codex/config.toml` SHA-256은 테스트 전후 동일했다: `6f8f473a8ce0cdda196e32fe5512f1ceb6ad575cea781729f2fc4e4ab2f1f52c`.

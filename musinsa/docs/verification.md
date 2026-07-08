@@ -141,3 +141,49 @@
 - MATIN KIM W컨셉 신호는 연합뉴스 원문으로 재확인: "여름 컬렉션 64종 선공개" 및 "곡선형의 숄더백인 '바게트백'" 구절 확인—scout-report의 바게트백 언급도 지지됨. signals-log 문구는 기사 제목 기준으로 정렬.
 - 무신사 랭킹/아카이브/추천 URL은 HTTP 200이나 동적 렌더링으로 본문 자동 확인 불가—기존 manual-check 처리 유지.
 - 문항② 최종 URL 5개는 모두 원문 구절로 지지 확인(채용공고 213276은 JS 렌더링이라 curl 원문 HTML에서 "신규 브랜드 발굴 … 고객 인사이트를 바탕으로 브랜드를 성장 … 트렌드에 맞는 상품 소싱" 확인). 핵심 4~5등급 주장에 불지지 없음.
+
+## 실구동 테스트 (2026-07-09)
+
+### 설치 방법
+
+- 확인 명령: `codex plugin --help`, `codex plugin add --help`, `codex plugin marketplace add --help`, `codex plugin marketplace list --help`, `codex plugin remove --help`.
+- repo 스코프 `.agents/plugins/marketplace.json` 생성은 이 작업의 수정 허용 범위 밖이라 사용하지 않았다.
+- 허용 범위 안인 `musinsa/output/live-test/marketplace/`에 로컬 마켓플레이스를 만들고, `plugins/musinsa-plugin/`에 `src` 사본을 둔 뒤 `source.path`를 `./plugins/musinsa-plugin`으로 지정했다.
+- `codex plugin marketplace add <repo>/musinsa/output/live-test/marketplace --json` 결과 `ax-live-musinsa` 등록 성공.
+- `codex plugin add musinsa-plugin@ax-live-musinsa --json` 결과 설치 성공. 설치 경로는 사용자 Codex 캐시(`~/.codex/plugins/cache/ax-live-musinsa/...`)였다.
+
+### 실행 시나리오와 입력
+
+- 실행 명령: `codex exec --ephemeral -C musinsa -s workspace-write -o <repo>/musinsa/output/live-test/musinsa-codex-last-message.md -`
+- 입력: 여성 컨템포러리 미니 triage, 브랜드 후보 2개.
+  - `THE BARNNET`: 29CM 단독 컬렉션 및 29LIVE 반응 신호, 참고 URL `https://www.29cm.co.kr/content/29edition/2026/02/thebarnnet`
+  - `FOETO`: 29CM 수요입점회 및 누적 성과 신호, 참고 URL `https://newsroom.musinsa.com/newsroom-menu/2025-0326-29cm`
+- 지시: 설치된 `musinsa-plugin:main` 스킬을 사용하고 `output/live-test/musinsa-two-brand-triage/` 아래에만 두 브랜드 triage 산출물을 생성.
+
+### 생성된 출력 파일
+
+- `output/live-test/musinsa-two-brand-triage/scout-report.md`
+- `output/live-test/musinsa-two-brand-triage/signals-log.csv`
+- `output/live-test/musinsa-two-brand-triage/watchlist.md`
+- `output/live-test/musinsa-two-brand-triage/scorecards/FOETO.md`
+- `output/live-test/musinsa-two-brand-triage/scorecards/THE-BARNNET.md`
+- `output/live-test/musinsa-codex-last-message.md`
+
+### 확인 결과
+
+- 마지막 메시지 파일에서 `musinsa-plugin:main` 스킬을 읽고 사용했다고 보고했다.
+- 출력 계약의 핵심 파일 4종(`scout-report.md`, `signals-log.csv`, `watchlist.md`, `scorecards/*.md`)이 생성됐다.
+- 두 브랜드 모두 `협업/콘텐츠 확장`으로 분류됐고, THE BARNNET의 29LIVE 반응 수치와 FOETO의 현재 상품 상태는 `manual-check-required`로 낮춰 기록됐다.
+- 마지막 메시지는 필수 파일 구조, CSV 헤더, `scout-report.md` 필수 섹션, scorecard 필수 섹션을 확인했다고 보고했다.
+
+### 검증하지 못한 것과 제약
+
+- `codex exec` MCP 래퍼가 300초 제한에 걸렸으나, 그 전에 산출물과 마지막 메시지 파일은 생성됐다. 남아 있던 child `codex exec` 프로세스는 확인 후 종료했다.
+- 대화형 `/plugins` 설치 UI와 Space 토글은 헤드리스 환경이라 검증하지 못했다. CLI 설치와 fresh `codex exec` 실행으로 대체 검증했다.
+- 무신사/29CM의 실제 동적 화면, 내부 매출/검색/리뷰 데이터, MD 회의 사용성은 검증하지 못했다.
+
+### 전역 상태 복구
+
+- 실행 후 `codex plugin remove musinsa-plugin@ax-live-musinsa --json` 및 `codex plugin marketplace remove ax-live-musinsa --json` 실행.
+- 최종 확인에서 `codex plugin list --json`과 `codex plugin marketplace list --json`에 `musinsa-plugin` 및 `ax-live-musinsa`가 남아 있지 않았다.
+- `~/.codex/config.toml` SHA-256은 테스트 전후 동일했다: `6f8f473a8ce0cdda196e32fe5512f1ceb6ad575cea781729f2fc4e4ab2f1f52c`.

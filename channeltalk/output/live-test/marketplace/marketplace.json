@@ -1,0 +1,20 @@
+{
+  "name": "ax-live-channeltalk",
+  "interface": {
+    "displayName": "AX Live Test - ChannelTalk"
+  },
+  "plugins": [
+    {
+      "name": "channeltalk-plugin",
+      "source": {
+        "source": "local",
+        "path": "./plugins/channeltalk-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
