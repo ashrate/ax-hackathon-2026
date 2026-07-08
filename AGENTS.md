@@ -46,8 +46,18 @@
 
 ## 작업 기록(docs/)
 
+- 루트 `docs/research-workflow.md`는 세 회사 공통 리서치 프로토콜이다.
+- 각 트랙의 `docs/source-video.ko.vtt`는 출제 의도가 담긴 최우선 자료로 본다.
 - 각 트랙의 `docs/research.md`(문항 ①②), `docs/engineering.md`(문항 ③④), `docs/verification.md`(문항 ⑤)에 진행하며 기록한다.
+- 각 트랙의 `src/references/evidence.md`는 submission.zip 안에 들어가는 공개 근거·가드레일 맵이다. `docs/research.md`만 갱신하고 `src/references/evidence.md`를 방치하지 않는다.
 - 특히 AI에게 맡긴 작업, 직접 판단한 부분, 받아들이지 않은 AI 제안과 그 이유는 그때그때 기록한다. 나중에는 복원할 수 없다.
+
+## 리서치 방식
+
+- 영상 자막, 회사 공식 자료, 고객센터/FAQ/공지, 공개 리뷰·커뮤니티·기사 순으로 근거 강도를 둔다.
+- insane-research류 도구를 쓸 때는 URL, 확인일, 수집 방법, 입증 주장, 접근 실패 여부를 기록한다.
+- NotebookLM은 누락 확인과 구조화 보조로만 쓰고, 답변 내용은 반드시 원문 URL 또는 자막으로 역추적한다.
+- 공개 출처가 약하거나 원문으로 확인되지 않는 주장은 5문항 답변과 README에 넣지 않는다.
 
 ## 검증 체크리스트
 

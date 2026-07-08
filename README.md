@@ -77,12 +77,23 @@ submission.zip
 - README, `SKILL.md`, 5문항 답변은 서로 같은 문제와 같은 작동 방식을 설명해야 합니다.
 - 제출 전에는 validator, 패키징, zip 내부 구조, 로그 포함 여부를 확인합니다.
 
+### 리서치 원칙
+
+- 회사별 유튜브 자막(`docs/source-video.ko.vtt`)은 출제자가 문제 의도를 설명한 자료이므로 최우선 가중치를 둡니다.
+- 회사 공식 사이트, 뉴스룸, 제품 문서, 고객센터/FAQ, 공지는 핵심 공개 근거로 사용합니다.
+- 앱 리뷰, 공개 커뮤니티, 기사, 산업 자료는 실제 사용자가 어디서 막히는지 보강하는 자료로 사용합니다.
+- insane-research류 도구는 접근이 어렵거나 흩어진 공개 자료를 수집·비교할 때 쓰되, URL·확인일·수집 방법·입증 주장을 반드시 남깁니다.
+- NotebookLM은 자막과 공식 자료의 누락 확인·구조화 보조로만 사용하고, 제출 근거는 항상 원문 URL이나 자막 내용으로 역추적합니다.
+- 자세한 공통 프로토콜은 `docs/research-workflow.md`를 따릅니다.
+
 ## Repo 구조
 
 ```
 ax인재전쟁/
 ├── AGENTS.md                    # Codex 에이전트 지침
 ├── agent.md                     # 사람용 요약
+├── docs/
+│   └── research-workflow.md     # 세 회사 공통 리서치 프로토콜
 ├── .claude/settings.json        # Claude Code 로그 훅 (공식 log-hooks 원본)
 ├── .codex/hooks.json            # Codex 로그 훅 (공식 log-hooks 기반 + Windows 호환 패치, 아래 참고)
 ├── tools/
@@ -92,6 +103,7 @@ ax인재전쟁/
 ├── channeltalk/                 # 채널톡 트랙
 │   ├── src/
 │   │   ├── .codex-plugin/plugin.json
+│   │   ├── references/evidence.md # zip에 포함되는 공개 근거·가드레일 맵
 │   │   └── skills/main/SKILL.md
 │   ├── README.md
 │   ├── docs/                    # 작업 기록 (submission.zip 미포함)
@@ -116,10 +128,13 @@ ax인재전쟁/
 submission.zip
 ├── src/                          # 플러그인 루트 전체 (.codex-plugin/plugin.json 필수)
 │   ├── .codex-plugin/plugin.json
+│   ├── references/evidence.md
 │   └── skills/<이름>/SKILL.md
 ├── README.md
 └── logs/                         # AI 대화 로그 원본 (md/txt/json/jsonl)
 ```
+
+패키징 시 루트 세션 로그는 `logs/repo/`, 회사별 세션 로그는 `logs/<slug>/` 아래에 들어갑니다. 같은 session_id 파일명이 있어도 원본 로그를 모두 보존하기 위한 구조입니다.
 
 ## 로그 규정 (중요)
 
@@ -186,8 +201,9 @@ logs 가 비어 있으면 경고를 출력하되 패키징은 진행합니다.)
   - `category`
   - `capabilities`
   - `defaultPrompt`
-- `SKILL.md`의 빈 TODO를 제거하고, 각 기업 트랙에서 AI가 따라야 할 실제 수행 절차를 작성했습니다.
-- 기업별 README에는 문제 정의 기준, 공개 근거 기록 형식, 설치·실행 방법, 검증 방법, 5문항 답변 작성 기준을 넣었습니다.
+- `SKILL.md`의 빈 placeholder를 제거하고, 각 기업 트랙에서 AI가 따라야 할 실제 수행 절차를 작성했습니다.
+- 기업별 README에는 확정된 문제 가설, 공개 근거, 설치·실행 방법, 작동 방식, 검증 방법을 넣었습니다.
+- 제출 zip에 들어가는 `src/references/evidence.md`를 추가해, `docs/research.md`가 빠져도 플러그인 소스 안에 근거 맵과 가드레일이 남도록 했습니다.
 
 ### 4. 로그 제출 방식 수정
 
@@ -223,7 +239,17 @@ python tools/make_submission.py kakaopay-securities
 
 - `python -m py_compile tools/save_log.py tools/make_submission.py` 통과
 - `tools/save_log.py` 원본 복사 동작 바이트 비교 통과
-- 저장소 내 `TODO` placeholder 제거 확인
+- 저장소 내 제출 문서 placeholder 제거 확인
+
+### 5-1. 유튜브 자막 기반 스캐폴딩
+
+2026-07-08 현재 세 트랙은 모두 출제자 영상 자막을 최우선 가중치로 반영해 문제 방향을 잡았습니다.
+
+- 채널톡: 이커머스 FAQ/정책/상품 정보를 ALF용 지식·규칙·테스트로 구조화하는 플러그인
+- 무신사: 공개 자료에서 고객이 좋아할 브랜드와 트렌드 신호를 반복 발굴하는 플러그인
+- 카카오페이증권: 초보 투자자의 매수·매도 불안을 투자 추천 없이 분해하고 공식 근거로 다음 행동을 정리하는 플러그인
+
+공통 리서치 방식은 `docs/research-workflow.md`에 정리했습니다. insane-research류 도구는 접근이 어렵거나 흩어진 공개 자료 수집에 쓰고, NotebookLM은 자막과 공식 자료의 누락 확인·구조화 보조로만 사용합니다. 두 경우 모두 최종 제출 근거는 원문 URL이나 자막 내용으로 역추적해야 합니다.
 
 ### 6. GitHub 저장소
 
@@ -232,14 +258,11 @@ python tools/make_submission.py kakaopay-securities
 
 ## 설명용 한 문단 요약
 
-이 저장소는 `AX 인재전쟁 2026` 예선 제출을 위해 만든 Codex 플러그인 monorepo입니다. 채널톡, 무신사, 카카오페이증권 세 트랙을 분리했고, 각 트랙은 `.codex-plugin/plugin.json`, `skills/main/SKILL.md`, README, logs를 포함하는 동일한 제출 구조를 갖습니다. 공식 플러그인 validator를 통과하도록 메타데이터와 스킬 지침을 보강했고, 대회 조건에 맞춰 AI 대화 로그는 원본 그대로 저장되도록 수정했습니다. 현재는 제출 형식과 패키징은 검증된 상태이고, 다음 단계는 실제로 선택할 기업 문제와 공개 출처를 확정해 각 트랙 README와 스킬 내용을 구체화하는 것입니다.
+이 저장소는 `AX 인재전쟁 2026` 예선 제출을 위해 만든 Codex 플러그인 monorepo입니다. 채널톡, 무신사, 카카오페이증권 세 트랙을 분리했고, 각 트랙은 `.codex-plugin/plugin.json`, `skills/main/SKILL.md`, `references/evidence.md`, README, logs를 포함하는 동일한 제출 구조를 갖습니다. 대회 조건에 맞춰 AI 대화 로그는 원본 그대로 저장되며, 세 트랙 모두 유튜브 자막의 출제 의도를 최우선으로 반영해 문제 가설과 플러그인 작동 절차를 맞췄습니다.
 
 ## 다음에 해야 할 일
 
-- 세 트랙(채널톡·무신사·카카오페이증권) 모두 제출하는 것이 목표입니다. 진행 순서만 정해,
-  회사별로 리서치 → 구현 → 검증 → 5문항 → 패키징을 반복합니다.
-- 해당 기업 또는 고객이 겪는 실제 문제를 공개 자료로 입증합니다.
-- 기업별 README의 공개 근거 표를 실제 URL과 주장으로 채웁니다.
-- Codex 플러그인이 해결할 구체적 workflow를 확정합니다.
-- 5문항 답변을 최종 제출용 문장으로 작성합니다.
-- 제출 직전 새 세션 로그가 포함되도록 패키징 명령을 다시 실행합니다.
+- 세 트랙 모두 실제 공개 URL을 추가로 리서치해 `docs/research.md`와 `src/references/evidence.md`의 출처 강도를 보강합니다.
+- 각 플러그인을 정상 입력과 예외 입력으로 수동 실행해 `docs/verification.md`의 실제 결과를 채웁니다.
+- `docs/engineering.md`와 `docs/verification.md`의 초안을 바탕으로 5문항 최종 제출 문장을 800자/1000자 제한 안에 맞춥니다.
+- 제출 직전 validator, 패키징, zip 내부 구조, 로그 포함 여부를 다시 확인합니다.

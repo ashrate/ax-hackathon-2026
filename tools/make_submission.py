@@ -10,7 +10,7 @@ slug: channeltalk | musinsa | kakaopay-securities
     submission.zip
     ├── src/        <- <slug>/src/ 전체
     ├── README.md   <- <slug>/README.md
-    └── logs/       <- 루트 logs/ + <slug>/logs/ 병합 (.gitkeep 제외)
+    └── logs/       <- repo 로그와 <slug> 로그를 원본 파일명 유지해 분리 보관
 
 표준 라이브러리만 사용하며 Windows 경로와 호환됩니다.
 """
@@ -81,12 +81,14 @@ def main(argv):
         _add_tree(zf, src_dir, "src", written)
         zf.write(readme_path, "README.md")
         written.add("README.md")
-        # logs/ = 루트 logs/ + <slug>/logs/ 병합 (.gitkeep 제외)
         zf.writestr("logs/", "")  # logs/ 폴더 엔트리 (비어 있어도 구조 유지)
-        for logs_dir in (os.path.join(REPO_ROOT, "logs"),
-                         os.path.join(slug_dir, "logs")):
+        log_sources = (
+            (os.path.join(REPO_ROOT, "logs"), "logs/repo"),
+            (os.path.join(slug_dir, "logs"), f"logs/{slug}"),
+        )
+        for logs_dir, logs_arc_prefix in log_sources:
             if os.path.isdir(logs_dir):
-                log_count += _add_tree(zf, logs_dir, "logs", written,
+                log_count += _add_tree(zf, logs_dir, logs_arc_prefix, written,
                                        skip_names=(".gitkeep",))
 
     if log_count == 0:
