@@ -24,7 +24,7 @@
 | 주문장애는 회사 주문 시스템 장애로 어떤 방법으로도 주문이 불가능한 경우로 제한되고, 비상주문·증빙·신청기한 조건이 있다. | 4 | https://www.kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do | 2026-07-08 | 웹 fetch로 보상기준 본문 확인. | 보상 단정 금지 근거 유지 |
 | 앱 접속 및 서비스 지연 공지는 실제 고객 불편 상황에서 공지 확인과 장애 기준 분기가 필요함을 보여준다. | 4 | https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=7011 | 2026-07-08 | 웹 fetch로 공지 본문 확인. | case-2 근거 추가 |
 | 카카오페이증권 문의 채널은 평일 08:00-18:00로 안내되어 있어, 상담 시간 밖에는 공식 FAQ/ARS/비상주문 안내 분기가 필요하다. | 4 | https://support.kakaopay.com/web/phone-cs-notice | 2026-07-08 | 웹 fetch로 고객센터 안내 확인. | 운영 맥락 근거 유지 |
-| 금융투자협회 표준투자권유준칙은 투자자가 투자권유를 원하지 않으면 투자권유 행위를 하지 않고 객관적 정보만 제공해야 한다고 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149 | 2026-07-08 | 웹 검색 후 HTML 본문 확인. | 비추천형 설계 보강 |
+| 금융투자협회 표준투자권유준칙은 투자자가 투자권유를 원하지 않으면 투자권유 행위를 하지 않고 객관적 정보만 제공해야 한다고 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149 | 2026-07-08 | 웹 fetch는 전체화면 뷰어(빈 본문)라 lawFullScreenContent 엔드포인트 원문에서 확인. | 비추천형 설계 보강 |
 | 금융투자협회 표준내부통제기준은 불확실한 사항을 확실하다고 오인하게 하는 내용을 금지하고 설명·위험고지 기준을 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=437&seq=150 | 2026-07-08 | 웹 검색 후 HTML 본문 확인. | 컴플라이언스 검사 근거 |
 | 금융위는 1:1 개별투자자문은 정식 등록 투자자문업자만 가능하고, 원금·수익 보장 및 손실보전 약정은 불법이라고 안내한다. | 4 | https://www.fsc.go.kr/no010101/81575 | 2026-07-08 | 웹 검색 후 금융위 보도참고 HTML 확인. | 추천·보상 단정 금지 보강 |
 | 금융위의 투자자 유의사항은 등록 투자자문업자 확인, 원금·고수익 보장 주의, 금융감독원 유사투자자문 피해 신고 경로를 안내한다. | 4 | https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText= | 2026-07-08 | 웹 검색 후 금융위원회 HTML 확인. | case-3 이관 근거 |

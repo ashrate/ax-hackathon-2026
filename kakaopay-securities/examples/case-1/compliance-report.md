@@ -21,7 +21,7 @@
 
 ## 근거
 
-[^1]: 금융투자협회 법규정보시스템, 표준투자권유준칙, https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149
+[^1]: 금융투자협회 법규정보시스템, 표준투자권유준칙, https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149
 [^2]: 카카오페이증권, 주문 장애시 대처방법/보상기준, https://kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do
 [^3]: 금융위원회, 투자자문 이용 전 유의사항, https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText=
 [^4]: 금융투자협회 법규정보시스템, 금융투자회사 표준내부통제기준, https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=437&seq=150

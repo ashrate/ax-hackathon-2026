@@ -81,7 +81,7 @@ output/case-<번호>/
 | https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText= | 금융위원회 | 2026-07-08 | 투자자문 이용 전 등록 여부 확인, 원금·고수익 보장 주의, 피해 신고 안내 |
 | https://www.fsc.go.kr/no010101/81575 | 금융위원회 | 2026-07-08 | 1:1 개별투자자문, 원금·수익 보장, 손실보전 약정 금지 근거 |
 | https://www.fsc.go.kr/po010101/76239 | 금융위원회 | 2026-07-08 | 쉬운 설명과 중요 정보 중심 안내 필요성 |
-| https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149 | 금융투자협회 | 2026-07-08 | 투자권유를 원하지 않는 투자자에게 객관 정보만 제공해야 한다는 기준 |
+| https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149 | 금융투자협회 | 2026-07-08 | 투자권유를 원하지 않는 투자자에게 객관 정보만 제공해야 한다는 기준 |
 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=437&seq=150 | 금융투자협회 | 2026-07-08 | 불확실한 사항에 대한 단정적 판단 금지와 설명·위험고지 기준 |
 | https://www.kofia.or.kr/wpge/m_168/sub04070102.do | 금융투자협회 | 2026-07-08 | 제도권 금융투자회사 조회와 불법 금융투자업체 주의 안내 |
 

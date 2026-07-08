@@ -20,4 +20,4 @@
 
 [^1]: 금융위원회, 투자자문 이용 전 유의사항, https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText=
 [^2]: 금융투자협회, 제도권 금융투자회사 조회, https://www.kofia.or.kr/wpge/m_168/sub04070102.do
-[^3]: 금융투자협회 법규정보시스템, 표준투자권유준칙, https://law.kofia.or.kr/service/law/lawFullScreen.do?1787=&historySeq=1787&seq=149
+[^3]: 금융투자협회 법규정보시스템, 표준투자권유준칙, https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149
