@@ -70,11 +70,12 @@ Inputs:
 
 Outputs:
 
-- ALF 지식 맵
-- AI 답변 규칙과 금지 답변
-- 상담원 이관 기준
-- 테스트 질문과 기대 근거
-- 누락/충돌 정보 체크리스트
+- `output/<브랜드명>/alf-knowledge/`: ALF 지식 관리 화면에 옮길 수 있는 카테고리별 문서
+- `output/<브랜드명>/alf-rules.md`: 채널톡 규칙 입력창에 복사할 상황별 지시문
+- `output/<브랜드명>/alf-test-cases.csv`: 질문, 의도분류, 기대답변요지, 근거URL, 오답위험도 컬럼을 가진 테스트 질문 30개 이상
+- `output/<브랜드명>/alf-escalation.md`: 상담원 이관 기준과 이관 문구
+- `output/<브랜드명>/gaps.md`: 접근 실패, 미확인 정책, 문서 충돌, 운영자 확인 질문
+- `output/<브랜드명>/APPLY-GUIDE.md`: 채널톡 관리자 화면 적용 순서
 - 요청 시 5문항 제출 답변 초안
 
 ## Judgment Rules

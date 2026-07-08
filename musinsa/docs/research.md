@@ -185,3 +185,25 @@
 - 문항②는 “무신사가 이미 AI 트렌드 큐레이션을 한다”는 반증을 숨기지 말고, 그래서 플러그인을 소비자 추천이 아니라 MD용 출처 감사·후보 가설 워크플로우로 제한했다고 적는다.
 - `랭킹`과 `추천` URL은 실행 입력 예시로는 좋지만, 동적 페이지라 문항② 핵심 출처 URL에서는 제외한다.
 - App Store, Reddit, Blind, 소비자 기사 출처는 최종 선정 문제의 핵심 근거가 아니라 탈락 후보와 보조 신호의 흔적으로만 유지한다.
+
+## 7. 출력 계약 전환과 실제 예시 실행 근거
+
+- 기록 날짜: 2026-07-08
+- 새 지침: 감사 문서가 아니라 결과물이어야 하며, 사용자가 문제를 던지면 바로 쓸 수 있는 산출물을 내야 한다. 따라서 `docs/output-spec.md`를 추가하고 모든 실행의 종착점을 `output/<카테고리>-<날짜>/` 파일 트리로 고정했다.
+- 실제 예시 카테고리: 여성 컨템포러리
+- 예시 산출물 경로: `examples/여성-컨템포러리-2026-07-08/`
+- 후보 브랜드: MATIN KIM, THE BARNNET, FOETO, SIYAZU, LE17SEPTEMBRE, RECTO, TREEMINGBIRD, HAAG
+- 판단 방식: 이미 무신사/29CM에 강하게 노출된 브랜드는 신규 입점 후보가 아니라 `협업/콘텐츠 검토`로 두고, 공개 고객 반응 수치가 부족한 브랜드는 `모니터링`으로 낮췄다.
+
+| 예시 근거 | 등급 | URL | 확인일 | 사용 방식 |
+| --- | --- | --- | --- | --- |
+| MATIN KIM 일본 총판 파트너십 | 공식 4 | https://newsroom.musinsa.com/newsroom-menu/2024-1112 | 2026-07-08 | 글로벌 확장 사례 |
+| MATIN KIM 시부야점 초기 반응 | 공식 4 | https://newsroom.musinsa.com/newsroom-menu/2025-0428 | 2026-07-08 | 공개 고객 반응 신호 |
+| 29CM 신진 여성 브랜드 성장과 FOETO 성과 | 공식 4 | https://newsroom.musinsa.com/newsroom-menu/2025-0326-29cm | 2026-07-08 | 수요입점회/스토리텔링 검증 모델 |
+| THE BARNNET 공식 Summer 2026 전개 | 공식 4 | https://the-barnnet.com/ | 2026-07-08 | 최근 상품 전개 |
+| THE BARNNET 29CM 단독 콘텐츠 | 공식 4 | https://www.29cm.co.kr/content/29edition/2026/02/thebarnnet | 2026-07-08 | 협업/콘텐츠 신호 |
+| SIYAZU 2026 스프링/프리 스프링 | 보조 3 | https://www.apparelnews.co.kr/news/news_view/?idx=223492, https://fashionbiz.co.kr/article/223560 | 2026-07-08 | 구조적 워크웨어와 잡화 확장 가설 |
+| LE17SEPTEMBRE 공식/29CM 콘텐츠 | 공식 4 | https://le17septembre.com/about.html, https://content.29cm.co.kr/brand-event/2026/06/01/2nd | 2026-07-08 | 모니터링 후보 근거 |
+| RECTO 공식/2026 SS 보조 기사 | 공식 4, 보조 3 | https://recto.co/about.html, https://www.ktnews.com/news/articleView.html?idxno=144475 | 2026-07-08 | 뉴 클래식/젠더 뉴트럴 가설 |
+| TREEMINGBIRD 29CM/업계 반응 | 공식 4, 보조 3 | https://shop.29cm.co.kr/brand/40284, https://www.apparelnews.co.kr/news/news_view/?cat=CAT100&idx=216123 | 2026-07-08 | 협업/콘텐츠 후보 근거 |
+| HAAG 29CM 브랜드/여름 콘텐츠 | 공식 4 | https://shop.29cm.co.kr/brand/19972, https://www.29cm.co.kr/content/special/2026/06/haag | 2026-07-08 | 모니터링 후보 근거 |

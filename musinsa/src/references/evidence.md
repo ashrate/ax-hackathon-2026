@@ -52,12 +52,42 @@ Inputs:
 
 Outputs:
 
-- trend-signal ledger
-- brand-candidate scorecard
-- supporting/opposing evidence
-- source weight label and access status
-- next action for MD or brand scout
-- monitoring query list for later runs
+- `output/<category-slug>-<YYYY-MM-DD>/scout-report.md`
+- `output/<category-slug>-<YYYY-MM-DD>/scorecards/<brand>.md`
+- `output/<category-slug>-<YYYY-MM-DD>/signals-log.csv`
+- `output/<category-slug>-<YYYY-MM-DD>/watchlist.md`
+
+Output contract rules:
+
+- `scout-report.md`에는 후보 브랜드 5~10개 요약표와 이번 주 트렌드 신호 3~5개가 있어야 한다.
+- `scorecards/<brand>.md`에는 개요, 신호와 근거, 고객 반응 신호, 리스크/반대 근거, 입점 적합성, 다음 액션이 있어야 한다.
+- `signals-log.csv` 헤더는 `date,signal,source_url,source_strength,related_brand,note` 순서를 지킨다.
+- `watchlist.md`에는 신호 부족 후보, 보류 이유, 필요한 추가 근거, 다음 확인 시점을 남긴다.
+- 출처 강도 3 이하 단독 근거는 `가설`로 표시한다.
+- 동적 페이지는 `manual-check-required`로 두고 사용자가 화면으로 확인할 입력 후보로 안내한다.
+
+## Example Run Evidence Scope
+
+2026-07-08 실제 예시 실행:
+
+- 카테고리: 여성 컨템포러리
+- 산출물 경로: `examples/여성-컨템포러리-2026-07-08/`
+- 후보 브랜드 수: 8개
+- 신호 수: 24개
+- 후보 브랜드: MATIN KIM, THE BARNNET, FOETO, SIYAZU, LE17SEPTEMBRE, RECTO, TREEMINGBIRD, HAAG
+
+예시 실행에서 사용한 주요 공개 근거:
+
+| 주장 | 등급 | 출처 URL | 확인일 | 판단 |
+| --- | --- | --- | --- | --- |
+| MATIN KIM은 무신사와 일본 총판 파트너십 및 오프라인 성과가 공개되어 있다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2024-1112, https://newsroom.musinsa.com/newsroom-menu/2025-0428 | 2026-07-08 | 신규 입점보다 글로벌/콘텐츠 확장 사례로 사용한다. |
+| 29CM는 신진 여성 디자이너 브랜드의 성장과 FOETO 성과를 공식 뉴스룸에 공개했다. | 4 | https://newsroom.musinsa.com/newsroom-menu/2025-0326-29cm | 2026-07-08 | 수요입점회/스토리텔링 기반 검증 모델 근거로 사용한다. |
+| THE BARNNET은 공식 Summer 2026 전개와 29CM 단독 콘텐츠가 확인된다. | 4 | https://the-barnnet.com/, https://www.29cm.co.kr/content/29edition/2026/02/thebarnnet | 2026-07-08 | 협업/콘텐츠 검토 후보로 사용한다. |
+| SIYAZU는 2026 스프링과 워크웨어/잡화 확장 신호가 있다. | 3/4 | https://www.apparelnews.co.kr/news/news_view/?idx=223492, https://fashionbiz.co.kr/article/223560, https://shop.29cm.co.kr/brand/10005 | 2026-07-08 | 고객 반응 수치 부족으로 모니터링에 둔다. |
+| LE17SEPTEMBRE는 공식 브랜드 페이지와 29CM 단독 콘텐츠가 확인된다. | 4 | https://le17septembre.com/about.html, https://content.29cm.co.kr/brand-event/2026/06/01/2nd | 2026-07-08 | 정량 반응 확인 전까지 모니터링에 둔다. |
+| RECTO는 공식 브랜드 철학과 2026 SS 보조 기사 신호가 있다. | 3/4 | https://recto.co/about.html, https://www.ktnews.com/news/articleView.html?idxno=144475 | 2026-07-08 | 고객 반응 부족으로 가설/모니터링에 둔다. |
+| TREEMINGBIRD는 29CM 브랜드 페이지와 업계 기사상 반응 신호가 있다. | 3/4 | https://shop.29cm.co.kr/brand/40284, https://www.apparelnews.co.kr/news/news_view/?cat=CAT100&idx=216123 | 2026-07-08 | 공식 플랫폼 재확인 후 협업/콘텐츠로 검토한다. |
+| HAAG는 29CM 브랜드 페이지와 여름 콘텐츠가 확인된다. | 4 | https://shop.29cm.co.kr/brand/19972, https://www.29cm.co.kr/content/special/2026/06/haag | 2026-07-08 | 고객 반응 수치 부족으로 모니터링에 둔다. |
 
 ## Judgment Rules
 
