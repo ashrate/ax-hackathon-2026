@@ -4,23 +4,53 @@
 
 이 플러그인은 답변 생성기가 아니라 **위험 문구 제거 + 공식 근거 정리 + 에스컬레이션 판단 보조** 워크플로우입니다. 모든 `response-draft.md`는 상담사 또는 컴플라이언스 담당자가 검토 후 사용하는 답변 초안이며, 고객 발송·보상 판단·자문 이관의 마지막 게이트는 항상 사람입니다.
 
+## 심사자 5분 재현 가이드
+
+1. 복붙 가능한 입력 프롬프트(case-1 문의 예시):
+
+```text
+고객 문의: "소수점 주문을 넣었는데 왜 바로 체결이 안 되나요? 손해 보는 것 아닌가요?"
+맥락: 해외주식 소수점 주문, 체결 지연과 손실 불안, 투자 추천·장애 여부는 불명확
+요청: output/case-1 산출물로 만들어줘.
+```
+
+2. 예상 출력 폴더: `output/case-1/`이며, 동일 계약은 `output/case-N/` 형식으로 반복됩니다.
+3. 먼저 볼 핵심 파일 3개(zip 경로): [src/examples/case-3/response-draft.md](src/examples/case-3/response-draft.md), [src/examples/case-3/compliance-report.md](src/examples/case-3/compliance-report.md), [src/examples/case-1/checklist.md](src/examples/case-1/checklist.md).
+4. 실패 처리 예시: "앱이 이상해서 손해 봤어요"처럼 모호한 문의는 보상 여부를 말하기 전에 발생 시각, 채널, 오류 화면, 비상주문 시도 여부를 확인 질문으로 먼저 냅니다.
+5. 사람이 판단할 지점: 상담사 또는 컴플라이언스 담당자가 실제 고객 상황과 회사 응대 기준을 확인해 발송 승인 게이트를 통과시킵니다.
+
+## 상담사가 줄이는 반복 작업
+
+실측 근거는 예시 케이스마다 계약된 5종 파일(`response-draft.md`, `checklist.md`, `compliance-report.md`, `escalation.md`, `case-log.csv`)이 있고, 규제·공식 근거를 verbatim 인용으로 남긴다는 점입니다. 시간 절감 수치는 창작하지 않았습니다.
+
+| 상담사가 줄이는 반복 작업 | 대신 확인하는 출력 파일 | 실제로 줄어드는 손작업 |
+| --- | --- | --- |
+| FAQ·공지·금투협·금융위 근거 교차 탐색 | `response-draft.md`, `compliance-report.md` | 케이스별 공식 URL, 확인일, 원문 인용을 한 번에 대조 |
+| 추천성 표현 자기 검열 | `compliance-report.md` | 종목·가격·타이밍 추천처럼 보이는 문장을 플래그하고 보수적 표현으로 수정 |
+| 보상 단정 표현 제거 | `response-draft.md`, `compliance-report.md` | 보상 가능·확정처럼 읽히는 표현을 확인 절차와 증빙 요청으로 전환 |
+| 이관 문구 작성 | `escalation.md` | 장애·보상 접수, 고객센터 확인, 투자자문 이관 문구와 조건을 표로 정리 |
+
+## 왜 이 문제, 왜 이 범위인가
+
+공식 영상 힌트는 초보 투자자가 매수·매도와 손실 가능성 앞에서 불안해하고 상담 지원 AI가 그 불안을 낮춰야 한다는 방향과 맞닿아 있습니다. 내부 API나 고객 데이터 없이 공식 공개 자료(FAQ·공지·금융위·금투협 기준)만으로 재현되므로 zip 심사와 repo 검증 모두에 맞습니다. 문장 점검, 근거 정리, 위험 플래그는 Codex가 빠르게 반복 품질을 낼 수 있는 작업입니다. 규제 리스크는 고객 답변 자동화가 아니라 상담사·컴플라이언스가 검토하는 초안 포지션으로 통제하므로 이 범위가 최선입니다.
+
 ## MVP 비용·리소스
 
-API 키·내부 데이터·고객 계정 없이 공식 공개 자료(FAQ·공지·감독당국 문서)만으로 1인 2일 내 구현과 실증이 가능하며, 심사자는 제출 zip의 `src/` 자료와 예시 케이스만으로 같은 흐름을 재현할 수 있습니다. 이 리소스 조건에서 이 문제가 최선인 이유는 문장 점검·근거 정리·위험 플래그가 Codex의 강점과 정확히 겹치고, 규제 리스크는 고객 발송이 아닌 검토용 초안 포지션과 상담사·컴플라이언스 최종 게이트로 통제되기 때문입니다.
+API 키·내부 데이터·고객 계정 없이 공식 공개 자료(FAQ·공지·감독당국 문서)만으로 1인 2일 내 구현과 실증이 가능하며, 심사자는 제출 zip의 `src/` 자료와 예시 케이스만으로 같은 흐름을 재현할 수 있습니다.
 
 ## 입력 예시
 
 ```text
-고객 문의: "아침에 앱이 안 열려서 주문을 못 했어요. 보상해 주나요?"
-맥락: 2026-07-08 오전, 앱 접속 지연 주장, 주문장애·보상 문의 가능성
+고객 문의: "소수점 주문을 넣었는데 왜 바로 체결이 안 되나요? 손해 보는 것 아닌가요?"
+맥락: 해외주식 소수점 주문, 체결 지연과 손실 불안, 투자 추천·장애 여부는 불명확
 요청: output/case-1 산출물로 만들어줘.
 ```
 
 ## 실행 결과
 
-- [case-1 소수점 주문 검토용 초안](examples/case-1/response-draft.md): 소수점매매 체결 구조와 최신 공지 확인, 손실·추천 단정 제거.
-- [case-2 장애·보상 검토용 초안](examples/case-2/response-draft.md): 보상 단정 제거, 주문장애 기준 확인과 증빙·비상주문 여부 확인으로 이관.
-- [case-3 투자 판단 검토용 초안](examples/case-3/response-draft.md): 매도·보유 추천 제거, 의사결정 체크리스트와 등록 투자자문업자 확인 안내.
+- [case-1 소수점 주문 검토용 초안](src/examples/case-1/response-draft.md): 소수점매매 체결 구조와 최신 공지 확인, 손실·추천 단정 제거.
+- [case-2 장애·보상 검토용 초안](src/examples/case-2/response-draft.md): 보상 단정 제거, 주문장애 기준 확인과 증빙·비상주문 여부 확인으로 이관.
+- [case-3 투자 판단 검토용 초안](src/examples/case-3/response-draft.md): 매도·보유 추천 제거, 의사결정 체크리스트와 등록 투자자문업자 확인 안내.
 
 각 케이스는 `response-draft.md`, `checklist.md`, `compliance-report.md`, `escalation.md`, `case-log.csv` 5개 파일로 끝납니다.
 
@@ -38,14 +68,6 @@ API 키·내부 데이터·고객 계정 없이 공식 공개 자료(FAQ·공지
 | 발송 승인 | 답변 초안이 실제 고객 상황과 회사 응대 기준에 맞는지 확인 | 금지 표현 제거, 공식 URL 각주 정리, 최신 공지 확인 필요 표시 |
 | 보상 판단 | 주문장애 기준 충족, 증빙, 비상주문 시도, 신청기한 등 내부 절차 확인 | 보상 단정 문구 제거, 주문장애 기준·공지·고객센터 경로 교차 확인 |
 | 자문 이관 | 고객 요구가 일반 정보인지 1:1 투자자문인지 판단 | 특정 종목·가격·타이밍 추천성 표현 플래그, 등록 투자자문업자 확인 안내 근거 정리 |
-
-## 상담사가 줄이는 반복 작업
-
-| 상담사가 수동으로 하던 일 | 플러그인이 대신 정리하는 부분 | 사람이 남기는 판단 |
-| --- | --- | --- |
-| 공지·FAQ·기준을 여러 탭에서 교차 확인 | 케이스 유형별 공식 근거 URL과 확인일을 산출물에 묶음 | 해당 근거가 최신 운영 기준과 일치하는지 승인 |
-| 추천·보상·원금 보장처럼 보일 수 있는 표현 자기 검열 | `compliance-report.md`에서 위험 표현을 플래그하고 보수적 문장으로 제안 | 실제 발송 문구 채택 여부 결정 |
-| 장애·보상·자문 요구의 이관 기준 정리 | `escalation.md`에 이관 조건, 이관처, 근거를 표로 정리 | 보상 접수, 고객센터 확인, 자문 이관 실행 |
 
 ## 무엇이 나오는가
 
@@ -66,7 +88,7 @@ output/case-<번호>/
 - `escalation.md`: 장애·보상 문의, 투자자문 요구, 공식 근거 부족 케이스를 어디로 넘길지 판단합니다.
 - `case-log.csv`: 날짜, 문의유형, 위험플래그, 사용근거URL, 처리결과를 누적하는 원장 스냅샷입니다.
 
-상세 스키마와 품질 기준은 `docs/output-spec.md`에 있습니다.
+상세 스키마와 품질 기준은 `src/docs/output-spec.md`에 있습니다.
 
 ## 사용하는 사람과 상황
 
@@ -111,7 +133,7 @@ output/case-<번호>/
 ## 예시 실행
 
 ```text
-examples/
+src/examples/
   case-1/
     response-draft.md
     checklist.md
@@ -147,21 +169,23 @@ python tools/make_submission.py kakaopay-securities
 생성된 `dist/kakaopay-securities/submission.zip` 안의 `src/`가 플러그인 루트입니다. `src/`에는 실행 스킬, 근거 맵, 예시 산출물, 핵심 docs 사본이 함께 들어가며, 전체 영상 자막은 `src/docs/source-video.ko.vtt`에서 확인할 수 있습니다.
 
 ```text
-src/
-  .codex-plugin/plugin.json
-  skills/main/SKILL.md
-  references/evidence.md
-  docs/source-video.ko.vtt
-  docs/output-spec.md
-  examples/case-1/
-  examples/case-2/
-  examples/case-3/
+src/.codex-plugin/plugin.json
+src/skills/main/SKILL.md
+src/references/evidence.md
+src/docs/source-video.ko.vtt
+src/docs/output-spec.md
+src/docs/submission-answers.md
+src/docs/research.md
+src/docs/verification.md
+src/examples/case-1/
+src/examples/case-2/
+src/examples/case-3/
 ```
 
 Codex에서 플러그인을 로드한 뒤 다음처럼 호출합니다.
 
 ```text
-고객 문의: "아침에 앱이 안 열려서 주문을 못 했어요. 보상해 주나요?"
+고객 문의: "소수점 주문을 넣었는데 왜 바로 체결이 안 되나요? 손해 보는 것 아닌가요?"
 위 문의를 output/case-1 산출물로 만들어줘.
 ```
 
@@ -175,7 +199,7 @@ python C:/Users/kimdo/.codex/skills/.system/plugin-creator/scripts/validate_plug
 
 1. `src/.codex-plugin/plugin.json`이 validator를 통과합니다.
 2. `src/skills/main/SKILL.md`가 계약된 5개 출력물을 종착점으로 삼습니다.
-3. `examples/case-1..3`에 모든 계약 파일이 존재합니다.
+3. `src/examples/case-1..3`에 모든 계약 파일이 존재합니다.
 4. 소수점 주문 케이스는 FAQ·공지 근거와 손실 단정 금지를 포함합니다.
 5. 장애·보상 케이스는 주문장애 기준 절차와 보상 단정 금지를 포함합니다.
 6. 투자 판단 케이스는 특정 종목 매수·매도 추천 없이 체크리스트와 등록 투자자문업자 안내로 전환합니다.
