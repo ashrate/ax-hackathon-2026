@@ -1,6 +1,6 @@
 # 채널톡 — 엔지니어링 기록
 
-> 이 파일은 submission.zip에는 포함되지 않는 작업 기록이며, 문항 ③·④와 README.md 작성의 원천 자료다.
+> 이 문서의 사본은 submission.zip의 src/docs/에 포함된다. 문항 ③·④와 README.md 작성의 원천 자료다.
 
 ## 1. 플러그인 설계 개요
 

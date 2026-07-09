@@ -1,6 +1,6 @@
 # 무신사 — 검증 기록
 
-> 이 파일은 submission.zip에는 포함되지 않는 작업 기록이며, 문항 ⑤와 README.md 작성의 원천 자료다.
+> 이 문서의 사본은 submission.zip의 src/docs/에 포함된다. 문항 ⑤와 README.md 작성의 원천 자료다.
 
 ## 1. 테스트 시나리오
 
@@ -140,7 +140,7 @@
 - LE17SEPTEMBRE의 29CM `brand-event/2026/06/01/2nd` URL은 브랜드 특정 본문이 자동 확인되지 않아 `manual-check-required`로 표시하고(스코어카드·signals-log·evidence.md 반영), 공식 사이트(en.le17septembre.com) 근거를 핵심으로 유지.
 - MATIN KIM W컨셉 신호는 연합뉴스 원문으로 재확인: "여름 컬렉션 64종 선공개" 및 "곡선형의 숄더백인 '바게트백'" 구절 확인—scout-report의 바게트백 언급도 지지됨. signals-log 문구는 기사 제목 기준으로 정렬.
 - 무신사 랭킹/아카이브/추천 URL은 HTTP 200이나 동적 렌더링으로 본문 자동 확인 불가—기존 manual-check 처리 유지.
-- 문항② 최종 URL 5개는 모두 원문 구절로 지지 확인(채용공고 213276은 JS 렌더링이라 curl 원문 HTML에서 "신규 브랜드 발굴 … 고객 인사이트를 바탕으로 브랜드를 성장 … 트렌드에 맞는 상품 소싱" 확인). 핵심 4~5등급 주장에 불지지 없음.
+- 문항② 최종 URL 5개는 모두 원문 구절로 지지 확인. 채용공고 213276은 심사자 시뮬레이션에서 curl 기준 403으로 지적되어 핵심 URL에서 제외하고, `https://newsroom.musinsa.com/newsroom-menu/2022-0216-md-10`의 공식 MD 인터뷰를 승격했다. 핵심 4~5등급 주장에 불지지 없음.
 
 ## 실구동 테스트 (2026-07-09)
 

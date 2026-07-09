@@ -8,13 +8,13 @@
 
 ## 문항 ②
 
-이 문제를 고른 이유는 출제 영상의 힌트가 “좋아할 브랜드 발굴”과 “관심 트렌드 포착”이었기 때문입니다. 다만 이를 순수 신규 브랜드 예언으로 보지 않고, MD가 매주 공개 신호를 놓치지 않도록 후보를 분류하는 문제로 좁혔습니다. 무신사 뉴스룸과 현행 MD 채용공고는 MD 업무에 신규 브랜드 발굴, 입점, 트렌드 상품 소싱이 있음을 보여주고, 회사 사업 페이지도 브랜드 소싱과 브랜드-소비자 연결을 사업 범위로 설명합니다. 동시에 무신사는 이미 소비자용 AI 트렌드 큐레이션과 AI 기반 트렌드 분석을 공개했습니다. 그래서 이 플러그인은 소비자 추천을 반복하지 않고, MD용 출처 감사·반대 근거·다음 액션이 남는 triage 워크플로우로 한정했습니다. 제 역량·리소스로는 API 키와 내부 데이터 없이 공개 URL만으로 1인 2일 내 validator 통과와 예시 산출물까지 재현 가능한 이 범위가 최선이었습니다. (458자)
+이 문제를 고른 이유는 출제 영상의 힌트가 “좋아할 브랜드 발굴”과 “관심 트렌드 포착”이었기 때문입니다. 다만 이를 순수 신규 브랜드 예언으로 보지 않고, MD가 매주 공개 신호를 놓치지 않도록 후보를 분류하는 문제로 좁혔습니다. 무신사 뉴스룸의 MD 기사와 인터뷰는 MD 업무에 신규 브랜드 발굴, 입점, 트렌드 관찰, 브랜드-고객 연결이 있음을 보여주고, 회사 사업 페이지도 브랜드 소싱을 사업 범위로 설명합니다. 동시에 무신사는 이미 소비자용 AI 트렌드 큐레이션과 AI 기반 트렌드 분석을 공개했습니다. 그래서 이 플러그인은 소비자 추천을 반복하지 않고, MD용 출처 감사·반대 근거·다음 액션이 남는 triage 워크플로우로 한정했습니다. 제 역량·리소스로는 API 키와 내부 데이터 없이 공개 URL만으로 1인 2일 내 validator 통과와 예시 산출물까지 재현 가능한 이 범위가 최선이었습니다. (454자)
 
 출처 URL:
 
 - https://www.youtube.com/watch?v=OLAWeIuiD5Y
 - https://newsroom.musinsa.com/newsroom-menu/2022-0216-01
-- https://www.musinsacareers.com/ko/o/213276
+- https://newsroom.musinsa.com/newsroom-menu/2022-0216-md-10
 - https://newsroom.musinsa.com/newsroom-menu/2026-0603
 - https://newsroom.musinsa.com/newsroom-menu/2025-1119
 - https://corp.musinsa.com/ko/business
@@ -36,7 +36,7 @@ AI에는 출제 영상 자막에서 문제 힌트를 뽑고, 무신사 뉴스룸
 | 문항 | 제한 | 본문 글자수 | 판정 |
 | --- | ---: | ---: | --- |
 | ① | 800자 이내 | 452 | 충족 |
-| ② | 800자 이내 | 458 | 충족 |
+| ② | 800자 이내 | 454 | 충족 |
 | ③ | 1000자 이내 | 616 | 충족 |
 | ④ | 800자 이내 | 472 | 충족 |
 | ⑤ | 800자 이내 | 525 | 충족 |
@@ -56,7 +56,7 @@ AI에는 출제 영상 자막에서 문제 힌트를 뽑고, 무신사 뉴스룸
 
 - https://www.youtube.com/watch?v=OLAWeIuiD5Y
 - https://newsroom.musinsa.com/newsroom-menu/2022-0216-01
-- https://www.musinsacareers.com/ko/o/213276
+- https://newsroom.musinsa.com/newsroom-menu/2022-0216-md-10
 - https://newsroom.musinsa.com/newsroom-menu/2026-0603
 - https://newsroom.musinsa.com/newsroom-menu/2025-1119
 - https://corp.musinsa.com/ko/business

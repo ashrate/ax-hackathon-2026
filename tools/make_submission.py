@@ -110,6 +110,21 @@ def main(argv):
                     zf.write(doc_path, arcname)
                     written.add(arcname)
                     extra_count += 1
+        # 실구동 테스트 산출물도 포함해 verification.md·답변⑤의 참조를 zip 안에서
+        # 검증 가능하게 한다. marketplace/는 플러그인 소스 중복이라 제외.
+        live_dir = os.path.join(slug_dir, "output", "live-test")
+        if os.path.isdir(live_dir):
+            for entry in sorted(os.listdir(live_dir)):
+                if entry == "marketplace":
+                    continue
+                entry_path = os.path.join(live_dir, entry)
+                arc = "src/examples/live-test/" + entry
+                if os.path.isdir(entry_path):
+                    extra_count += _add_tree(zf, entry_path, arc, written)
+                elif arc not in written:
+                    zf.write(entry_path, arc)
+                    written.add(arc)
+                    extra_count += 1
         _add_tree(zf, src_dir, "src", written)
         zf.write(readme_path, "README.md")
         written.add("README.md")

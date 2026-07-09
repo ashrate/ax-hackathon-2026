@@ -100,7 +100,7 @@
 | https://www.youtube.com/watch?v=OLAWeIuiD5Y | 프라이머/무신사 발표 영상 | 2026-07-08 | 무신사 트랙의 공식 힌트 영상 원본이다. |
 | `src/docs/source-video.ko.vtt` | 프라이머/무신사 발표 영상 자막 사본 | 2026-07-08 | 무신사는 고객이 좋아할 브랜드와 관심 트렌드를 AI로 놓치지 않는 방법을 핵심 질문으로 제시한다. |
 | https://newsroom.musinsa.com/newsroom-menu/2022-0216-01 | Musinsa Newsroom | 2026-07-08 | 무신사 MD 업무에는 신규 브랜드 발굴, 입점, 트렌드 상품 소싱이 포함된다. |
-| https://www.musinsacareers.com/ko/o/213276 | Musinsa Careers | 2026-07-08 | 현행 MD 직무도 신규 브랜드 발굴, 고객 인사이트, 트렌드 상품 소싱을 요구한다. |
+| https://newsroom.musinsa.com/newsroom-menu/2022-0216-md-10 | Musinsa Newsroom | 2026-07-08 | 무신사 MD가 브랜드와 고객을 연결하고, 트렌드를 살피며 브랜드 성장 기회를 제안한다. |
 | https://newsroom.musinsa.com/newsroom-menu/2025-1119 | Musinsa Newsroom | 2026-07-08 | 무신사는 AI를 업무와 서비스 개발에 활용하고 패션 빅데이터 기반 트렌드 분석을 공개했다. |
 | https://newsroom.musinsa.com/newsroom-menu/2026-0603 | Musinsa Newsroom | 2026-07-08 | 소비자용 AI 트렌드 큐레이션이 이미 있어, 이 플러그인은 MD용 근거 감사·후보 triage 워크플로우로 좁혀야 한다. |
 | https://newsroom.musinsa.com/newsroom-menu/2025-0326-29cm | Musinsa Newsroom | 2026-07-08 | 29CM의 큐레이션과 스토리텔링이 신진 여성 브랜드 성장의 공개 사례가 된다. |
@@ -144,6 +144,8 @@ submission.zip
 Codex에서 `src/` 플러그인을 로드한 뒤 입력 예시처럼 호출한다.
 
 ## 검증 방법
+
+Codex 공식 plugin-creator 스킬에 포함된 `validate_plugin.py`로 검증했으며 통과 기록은 `src/docs/verification.md`에 있다. 심사 환경에서는 로컬 마켓플레이스 등록(`codex plugin marketplace add`) 후 설치로 구동을 확인할 수 있다. 절차는 `src/docs/verification.md`의 실구동 테스트를 참조한다.
 
 제출 전 확인할 항목:
 

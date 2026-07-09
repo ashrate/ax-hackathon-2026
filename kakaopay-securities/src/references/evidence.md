@@ -19,12 +19,12 @@
 | 금융이해력은 일부 계층에서 취약하고, 특히 20대 청년층은 금융행위를 중심으로 낮게 나타났다는 감독당국 발표가 있다. | 4 | https://eiec.kdi.re.kr/policy/materialView.do?num=266065 | 2026-07-08 | 웹 검색 후 KDI 경제정책자료 HTML 확인. 원 발표기관 금융감독원. | 이해 격차 보강 |
 | 금융상품 설명의무는 정보열위 소비자가 스스로 거래결과에 책임질 수 있게 필요한 정보를 제공하게 하는 핵심 영업규제다. | 4 | https://www.fsc.go.kr/po010101/76239 | 2026-07-08 | 금융위원회 HTML 본문 확인. | 규제 가드레일 유지 |
 | 설명서와 스크립트가 전문용어 중심이면 소비자 이해보다 판매자 편의에 치중될 수 있다는 금융위 지적이 있다. | 4 | https://www.fsc.go.kr/po010101/76239 | 2026-07-08 | 금융위원회 HTML 본문 확인. | 이해 가능 언어 필요성 보강 |
-| 소수점매매는 실시간 거래가 어렵고 10분 단위 주문·재배분 등 초보자에게 설명이 필요한 구조를 가진다. | 4 | https://support.kakaopay.com/web/faq-list/CUSTOMER_CENTER_FAQ_STOCK?device=m&qna=CUSTOMER_CENTER_FAQ_DECIMAL_POINT_TRADING | 2026-07-08 | 일반 web fetch는 빈 본문, `curl`로 Next.js HTML의 `qnaList` 원문 확인. | 하위 모듈 근거 유지 |
+| 소수점매매는 실시간 거래가 어렵고 10분 단위 주문·재배분 등 초보자에게 설명이 필요한 구조를 가진다. | 4 | https://support.kakaopay.com/web/faq-list/CUSTOMER_CENTER_FAQ_STOCK?device=m&qna=CUSTOMER_CENTER_FAQ_DECIMAL_POINT_TRADING | 2026-07-08 | 일반 fetch는 빈 본문, `curl` 원문에서 확인. 원문 구절: "실시간 거래는 어려워요. 10분 단위로 사용자의 주문을 모아 5분 뒤 체결분을 고객 계좌로 재배분". | 하위 모듈 근거 유지 |
 | 해외 소수점 거래 설명서는 주문 방법·최적가 문구·유의사항이 개정될 수 있으므로 최신 공지 확인이 필요하다. | 4 | https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=6807 | 2026-07-08 | 웹 fetch로 공지 본문 확인. | 최신성 가드레일 유지 |
 | 주문장애는 회사 주문 시스템 장애로 어떤 방법으로도 주문이 불가능한 경우로 제한되고, 비상주문·증빙·신청기한 조건이 있다. | 4 | https://www.kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do | 2026-07-08 | 웹 fetch로 보상기준 본문 확인. | 보상 단정 금지 근거 유지 |
 | 앱 접속 및 서비스 지연 공지는 실제 고객 불편 상황에서 공지 확인과 장애 기준 분기가 필요함을 보여준다. | 4 | https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=7011 | 2026-07-08 | 웹 fetch로 공지 본문 확인. | case-2 근거 추가 |
 | 카카오페이증권 문의 채널은 평일 08:00-18:00로 안내되어 있어, 상담 시간 밖에는 공식 FAQ/ARS/비상주문 안내 분기가 필요하다. | 4 | https://support.kakaopay.com/web/phone-cs-notice | 2026-07-08 | 웹 fetch로 고객센터 안내 확인. | 운영 맥락 근거 유지 |
-| 금융투자협회 표준투자권유준칙은 투자자가 투자권유를 원하지 않으면 투자권유 행위를 하지 않고 객관적 정보만 제공해야 한다고 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149 | 2026-07-08 | 웹 fetch는 전체화면 뷰어(빈 본문)라 lawFullScreenContent 엔드포인트 원문에서 확인. | 비추천형 설계 보강 |
+| 금융투자협회 표준투자권유준칙은 투자자가 투자권유를 원하지 않으면 투자권유 행위를 하지 않고 객관적 정보만 제공해야 한다고 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1193&seq=149 | 2026-07-08 | 일반 fetch는 빈 본문, `curl` 원문에서 확인. 원문 구절: "투자권유를 희망하지 않는 투자자에 대하여는 투자권유에 해당하는 행위를 하여서는 아니 되며, 투자자가 원하는 객관적인 정보만을 제공". | 비추천형 설계 보강 |
 | 금융투자협회 표준내부통제기준은 불확실한 사항을 확실하다고 오인하게 하는 내용을 금지하고 설명·위험고지 기준을 둔다. | 4 | https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=437&seq=150 | 2026-07-08 | 웹 검색 후 HTML 본문 확인. | 컴플라이언스 검사 근거 |
 | 금융위는 1:1 개별투자자문은 정식 등록 투자자문업자만 가능하고, 원금·수익 보장 및 손실보전 약정은 불법이라고 안내한다. | 4 | https://www.fsc.go.kr/no010101/81575 | 2026-07-08 | 웹 검색 후 금융위 보도참고 HTML 확인. | 추천·보상 단정 금지 보강 |
 | 금융위의 투자자 유의사항은 등록 투자자문업자 확인, 원금·고수익 보장 주의, 금융감독원 유사투자자문 피해 신고 경로를 안내한다. | 4 | https://www.fsc.go.kr/edu/news/83077?curPage=11&srchCtgry=&srchKey=&srchText= | 2026-07-08 | 웹 검색 후 금융위원회 HTML 확인. | case-3 이관 근거 |
@@ -66,5 +66,5 @@
 ## 접근성 메모
 
 - 제출 폼 문항 ② URL 후보는 로그인 없이 일반 웹 fetch로 본문이 확인된 HTML 출처를 우선한다.
-- 카카오페이 고객센터 FAQ는 로그인 없이 접근 가능하지만 Next.js 데이터가 스크립트에 내장되어 일반 line viewer에서는 빈 본문처럼 보일 수 있다. `curl` 원문에서는 FAQ 질문·답변을 확인했다.
+- 카카오페이 고객센터 FAQ와 금융투자협회 `lawFullScreenContent` 준칙은 로그인 없이 접근 가능하지만 JS 렌더링/스크립트 데이터 구조 때문에 일반 fetch에서는 빈 본문처럼 보일 수 있다. 위 근거 표의 회수 노트처럼 `curl` 원문에서 지지 구절을 확인했다.
 - 카카오페이증권 PDF 설명서와 투자권유준칙 PDF는 다운로드는 가능하나, generic web fetch에서 Unicode decoding error 또는 한글 텍스트 추출 깨짐이 있어 문항 ② 최종 URL 후보에서는 제외하고 반증·보조 근거로만 둔다.

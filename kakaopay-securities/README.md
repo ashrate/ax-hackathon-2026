@@ -191,9 +191,7 @@ Codex에서 플러그인을 로드한 뒤 다음처럼 호출합니다.
 
 ## 검증 방법
 
-```bash
-python C:/Users/kimdo/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py src
-```
+Codex 공식 plugin-creator 스킬에 포함된 `validate_plugin.py`로 검증했으며 통과 기록은 `src/docs/verification.md`에 있다. 심사 환경에서는 로컬 마켓플레이스 등록(`codex plugin marketplace add`) 후 설치로 구동을 확인할 수 있다. 절차는 `src/docs/verification.md`의 실구동 테스트를 참조한다.
 
 검증 기준:
 

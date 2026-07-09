@@ -195,8 +195,6 @@ output/<브랜드명>/
 
 ## 검증
 
-```bash
-python C:/Users/kimdo/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py src
-```
+Codex 공식 plugin-creator 스킬에 포함된 `validate_plugin.py`로 검증했으며 통과 기록은 `src/docs/verification.md`에 있다. 심사 환경에서는 로컬 마켓플레이스 등록(`codex plugin marketplace add`) 후 설치로 구동을 확인할 수 있다. 절차는 `src/docs/verification.md`의 실구동 테스트를 참조한다.
 
-예시 실행 검증은 `src/docs/verification.md`에 기록했다.
+예시 실행 검증도 `src/docs/verification.md`에 기록했다.
