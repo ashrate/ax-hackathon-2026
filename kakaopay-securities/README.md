@@ -199,7 +199,7 @@ python C:/Users/kimdo/.codex/skills/.system/plugin-creator/scripts/validate_plug
 
 1. `src/.codex-plugin/plugin.json`이 validator를 통과합니다.
 2. `src/skills/main/SKILL.md`가 계약된 5개 출력물을 종착점으로 삼습니다.
-3. `src/examples/case-1..3`에 모든 계약 파일이 존재합니다.
+3. `src/examples/case-1/ · src/examples/case-2/ · src/examples/case-3/`에 모든 계약 파일이 존재합니다.
 4. 소수점 주문 케이스는 FAQ·공지 근거와 손실 단정 금지를 포함합니다.
 5. 장애·보상 케이스는 주문장애 기준 절차와 보상 단정 금지를 포함합니다.
 6. 투자 판단 케이스는 특정 종목 매수·매도 추천 없이 체크리스트와 등록 투자자문업자 안내로 전환합니다.

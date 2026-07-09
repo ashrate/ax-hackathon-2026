@@ -35,7 +35,7 @@
 
 ## 숫자로 본 예시 실행 1회
 
-실측 기준은 `src/examples/여성-컨템포러리-2026-07-08/signals-log.csv`다. `source_url` 고유값 기준 공개 출처 23곳, `related_brand`에서 `category`를 제외한 브랜드 8개, 데이터 행 기준 신호 24건을 확인했다. 각 신호는 출처 URL·확인일을 같은 CSV 형식으로 남기고, 반대 근거와 4분류 판정은 `src/examples/여성-컨템포러리-2026-07-08/scout-report.md`와 `src/examples/여성-컨템포러리-2026-07-08/scorecards/*.md`에서 같은 후보 단위로 확인한다. **사람(MD)은 최종 화면 확인과 의사결정만 한다.**
+실측 기준은 `src/examples/여성-컨템포러리-2026-07-08/signals-log.csv`다. `source_url` 고유값 기준 공개 출처 23곳, `related_brand`에서 `category`를 제외한 브랜드 8개, 데이터 행 기준 신호 24건을 확인했다. 각 신호는 출처 URL·확인일을 같은 CSV 형식으로 남기고, 반대 근거와 4분류 판정은 `src/examples/여성-컨템포러리-2026-07-08/scout-report.md`와 `src/examples/여성-컨템포러리-2026-07-08/scorecards/ (브랜드별 8개 md)`에서 같은 후보 단위로 확인한다. **사람(MD)은 최종 화면 확인과 의사결정만 한다.**
 
 ## 공식 힌트 영상 근거
 
@@ -60,7 +60,7 @@
 - 후보 브랜드: 8개
 - 수집 신호: 24개
 - triage 결과: `협업/콘텐츠 확장` 3개, `모니터링` 5개
-- 생성 파일: `scout-report.md`, `signals-log.csv`, `watchlist.md`, `scorecards/*.md` 8개
+- 생성 파일: `scout-report.md`, `signals-log.csv`, `watchlist.md`, `scorecards/` 브랜드별 md 8개
 
 이 결과는 "신규 브랜드 8개를 찾았다"가 아니다. MATIN KIM, THE BARNNET, FOETO처럼 이미 공식 협업·노출·성과가 강한 브랜드는 신규 검토가 아니라 협업/콘텐츠 확장으로 분류했고, SIYAZU, LE17SEPTEMBRE, RECTO, TREEMINGBIRD, HAAG처럼 공개 고객 반응 또는 최근성 확인이 부족한 후보는 모니터링으로 낮췄다.
 
@@ -82,12 +82,12 @@
 
 ## 이번 실행 1회가 대체한 반복 확인
 
-이번 예시 실행 1회는 `src/examples/여성-컨템포러리-2026-07-08/signals-log.csv`와 `src/examples/여성-컨템포러리-2026-07-08/scorecards/*.md` 기준으로 공개 출처 23곳을 탐색하고, 브랜드 8개와 신호 24건을 교차 확인하며, 각 판단에 출처 URL·확인일·출처 강도·반대 근거를 남겼다. 4분류 판정 초안은 `src/examples/여성-컨템포러리-2026-07-08/scout-report.md`, `src/examples/여성-컨템포러리-2026-07-08/signals-log.csv`, `src/examples/여성-컨템포러리-2026-07-08/watchlist.md`, `src/examples/여성-컨템포러리-2026-07-08/scorecards/*.md`로 제출 zip 안에서 검증할 수 있다. **사람(MD)은 최종 화면 확인과 의사결정만 한다.**
+이번 예시 실행 1회는 `src/examples/여성-컨템포러리-2026-07-08/signals-log.csv`와 `src/examples/여성-컨템포러리-2026-07-08/scorecards/ (브랜드별 8개 md)` 기준으로 공개 출처 23곳을 탐색하고, 브랜드 8개와 신호 24건을 교차 확인하며, 각 판단에 출처 URL·확인일·출처 강도·반대 근거를 남겼다. 4분류 판정 초안은 `src/examples/여성-컨템포러리-2026-07-08/scout-report.md`, `src/examples/여성-컨템포러리-2026-07-08/signals-log.csv`, `src/examples/여성-컨템포러리-2026-07-08/watchlist.md`, `src/examples/여성-컨템포러리-2026-07-08/scorecards/ (브랜드별 8개 md)`로 제출 zip 안에서 검증할 수 있다. **사람(MD)은 최종 화면 확인과 의사결정만 한다.**
 
 | 수동으로 하는 일 | 이번 예시에서 반복되는 확인 | 플러그인이 대신 산출하는 것 |
 | --- | --- | --- |
 | 후보별 공개 근거 모으기 | 공개 URL 23곳 확인 | `signals-log.csv` 24개 신호와 출처 강도 |
-| 브랜드와 신호 교차 확인 | 브랜드 8개 × 신호 24건 연결 | 브랜드별 `scorecards/*.md` 8개 |
+| 브랜드와 신호 교차 확인 | 브랜드 8개 × 신호 24건 연결 | 브랜드별 `scorecards/` 브랜드별 md 8개 |
 | 이미 알려진 브랜드와 신규 검토 후보 구분 | 무신사/29CM 노출·협업 이력 확인 | 4분류 triage 상태와 반대 근거 |
 | 브랜드별 고객 반응 확인 | 고객 반응, 플랫폼 큐레이션, 공개 성과 여부 확인 | `scorecards/*.md`의 고객 반응 신호와 `확인 필요` 표시 |
 | 약한 출처 걸러내기 | 기사 403, 동적 페이지, 단일 보조 기사 여부 확인 | `가설`, `manual-check-required`, `모니터링` 처리 |
@@ -138,7 +138,7 @@ submission.zip
   src/examples/여성-컨템포러리-2026-07-08/scout-report.md
   src/examples/여성-컨템포러리-2026-07-08/signals-log.csv
   src/examples/여성-컨템포러리-2026-07-08/watchlist.md
-  src/examples/여성-컨템포러리-2026-07-08/scorecards/*.md
+  src/examples/여성-컨템포러리-2026-07-08/scorecards/ (브랜드별 8개 md)
 ```
 
 Codex에서 `src/` 플러그인을 로드한 뒤 입력 예시처럼 호출한다.
