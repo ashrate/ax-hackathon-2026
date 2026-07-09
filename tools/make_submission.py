@@ -94,9 +94,10 @@ def main(argv):
     log_count = 0
     extra_count = 0
     with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as zf:
-        _add_tree(zf, src_dir, "src", written)
         # 심사자가 zip만 열어도 예시 산출물과 핵심 근거 문서를 볼 수 있도록
         # src/ 아래에 사본으로 포함한다 (스펙: src 내부 구조는 자유).
+        # 원본(<slug>/docs, <slug>/examples)을 먼저 넣어, src/ 안의 물리 사본이
+        # 오래된 경우에도 항상 최신 원본이 zip에 들어가게 한다.
         examples_dir = os.path.join(slug_dir, "examples")
         if os.path.isdir(examples_dir):
             extra_count += _add_tree(zf, examples_dir, "src/examples", written)
@@ -109,6 +110,7 @@ def main(argv):
                     zf.write(doc_path, arcname)
                     written.add(arcname)
                     extra_count += 1
+        _add_tree(zf, src_dir, "src", written)
         zf.write(readme_path, "README.md")
         written.add("README.md")
         zf.writestr("logs/", "")  # logs/ 폴더 엔트리 (비어 있어도 구조 유지)

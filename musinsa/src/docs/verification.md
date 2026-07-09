@@ -187,3 +187,8 @@
 - 실행 후 `codex plugin remove musinsa-plugin@ax-live-musinsa --json` 및 `codex plugin marketplace remove ax-live-musinsa --json` 실행.
 - 최종 확인에서 `codex plugin list --json`과 `codex plugin marketplace list --json`에 `musinsa-plugin` 및 `ax-live-musinsa`가 남아 있지 않았다.
 - `~/.codex/config.toml` SHA-256은 테스트 전후 동일했다: `6f8f473a8ce0cdda196e32fe5512f1ceb6ad575cea781729f2fc4e4ab2f1f52c`.
+
+### 테스트 환경 제약 주석
+
+- 위 실구동 테스트에서 확인된 CLI 환경 제약은 `codex exec` MCP 래퍼의 300초 종료 타임아웃 기록이다. 타임아웃 전에 산출물과 마지막 메시지 파일은 생성됐고, 남아 있던 child `codex exec` 프로세스는 확인 후 종료했다.
+- 이 불안정은 최종 메시지 저장/프로세스 종료 래퍼에 한정된 것이며, 플러그인 산출물 자체는 모두 정상 생성되어 파일 단위로 별도 검증했다(생성 파일 목록·계약 일치 여부는 위 기록 참조).
