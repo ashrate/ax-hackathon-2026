@@ -9,8 +9,13 @@ slug: channeltalk | musinsa | kakaopay-securities
 생성물: dist/<slug>/submission.zip
     submission.zip
     ├── src/        <- <slug>/src/ 전체
+    │   ├── examples/  <- <slug>/examples/ 사본 (실제 예시 산출물 — 심사자가 zip만 열어도 확인 가능)
+    │   └── docs/      <- <slug>/docs/ 핵심 문서 사본 (리서치·검증·답변·영상 자막)
     ├── README.md   <- <slug>/README.md
     └── logs/       <- repo 로그와 <slug> 로그를 원본 파일명 유지해 분리 보관
+
+공고 스펙의 최상위 구조(src/README/logs)를 유지하고, 추가 근거는 스펙이
+"구조 자유"라고 명시한 src/ 아래에 사본으로 포함한다.
 
 표준 라이브러리만 사용하며 Windows 경로와 호환됩니다.
 """
@@ -25,6 +30,16 @@ for _stream in (sys.stdout, sys.stderr):
 
 VALID_SLUGS = ("channeltalk", "musinsa", "kakaopay-securities")
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# zip의 src/docs/ 에 사본으로 넣을 핵심 문서 (존재하는 것만 포함)
+EXTRA_DOC_FILES = (
+    "research.md",
+    "output-spec.md",
+    "verification.md",
+    "engineering.md",
+    "submission-answers.md",
+    "source-video.ko.vtt",
+)
 
 
 def _iter_files(src_dir):
@@ -77,8 +92,23 @@ def main(argv):
 
     written = set()
     log_count = 0
+    extra_count = 0
     with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as zf:
         _add_tree(zf, src_dir, "src", written)
+        # 심사자가 zip만 열어도 예시 산출물과 핵심 근거 문서를 볼 수 있도록
+        # src/ 아래에 사본으로 포함한다 (스펙: src 내부 구조는 자유).
+        examples_dir = os.path.join(slug_dir, "examples")
+        if os.path.isdir(examples_dir):
+            extra_count += _add_tree(zf, examples_dir, "src/examples", written)
+        docs_dir = os.path.join(slug_dir, "docs")
+        for doc_name in EXTRA_DOC_FILES:
+            doc_path = os.path.join(docs_dir, doc_name)
+            if os.path.isfile(doc_path):
+                arcname = "src/docs/" + doc_name
+                if arcname not in written:
+                    zf.write(doc_path, arcname)
+                    written.add(arcname)
+                    extra_count += 1
         zf.write(readme_path, "README.md")
         written.add("README.md")
         zf.writestr("logs/", "")  # logs/ 폴더 엔트리 (비어 있어도 구조 유지)
@@ -97,6 +127,7 @@ def main(argv):
 
     print(f"생성 완료: {out_zip}")
     print(f"  - src/ 파일 및 README.md 포함, 로그 파일 {log_count}개 포함")
+    print(f"  - src/examples·src/docs 사본 {extra_count}개 포함 (예시 산출물·핵심 근거)")
     return 0
 
 

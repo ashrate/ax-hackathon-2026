@@ -4,6 +4,10 @@
 
 이 플러그인은 답변 생성기가 아니라 **위험 문구 제거 + 공식 근거 정리 + 에스컬레이션 판단 보조** 워크플로우입니다. 모든 `response-draft.md`는 상담사 또는 컴플라이언스 담당자가 검토 후 사용하는 답변 초안이며, 고객 발송·보상 판단·자문 이관의 마지막 게이트는 항상 사람입니다.
 
+## MVP 비용·리소스
+
+API 키·내부 데이터·고객 계정 없이 공식 공개 자료(FAQ·공지·감독당국 문서)만으로 1인 2일 내 구현과 실증이 가능하며, 심사자는 제출 zip의 `src/` 자료와 예시 케이스만으로 같은 흐름을 재현할 수 있습니다. 이 리소스 조건에서 이 문제가 최선인 이유는 문장 점검·근거 정리·위험 플래그가 Codex의 강점과 정확히 겹치고, 규제 리스크는 고객 발송이 아닌 검토용 초안 포지션과 상담사·컴플라이언스 최종 게이트로 통제되기 때문입니다.
+
 ## 입력 예시
 
 ```text
@@ -68,11 +72,18 @@ output/case-<번호>/
 
 사용자는 카카오페이증권 상담사, VOC 담당자, 상담 QA 또는 컴플라이언스 검토자입니다. 고객이 "소수점 주문이 왜 바로 체결되지 않나요?", "앱이 안 열려 주문을 못 했는데 보상되나요?", "지금 이 주식을 팔아야 하나요?"처럼 불안과 판단 요청이 섞인 문의를 남기면, 담당자는 투자 추천이나 보상 단정으로 보이지 않게 답해야 합니다. 이 플러그인은 그 상황에서 위험 문구를 제거하고 공식 근거와 이관 판단을 정리한 검토용 산출물을 만듭니다.
 
+## 공식 힌트 영상
+
+- 원본: https://www.youtube.com/watch?v=aBuoojGjyf4
+- 핵심 자막: "초보 투자자들이 매수 매도를 할 때 내가 손해 보지 않았다라든지", "어떻게 도움을 받을 수 있을까"라는 니즈가 문제 힌트입니다.
+- 핵심 자막: 평가는 "납득해서 안심하고 그다음을 실행할 수 있게끔 정보를 충분히 주는지"를 본다는 관점입니다.
+- 전체 자막은 제출 zip의 `src/docs/source-video.ko.vtt`에 포함했습니다.
+
 ## 공개 근거
 
 | 출처 URL | 발행 주체 | 확인일 | 쓰는 곳 |
 | --- | --- | --- | --- |
-| `docs/source-video.ko.vtt` | 프라이머/카카오페이증권 발표 영상 자막 | 2026-07-08 | 초보 투자자의 매수·매도 불안과 납득 가능한 과정 설계가 문제 힌트임을 확인 |
+| https://www.youtube.com/watch?v=aBuoojGjyf4 (`src/docs/source-video.ko.vtt` 자막 사본) | 프라이머/카카오페이증권 발표 영상 | 2026-07-08 | 초보 투자자의 매수·매도 불안과 납득 가능한 과정 설계가 문제 힌트임을 확인 |
 | https://support.kakaopay.com/web/faq-list/CUSTOMER_CENTER_FAQ_STOCK?device=m&qna=CUSTOMER_CENTER_FAQ_DECIMAL_POINT_TRADING | 카카오페이 고객센터 | 2026-07-08 | 소수점매매가 실시간 체결과 다를 수 있음을 안내하는 근거 |
 | https://www.kakaopaysec.com/customer/notice/dynamicBoardPageDetail.do?id=6807 | 카카오페이증권 | 2026-07-08 | 해외주식 소수점 거래설명서와 유의사항이 개정될 수 있음을 확인 |
 | https://kakaopaysec.com/portal/cstmnotice-obstc/dynamicPage.do | 카카오페이증권 | 2026-07-08 | 주문장애 정의, 비상주문, 보상 기준, 보상 제외 기준 |
@@ -133,7 +144,21 @@ examples/
 python tools/make_submission.py kakaopay-securities
 ```
 
-생성된 `dist/kakaopay-securities/submission.zip` 안의 `src/`가 플러그인 루트입니다. Codex에서 플러그인을 로드한 뒤 다음처럼 호출합니다.
+생성된 `dist/kakaopay-securities/submission.zip` 안의 `src/`가 플러그인 루트입니다. `src/`에는 실행 스킬, 근거 맵, 예시 산출물, 핵심 docs 사본이 함께 들어가며, 전체 영상 자막은 `src/docs/source-video.ko.vtt`에서 확인할 수 있습니다.
+
+```text
+src/
+  .codex-plugin/plugin.json
+  skills/main/SKILL.md
+  references/evidence.md
+  docs/source-video.ko.vtt
+  docs/output-spec.md
+  examples/case-1/
+  examples/case-2/
+  examples/case-3/
+```
+
+Codex에서 플러그인을 로드한 뒤 다음처럼 호출합니다.
 
 ```text
 고객 문의: "아침에 앱이 안 열려서 주문을 못 했어요. 보상해 주나요?"
