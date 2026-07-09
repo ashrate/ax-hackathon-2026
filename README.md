@@ -32,10 +32,17 @@
 submission.zip
 ├── src/                          # 구동 가능한 Codex 플러그인 소스
 │   ├── .codex-plugin/plugin.json
-│   └── skills/main/SKILL.md
+│   ├── skills/main/SKILL.md
+│   ├── references/evidence.md    # 공개 근거·가드레일 맵
+│   ├── examples/                 # 실제 예시 실행 산출물 사본
+│   └── docs/                     # 핵심 근거 문서 사본 (리서치·검증·답변·영상 자막)
 ├── README.md                     # 문제, 작동 방식, 검증 설명
 └── logs/                         # AI와 나눈 전체 대화 로그 원본
 ```
+
+최상위 구조는 공고 스펙(src/README/logs) 그대로이고, 예시 산출물과 근거 문서는
+스펙이 "구조 자유"라고 명시한 `src/` 아래 사본으로 포함해 심사자가 zip만 열어도
+전체 증거 체인을 확인할 수 있게 합니다.
 
 ### 로그 규칙
 
@@ -106,10 +113,12 @@ ax인재전쟁/
 │   │   ├── references/evidence.md # zip에 포함되는 공개 근거·가드레일 맵
 │   │   └── skills/main/SKILL.md
 │   ├── README.md
-│   ├── docs/                    # 작업 기록 (submission.zip 미포함)
+│   ├── docs/                    # 작업 기록 (핵심 문서는 zip의 src/docs/에 사본 포함)
 │   │   ├── research.md          #   문항 ①② 원천 자료
 │   │   ├── engineering.md       #   문항 ③④ 원천 자료
-│   │   └── verification.md      #   문항 ⑤ 원천 자료
+│   │   ├── verification.md      #   문항 ⑤ 원천 자료
+│   │   └── submission-answers.md#   문항 ①~⑤ 최종 답변
+│   ├── examples/                # 예시 실행 산출물 (zip의 src/examples/에 사본 포함)
 │   └── logs/                    # 채널톡 작업 전용 로그 (필요 시)
 ├── musinsa/                     # 무신사 트랙 (동일 구조)
 └── kakaopay-securities/         # 카카오페이증권 트랙 (동일 구조)
@@ -129,7 +138,9 @@ submission.zip
 ├── src/                          # 플러그인 루트 전체 (.codex-plugin/plugin.json 필수)
 │   ├── .codex-plugin/plugin.json
 │   ├── references/evidence.md
-│   └── skills/<이름>/SKILL.md
+│   ├── skills/<이름>/SKILL.md
+│   ├── examples/                 # 예시 실행 산출물 사본
+│   └── docs/                     # 핵심 근거 문서 사본 (source-video.ko.vtt 포함)
 ├── README.md
 └── logs/                         # AI 대화 로그 원본 (md/txt/json/jsonl)
 ```
