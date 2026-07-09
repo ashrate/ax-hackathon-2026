@@ -1,6 +1,6 @@
 # ChannelTalk Evidence Map
 
-> 공식 힌트 영상 원본: https://www.youtube.com/watch?v=5iRf37Z8Wd4 (자막 사본: `docs/source-video.ko.vtt`, 확인일 2026-07-08) — 자막 5등급 근거의 역추적 경로.
+> 공식 힌트 영상 원본: https://www.youtube.com/watch?v=5iRf37Z8Wd4 (자막 사본: `src/docs/source-video.ko.vtt`, 확인일 2026-07-08) — 자막 5등급 근거의 역추적 경로.
 
 ## Selected Problem
 
@@ -20,7 +20,7 @@
 
 | ID | 핵심 주장 | 등급 | 출처 URL/위치 | 확인일 | 수집 방법 | 판정 |
 | --- | --- | --- | --- | --- | --- | --- |
-| CT-01 | 채널톡 트랙은 이커머스 고객사의 상담 문제와 AI 에이전트 활용을 직접 힌트로 준다. | 5 | `docs/source-video.ko.vtt` | 2026-07-08 | 로컬 자막 `rg "이커머스|AI|에이전트|상담"` 검색 | 유지 |
+| CT-01 | 채널톡 트랙은 이커머스 고객사의 상담 문제와 AI 에이전트 활용을 직접 힌트로 준다. | 5 | `src/docs/source-video.ko.vtt` | 2026-07-08 | 로컬 자막 `rg "이커머스|AI|에이전트|상담"` 검색 | 유지 |
 | CT-02 | 채널톡 AI 상담사가 제대로 답하려면 규칙, 구조화된 지식, 실행 가능한 태스크/액션이 필요하다. | 4 | https://channel.io/kr/talk | 2026-07-08 | 웹 검색 후 `web.open`, `curl -L` 200 확인 | 승격: 기존 `channel.io/us/talk`보다 제출용 한국어 공식 페이지가 직접적 |
 | CT-03 | ALF의 지식은 문서, 파일, 웹사이트 자료를 모아 관리하는 공간이며, 구조화된 지식은 RAG 답변 품질을 높인다. | 4 | https://docs.channel.io/help/ko/articles/%EC%A7%80%EC%8B%9D-803f6ac9 | 2026-07-08 | 공식 도움말 검색, `web.open`, `curl -L` 200 확인 | 신규 보강 |
 | CT-04 | ALF 규칙은 상황별 지시문이며 필터, 개인화 변수, 상담 처리 액션, 미리보기를 통해 동작을 제어한다. | 4 | https://docs.channel.io/help/ko/articles/%EA%B7%9C%EC%B9%99-b43e19a1 | 2026-07-08 | 공식 도움말 검색, `web.open`, `curl -L` 200 확인 | 신규 보강 |
