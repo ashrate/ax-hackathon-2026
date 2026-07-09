@@ -1,5 +1,34 @@
 # 채널톡 ALF 출력물 생성 플러그인
 
+## 심사자 5분 재현 가이드
+
+1. 복붙 입력 프롬프트:
+
+```text
+브랜드명: 바잇미
+공개 URL:
+- https://channel.io/kr/blog/articles/ai-case-biteme-d3e09ab9
+- https://m.biteme.co.kr/shop/community/faq_lists
+- https://m.biteme.co.kr/shop/service/service_guide
+- https://m.biteme.co.kr/shop/product/product_view?product_cd=1000050043
+- https://m.biteme.co.kr/shop/product/product_view?product_cd=1000040999
+- https://m.biteme.co.kr/shop/product/product_view?product_cd=1000006873
+
+요청:
+채널톡 ALF에 넣을 지식 문서, 답변 규칙, 상담원 이관 기준,
+배포 전 테스트 질문, 누락 정책 질문을 output/바잇미/ 아래에 만들어줘.
+출처가 없거나 문서가 충돌하는 숫자는 단정하지 말고 gaps.md에 남겨줘.
+```
+
+2. 예상 출력 폴더: `output/바잇미/`
+3. 먼저 볼 핵심 파일 3개: `src/examples/biteme/alf-test-cases.csv`, `src/examples/biteme/gaps.md`, `src/examples/biteme/alf-rules.md`
+4. 실패 처리 예시: 접근 실패 URL이 있으면 내용을 추정하지 않고 `gaps.md`의 접근 실패 항목에 URL, 실패 증상, 확인일을 기록한다.
+5. 사람이 판단할 지점: 문서 충돌은 ALF 확정 규칙에 넣기 전에 운영자가 최종 우선순위를 확정한다.
+
+## 왜 이 문제, 왜 이 범위인가
+
+채널톡 트랙 힌트 영상은 이커머스 고객사의 상담 문제와 AI 에이전트를 직접 가리킨다. 이 제출물은 API 키나 채널톡·브랜드 내부 데이터 없이 로그인 없이 열람 가능한 공개 자료만 사용하므로 심사자가 같은 URL로 재현할 수 있다. 공개 문서를 구조화하고, 검증 가능한 테스트와 가드레일을 만드는 작업은 Codex 스킬이 가장 잘하는 범위다. 그래서 실제 ALF 관리자 자동 반영이나 주문/환불 처리까지 넓히지 않고, 공개 URL 기반 `사전 설계 산출물` 생성으로 범위를 제한했다.
+
 > AX 인재전쟁 2026 채널톡 트랙 제출 후보: ChannelTalk ALF Knowledge Planner
 
 ## 한 문장 요약
@@ -27,12 +56,18 @@
 
 ## 실행 결과
 
-풀 실행 예시([biteme](examples/biteme/)) / 라이트 실행 예시([aladin](examples/aladin/)) — 서로 다른 업종에서 동일 워크플로우가 작동함을 확인했다.
+풀 실행 예시([biteme](src/examples/biteme/)) / 라이트 실행 예시([aladin](src/examples/aladin/)) — 서로 다른 업종에서 동일 워크플로우가 작동함을 확인했다.
 
 | 예시 | 업종 | 실행 깊이 | 산출물 |
 | --- | --- | --- | --- |
-| [examples/biteme/](examples/biteme/) | 반려동물 커머스 | 풀 실행 | 지식 문서 8개, 계약 산출 파일 13개, CSV 테스트 질문 41개, 문서 충돌 1건 기록 |
-| [examples/aladin/](examples/aladin/) | 도서/음반/전자책 커머스 | 라이트 실행 | 지식 문서 3개, 규칙 발췌 1개, CSV 테스트 질문 12개, 운영자 확인 항목 6개 기록 |
+| [src/examples/biteme/](src/examples/biteme/) | 반려동물 커머스 | 풀 실행 | 지식 문서 8개, 계약 산출 파일 13개, CSV 테스트 질문 41개, 문서 충돌 1건 기록 |
+| [src/examples/aladin/](src/examples/aladin/) | 도서/음반/전자책 커머스 | 라이트 실행 | 지식 문서 3개, 규칙 발췌 1개, CSV 테스트 질문 12개, 운영자 확인 항목 6개 기록 |
+
+## Before/After
+
+| Before | After |
+| --- | --- |
+| FAQ/상품상세/정책을 사람이 복사해 지식·규칙·테스트로 수작업 분해했다. 문서 충돌은 사고가 난 뒤에야 발견되기 쉬웠다. | 공개 URL 입력 → 지식 문서 8개·테스트 41개·충돌 1건 사전 발견·`gaps.md` 자동 생성. 전부 `src/examples/biteme/` 안에서 확인 가능한 실측치다. |
 
 ## 정보 부족/실패 시 동작
 
@@ -81,11 +116,11 @@ output/<브랜드명>/
 - `gaps.md`: 공개 사이트에 없거나 모호한 정책, 접근 실패 URL, 문서 충돌, 운영자 확인 질문.
 - `APPLY-GUIDE.md`: 산출물을 채널톡 관리자 화면에 적용하고 테스트하는 단계별 가이드.
 
-출력 계약의 상세 스키마와 품질 기준은 `docs/output-spec.md`에 있다.
+출력 계약의 상세 스키마와 품질 기준은 `src/docs/output-spec.md`에 있다.
 
 ## 예시 실행
 
-실제 공개 자료로 실행한 풀 예시는 `examples/biteme/`, 라이트 예시는 `examples/aladin/`에 있다.
+실제 공개 자료로 실행한 풀 예시는 `src/examples/biteme/`, 라이트 예시는 `src/examples/aladin/`에 있다.
 
 입력으로 사용한 공개 URL:
 
@@ -164,4 +199,4 @@ output/<브랜드명>/
 python C:/Users/kimdo/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py src
 ```
 
-예시 실행 검증은 `docs/verification.md`에 기록했다.
+예시 실행 검증은 `src/docs/verification.md`에 기록했다.
