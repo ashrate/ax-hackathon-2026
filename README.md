@@ -271,9 +271,16 @@ python tools/make_submission.py kakaopay-securities
 
 이 저장소는 `AX 인재전쟁 2026` 예선 제출을 위해 만든 Codex 플러그인 monorepo입니다. 채널톡, 무신사, 카카오페이증권 세 트랙을 분리했고, 각 트랙은 `.codex-plugin/plugin.json`, `skills/main/SKILL.md`, `references/evidence.md`, README, logs를 포함하는 동일한 제출 구조를 갖습니다. 대회 조건에 맞춰 AI 대화 로그는 원본 그대로 저장되며, 세 트랙 모두 유튜브 자막의 출제 의도를 최우선으로 반영해 문제 가설과 플러그인 작동 절차를 맞췄습니다.
 
-## 다음에 해야 할 일
+## 완료된 것
 
-- 세 트랙 모두 실제 공개 URL을 추가로 리서치해 `docs/research.md`와 `src/references/evidence.md`의 출처 강도를 보강합니다.
-- 각 플러그인을 정상 입력과 예외 입력으로 수동 실행해 `docs/verification.md`의 실제 결과를 채웁니다.
-- `docs/engineering.md`와 `docs/verification.md`의 초안을 바탕으로 5문항 최종 제출 문장을 800자/1000자 제한 안에 맞춥니다.
-- 제출 직전 validator, 패키징, zip 내부 구조, 로그 포함 여부를 다시 확인합니다.
+- 세 트랙 리서치·근거 감사·claim audit(원문 구절 대조 65건, 불지지 0) 완료. 출처는 접근·원문 확인된 공개 URL만 사용.
+- 세 플러그인 모두 공식 validator 통과, 실존 케이스 예시 실행(`src/examples/`)과 정식 설치 경로 실구동 테스트(`docs/verification.md`) 완료.
+- 5문항 최종 답변을 각 트랙 `docs/submission-answers.md`에 글자수 제한 내로 확정 (zip의 `src/docs/`에도 사본 포함).
+- 외부 리뷰 3라운드 반영: 무신사 triage 재정의, 카카오페이증권 검토용 초안 포지션 전환, zip 자립화(예시·근거 문서 포함), README 링크 무결성 검사.
+
+## 제출 직전 확인할 것
+
+- `python tools/make_submission.py <slug>` 재실행으로 마지막 세션 로그까지 포함한 zip 재생성.
+- validator 3트랙 재실행(`validate_plugin.py <slug>/src`)과 zip 내부 구조(src/README/logs) 확인.
+- 제출 폼 문항 답변은 각 트랙 `docs/submission-answers.md`에서 복사 (문항② 출처 URL 포함).
+- `logs/` 파일은 절대 수동 편집·삭제하지 않음 (사후 가공 시 실격).
